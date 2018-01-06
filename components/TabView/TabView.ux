@@ -10,7 +10,7 @@
     </JavaScript>
     <Router ux:Dependency="router" />
     <EdgeNavigator>
-		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,25,56,0" Background="#fff">
+		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
 			<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
 			<ActivatingAnimation>
 				<Change shadow.Color="#0004" />
@@ -53,7 +53,7 @@
 			<Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />
 			<StackPanel Dock="Top" Color="#F95252">
 				<Shadow Size="3" Distance="1" />
-				<StatusBarBackground />
+				<StatusBarBackground/>
 				<Panel Height="56">
 					<Hamburger Alignment="Left">
 						<Clicked>
