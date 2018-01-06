@@ -1,5 +1,5 @@
 <Page ux:Class="ConfirmPage" Alignment="Center" Width="100%" Height="100%" Background="#fff">
-    <Router ux:Dependency="mainRouter"/>
+    <Router ux:Dependency="router"/>
     <JavaScript File="ConfirmPage.js"/>
     <Panel>
         <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">

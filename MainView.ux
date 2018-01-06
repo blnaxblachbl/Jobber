@@ -2,13 +2,8 @@
     <Android.StatusBarConfig Color="#F95252" IsVisible="True" />
     <Router ux:Name="router" />
     <Navigator DefaultPath="login">
-<<<<<<< HEAD
         <LoginPage ux:Template="login" router="router"/>
         <TabView ux:Template="tabView" router="router"/>
-=======
-        <LoginPage ux:Template="login" mainRouter="mainRouter" />
-        <ConfirmPage ux:Template="confirm" mainRouter="mainRouter"/>
-        <TabView ux:Template="tabView"/>
->>>>>>> 8424af09449cc2c1fa75f23187d822067f67d715
+        <ConfirmPage ux:Template="confirm" router="router"/>
     </Navigator>
 </App>

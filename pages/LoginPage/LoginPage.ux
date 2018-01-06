@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<Page ux:Class="LoginPage">
-    <Router ux:Dependency="router"/>
-=======
 <Page ux:Class="LoginPage" Alignment="Center" Width="100%" Height="100%" Background="#fff">
-    <Router ux:Dependency="mainRouter"/>
+    <Router ux:Dependency="router"/>
     <JavaScript File="LoginPage.js"/>
->>>>>>> 8424af09449cc2c1fa75f23187d822067f67d715
     <Panel>
         <StackPanel Alignment="Top" Width="100%">
             <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">
