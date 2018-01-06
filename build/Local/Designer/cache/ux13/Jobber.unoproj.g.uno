@@ -1,3 +1,33 @@
+sealed class Jobber_accessor_ItemCard_Image: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Jobber_accessor_ItemCard_Image();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Image";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((ItemCard)obj).Image; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((ItemCard)obj).SetImage((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Jobber_accessor_ItemCard_Title: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Jobber_accessor_ItemCard_Title();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Title";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((ItemCard)obj).Title; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((ItemCard)obj).SetTitle((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Jobber_accessor_ItemCard_Price: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Jobber_accessor_ItemCard_Price();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Price";
+    public override global::Uno.Type PropertyType { get { return typeof(string); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((ItemCard)obj).Price; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((ItemCard)obj).SetPrice((string)v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
 sealed class Jobber_FuseControlsTextControl_Value_Property: Uno.UX.Property<string>
 {
     [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;
@@ -59,6 +89,14 @@ sealed class Jobber_FuseElementsElement_Visibility_Property: Uno.UX.Property<Fus
     public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Elements.Visibility v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetVisibility(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
+sealed class Jobber_FuseDrawingImageFill_Url_Property: Uno.UX.Property<string>
+{
+    [Uno.WeakReference] readonly Fuse.Drawing.ImageFill _obj;
+    public Jobber_FuseDrawingImageFill_Url_Property(Fuse.Drawing.ImageFill obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Drawing.ImageFill)obj).Url; }
+    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Drawing.ImageFill)obj).Url = v; }
+}
 sealed class Jobber_FuseControlsShadow_Color_Property: Uno.UX.Property<float4>
 {
     [Uno.WeakReference] readonly Fuse.Controls.Shadow _obj;
@@ -83,14 +121,6 @@ sealed class Jobber_FuseNavigationNavigateTo_Target_Property: Uno.UX.Property<Fu
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
     public override Fuse.Visual Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Navigation.NavigateTo)obj).Target; }
     public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Visual v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Navigation.NavigateTo)obj).Target = v; }
-}
-sealed class Jobber_FuseDrawingImageFill_Url_Property: Uno.UX.Property<string>
-{
-    [Uno.WeakReference] readonly Fuse.Drawing.ImageFill _obj;
-    public Jobber_FuseDrawingImageFill_Url_Property(Fuse.Drawing.ImageFill obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Drawing.ImageFill)obj).Url; }
-    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Drawing.ImageFill)obj).Url = v; }
 }
 sealed class Jobber_ComboBox_Options_Property: Uno.UX.Property<object>
 {
