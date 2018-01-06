@@ -60,6 +60,7 @@
 							<NavigateToggle Target="sidebar" />
 						</Clicked>
 					</Hamburger>
+                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Jobber" />
 				</Panel>
 			</StackPanel>
             <PageControl ux:Name="loggedInNavigation" Interaction="None">
