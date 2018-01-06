@@ -1,5 +1,5 @@
 <Page ux:Class="TabView">
-    <Font File="../../assets/materialdesignicons.ttf" ux:Global="MaterialIcons" />
+    <Font File="../../assets/FontAwesome.otf" ux:Global="FontAwesome" />
     <JavaScript>
         var innerLink = function(){
             router.pushRelative(innerNav, "innerPage2");
@@ -34,28 +34,33 @@
             <PageControl ux:Name="loggedInNavigation" Interaction="None">
                 <Page ux:Name="ads">
                     <ResourceString Key="Title" Value="Обьявления" />
+                    <ResourceString Key="Icon" Value="&#xf03a;" />
                     <AdsPage />
                 </Page>
                 <Page ux:Name="addAds">
                     <ResourceString Key="Title" Value="Добавить обьявление" />
+                    <ResourceString Key="Icon" Value="&#xf055;" />
                     <AddAdsPage />
                 </Page>
                 <Page ux:Name="favorite">
                     <ResourceString Key="Title" Value="Избранные" />
+                    <ResourceString Key="Icon" Value="&#xf005;" />
                     <FavoritePage />
                 </Page>
             </PageControl>
-            <PageIndicator Color="#fff" Dock="Bottom" Height="60" Navigation="loggedInNavigation">
+            <PageIndicator Color="#fff" Dock="Bottom" Height="70" Navigation="loggedInNavigation">
                 <DropShadow Size="10" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
                 <GridLayout ColumnCount="3" />
                 <Panel ux:Template="Dot" Height="45">
                     <ActivatingAnimation>
                         <Scale Factor="1.1" />
                         <Change title.Color="#F95252" />
+                        <Change icon.Color="#F95252" />
                     </ActivatingAnimation>
                     <Clicked>
                         <NavigateTo Target="{Page Visual}"/>
                     </Clicked>
+                    <Text ux:Name="icon" Font="FontAwesome" Alignment="TopCenter" TextAlignment="Center" Value="{Page Icon}" FontSize="25" />
                     <Text ux:Name="title" Alignment="BottomCenter" TextAlignment="Center" Value="{Page Title}" FontSize="10" />
                 </Panel>
             </PageIndicator>
