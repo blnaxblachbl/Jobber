@@ -1,5 +1,7 @@
-<Panel ux:Class="LoginPage">
+<Page ux:Class="LoginPage">
     <Router ux:Dependency="mainRouter"/>
-    <JavaScript File="LoginPage.js"/>
-    <Text Value="Login page" Clicked="{goTabView}"/>
-</Panel>
+    <Panel>
+        <JavaScript File="LoginPage.js"/>
+        <Text Alignment="Center" Value="Login page" Clicked="{goTabView}"/>
+    </Panel>
+</Page>
