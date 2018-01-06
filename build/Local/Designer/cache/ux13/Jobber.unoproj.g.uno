@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sealed class Jobber_accessor_ItemCard_Image: global::Uno.UX.PropertyAccessor
 {
     public static global::Uno.UX.PropertyAccessor Singleton = new Jobber_accessor_ItemCard_Image();
@@ -26,6 +27,16 @@ sealed class Jobber_accessor_ItemCard_Price: global::Uno.UX.PropertyAccessor
     public override global::Uno.Type PropertyType { get { return typeof(string); } }
     public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((ItemCard)obj).Price; }
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((ItemCard)obj).SetPrice((string)v, origin); }
+=======
+sealed class Jobber_accessor_ItemCard_Url: global::Uno.UX.PropertyAccessor
+{
+    public static global::Uno.UX.PropertyAccessor Singleton = new Jobber_accessor_ItemCard_Url();
+    public override global::Uno.UX.Selector Name { get { return _name; } }
+    static global::Uno.UX.Selector _name = "Url";
+    public override global::Uno.Type PropertyType { get { return typeof(object); } }
+    public override object GetAsObject(global::Uno.UX.PropertyObject obj) { return ((ItemCard)obj).Url; }
+    public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((ItemCard)obj).SetUrl((object)v, origin); }
+>>>>>>> d98901b164db50c37577f77b0c1b52c7f301737b
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Jobber_FuseControlsTextControl_Value_Property: Uno.UX.Property<string>
