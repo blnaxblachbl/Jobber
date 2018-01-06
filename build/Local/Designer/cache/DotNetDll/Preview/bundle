@@ -56,8 +56,4 @@ Polyfills.Window:js/EventTarget.js:eventtarget-cda77f1e.js:js/fetch.js:fetch-f9f
 FuseJS
 Outracks.Simulator.Common.Uno
 Fuse.Preview.Core:fight.png:fight-8c16f395.png
-<<<<<<< HEAD
-Jobber:assets/materialdesignicons.ttf:materialdesignicons-c931e742.ttf:pages/AddAdsPage/AddAdsPage.js:addadspage-e287b9ab.js:pages/AdsPage/AdsPage.js:adspage-499a99c4.js:pages/ConfirmPage/ConfirmPage.js:confirmpage-57d28242.js:assets/logo.jpg:logo-5ab69c91.jpg:pages/FavoritePage/FavoritePage.js:favoritepage-0b699f37.js:pages/LoginPage/LoginPage.js:loginpage-9182b8bb.js
-=======
-Jobber:assets/materialdesignicons.ttf:materialdesignicons-c931e742.ttf:pages/LoginPage/LoginPage.js:loginpage-9182b8bb.js:assets/logo.jpg:logo-5ab69c91.jpg:pages/AddAdsPage/AddAdsPage.js:addadspage-e287b9ab.js:pages/FavoritePage/FavoritePage.js:favoritepage-0b699f37.js:pages/AdsPage/AdsPage.js:adspage-499a99c4.js:pages/ConfirmPage/ConfirmPage.js:confirmpage-57d28242.js
->>>>>>> fbf79649e7ba8443d59852bcbca7d8ca16114e58
+Jobber:assets/FontAwesome.otf:fontawesome-dc3bcaa0.otf:pages/LoginPage/LoginPage.js:loginpage-9182b8bb.js:assets/logo.jpg:logo-5ab69c91.jpg:pages/AddAdsPage/AddAdsPage.js:addadspage-e287b9ab.js:pages/FavoritePage/FavoritePage.js:favoritepage-0b699f37.js:pages/ConfirmPage/ConfirmPage.js:confirmpage-57d28242.js:pages/AdsPage/AdsPage.js:adspage-499a99c4.js

@@ -174,7 +174,7 @@ public partial class MainView: Fuse.App
         global::Uno.UX.Resource.SetGlobalKey(global::Fuse.TranslationModes.ParentSize, "ParentSize");
         global::Uno.UX.Resource.SetGlobalKey(global::Fuse.TranslationModes.Width, "Width");
         global::Uno.UX.Resource.SetGlobalKey(global::Fuse.TranslationModes.Height, "Height");
-        global::Uno.UX.Resource.SetGlobalKey(global::TabView.MaterialIcons, "MaterialIcons");
+        global::Uno.UX.Resource.SetGlobalKey(global::TabView.FontAwesome, "FontAwesome");
     }
     [global::Uno.UX.UXConstructor]
     public MainView()
