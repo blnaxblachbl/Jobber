@@ -1,4 +1,6 @@
 <Panel ux:Class="FavoritePage">
     <JavaScript File="FavoritePage.js"/>
-    <Text Value="Favorite page"/>
+    <ScrollView>
+        
+    </ScrollView>
 </Panel>

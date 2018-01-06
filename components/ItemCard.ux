@@ -1,0 +1,6 @@
+<Panel ux:Class="ItemCard" Width="100%">
+    <object ux:Property="Name"/>
+    <object ux:Property="Price"/>
+    <object ux:Property="Url"/>
+    <ImageFill Url="{Property Url}" StretchMode="UniformToFill"/>
+</Panel>
