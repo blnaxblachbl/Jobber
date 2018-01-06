@@ -10,7 +10,8 @@
     </JavaScript>
     <Router ux:Dependency="router" />
     <EdgeNavigator>
-		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
+		<StackPanel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
+            <Rectangle Alignment="Top" Height="25" Width="100%" Background="#F95252" />
 			<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
 			<ActivatingAnimation>
 				<Change shadow.Color="#0004" />
@@ -47,7 +48,7 @@
                     </Grid>
                 </StackPanel>
             </StackPanel>
-		</Panel>
+		</StackPanel>
 		
 		<DockPanel>
 			<Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />

@@ -1,4 +1,5 @@
 build/Local/Designer/cache/ux13/MainView.g.uno
+build/Local/Designer/cache/ux13/ComboBox.g.uno
 build/Local/Designer/cache/ux13/Hamburger.g.uno
 build/Local/Designer/cache/ux13/TabView.g.uno
 build/Local/Designer/cache/ux13/AddAdsPage.g.uno

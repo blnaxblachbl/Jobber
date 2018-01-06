@@ -1,4 +1,5 @@
 .uno/CodeCompletion/ux13/MainView.g.uno
+.uno/CodeCompletion/ux13/ComboBox.g.uno
 .uno/CodeCompletion/ux13/Hamburger.g.uno
 .uno/CodeCompletion/ux13/TabView.g.uno
 .uno/CodeCompletion/ux13/AddAdsPage.g.uno
