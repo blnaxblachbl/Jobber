@@ -1,5 +1,5 @@
 <Page ux:Class="LoginPage">
-    <Router ux:Dependency="mainRouter"/>
+    <Router ux:Dependency="router"/>
     <Panel>
         <JavaScript File="LoginPage.js"/>
         <Text Alignment="Center" Value="Login page" Clicked="{goTabView}"/>

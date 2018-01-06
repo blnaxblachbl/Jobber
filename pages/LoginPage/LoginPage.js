@@ -1,5 +1,5 @@
 goTabView = () =>{
-    mainRouter.goto("tabView");
+    router.goto("tabView");
 }
 
 module.exports = {

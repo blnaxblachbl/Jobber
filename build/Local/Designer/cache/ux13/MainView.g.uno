@@ -16,7 +16,7 @@ public partial class MainView: Fuse.App
         }
         public override object New()
         {
-            var __self = new global::LoginPage(__parent.mainRouter);
+            var __self = new global::LoginPage(__parent.router);
             __self.Name = __selector0;
             return __self;
         }
@@ -37,13 +37,13 @@ public partial class MainView: Fuse.App
         }
         public override object New()
         {
-            var __self = new global::TabView();
+            var __self = new global::TabView(__parent.router);
             __self.Name = __selector0;
             return __self;
         }
         static global::Uno.UX.Selector __selector0 = "tabView";
     }
-    internal global::Fuse.Navigation.Router mainRouter;
+    internal global::Fuse.Navigation.Router router;
     static MainView()
     {
         global::Uno.UX.Resource.SetGlobalKey(global::Fuse.Animations.Easing.Linear, "Linear");
@@ -179,19 +179,19 @@ public partial class MainView: Fuse.App
         var temp15 = new global::FuseJS.FileReaderImpl();
         var temp16 = new global::FuseJS.UserEvents();
         var temp17 = new global::Fuse.Android.StatusBarConfig();
-        mainRouter = new global::Fuse.Navigation.Router();
+        router = new global::Fuse.Navigation.Router();
         var temp18 = new global::Fuse.Controls.Navigator();
         var login = new Template(this, this);
         var tabView = new Template1(this, this);
         temp17.Color = float4(0.9764706f, 0.3215686f, 0.3215686f, 1f);
         temp17.IsVisible = true;
-        mainRouter.Name = __selector0;
+        router.Name = __selector0;
         temp18.DefaultPath = "login";
         temp18.Templates.Add(login);
         temp18.Templates.Add(tabView);
         this.Children.Add(temp17);
-        this.Children.Add(mainRouter);
+        this.Children.Add(router);
         this.Children.Add(temp18);
     }
-    static global::Uno.UX.Selector __selector0 = "mainRouter";
+    static global::Uno.UX.Selector __selector0 = "router";
 }

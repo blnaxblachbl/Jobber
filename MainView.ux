@@ -1,8 +1,8 @@
 <App>
     <Android.StatusBarConfig Color="#F95252" IsVisible="True" />
-    <Router ux:Name="mainRouter" />
+    <Router ux:Name="router" />
     <Navigator DefaultPath="login">
-        <LoginPage ux:Template="login" mainRouter="mainRouter" />
-        <TabView ux:Template="tabView"/>
+        <LoginPage ux:Template="login" router="router"/>
+        <TabView ux:Template="tabView" router="router"/>
     </Navigator>
 </App>

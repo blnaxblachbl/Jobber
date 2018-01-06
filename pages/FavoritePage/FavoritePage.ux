@@ -1,7 +1,4 @@
-<Page ux:Class="FavoritePage">
-    <Router ux:Dependency="router"/>
-    <Panel>
-        <JavaScript File="FavoritePage.js"/>
-        <Text Value="Favorite page"/>
-    </Panel>
-</Page>
+<Panel ux:Class="FavoritePage">
+    <JavaScript File="FavoritePage.js"/>
+    <Text Value="Favorite page"/>
+</Panel>

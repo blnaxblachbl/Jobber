@@ -1,14 +1,37 @@
-<Panel ux:Class="TabView">
-    <Router ux:Name="router"/>
-    <JavaScript File="TabView.js"/>
-    <Navigator DefaultPath="ads">
-        <AdsPage ux:Template="ads" router="router" />
-        <AddAdsPage ux:Template="addAds" router="router" />
-        <FavoritePage ux:Template="favorite" router="router" />
-    </Navigator>
-    <Grid Alignment="Bottom" Columns="1*,1*,1*">
-        <Button Text="1111" Padding="20" Clicked="{goAds}" />
-        <Button Text="2222" Padding="20" Clicked="{goAddAds}" />
-        <Button Text="3333" Padding="20" Clicked="{goFavorite}" />
-    </Grid>
-</Panel>
+<Page ux:Class="TabView">
+    <JavaScript>
+        var innerLink = function(){
+            router.pushRelative(innerNav, "innerPage2");
+        }
+        module.exports = {
+            innerLink: innerLink
+        };
+  </JavaScript>
+  <Router ux:Dependency="router" />
+  <DockPanel>
+    <PageControl ux:Name="loggedInNavigation" Interaction="None">
+        <Page ux:Name="page1">
+            <AdsPage />
+        </Page>
+        <Page ux:Name="page2">
+            <AddAdsPage />
+        </Page>
+        <Page ux:Name="page3">
+            <FavoritePage />
+        </Page>
+    </PageControl>
+
+
+    <PageIndicator Dock="Bottom" Height="40" Navigation="loggedInNavigation">
+        <GridLayout ColumnCount="3" />
+        <Rectangle ux:Template="Dot" Width="30" Height="30" Margin="10" Color="#555">
+            <ActivatingAnimation>
+                <Scale Factor="1.3" />
+            </ActivatingAnimation>
+            <Clicked>
+                <NavigateTo Target="{Page Visual}"/>
+            </Clicked>
+        </Rectangle>
+    </PageIndicator>
+  </DockPanel>
+</Page>
