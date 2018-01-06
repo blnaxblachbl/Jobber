@@ -53,7 +53,7 @@
                 <GridLayout ColumnCount="3" />
                 <Panel ux:Template="Dot" Height="45">
                     <ActivatingAnimation>
-                        <Scale Factor="1.1" />
+                        <Scale Factor="1.2" />
                         <Change title.Color="#F95252" />
                         <Change icon.Color="#F95252" />
                     </ActivatingAnimation>
