@@ -8,7 +8,11 @@
             </Rectangle>
             <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
             <TextInput ActionStyle="Done" InputHint="Phone" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Номер вашего телефона" PlaceholderColor="#5E5E5E">
-                <Rectangle Alignment="Bottom" Height="2" Color="#14847b"/>
+                <Rectangle ux:Name="phone" Opacity="0.3" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                <WhileFocused>
+                    <Change phone.Opacity="1"/>
+                    <Change phone.Color="#14847b"/>
+                </WhileFocused>
                 <TextInputActionTriggered>
                     <ReleaseFocus />
                 </TextInputActionTriggered>
