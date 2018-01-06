@@ -1,7 +1,7 @@
-goTabView = () =>{
-    mainRouter.goto("tabView");
+goConfirm = () =>{
+    mainRouter.push("confirm");
 }
 
 module.exports = {
-    goTabView: goTabView
+    goConfirm: goConfirm
 }

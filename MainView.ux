@@ -3,6 +3,7 @@
     <Router ux:Name="mainRouter" />
     <Navigator DefaultPath="login">
         <LoginPage ux:Template="login" mainRouter="mainRouter" />
+        <ConfirmPage ux:Template="confirm" mainRouter="mainRouter"/>
         <TabView ux:Template="tabView"/>
     </Navigator>
 </App>
