@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 sealed class Jobber_FuseNavigationNavigateTo_Target_Property: Uno.UX.Property<Fuse.Visual>
 {
     [Uno.WeakReference] readonly Fuse.Navigation.NavigateTo _obj;
@@ -15,3 +16,5 @@ sealed class Jobber_FuseControlsTextControl_Value_Property: Uno.UX.Property<stri
     public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetValue(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
+=======
+>>>>>>> 8424af09449cc2c1fa75f23187d822067f67d715

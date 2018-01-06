@@ -27,7 +27,7 @@ public partial class MainView: Fuse.App
     {
         [Uno.WeakReference] internal readonly MainView __parent;
         [Uno.WeakReference] internal readonly MainView __parentInstance;
-        public Template1(MainView parent, MainView parentInstance): base("tabView", false)
+        public Template1(MainView parent, MainView parentInstance): base("confirm", false)
         {
             __parent = parent;
             __parentInstance = parentInstance;
@@ -37,7 +37,32 @@ public partial class MainView: Fuse.App
         }
         public override object New()
         {
+<<<<<<< HEAD
             var __self = new global::TabView(__parent.router);
+=======
+            var __self = new global::ConfirmPage(__parent.mainRouter);
+            __self.Name = __selector0;
+            return __self;
+        }
+        static global::Uno.UX.Selector __selector0 = "confirm";
+    }
+    [Uno.Compiler.UxGenerated]
+    public partial class Template2: Uno.UX.Template
+    {
+        [Uno.WeakReference] internal readonly MainView __parent;
+        [Uno.WeakReference] internal readonly MainView __parentInstance;
+        public Template2(MainView parent, MainView parentInstance): base("tabView", false)
+        {
+            __parent = parent;
+            __parentInstance = parentInstance;
+        }
+        static Template2()
+        {
+        }
+        public override object New()
+        {
+            var __self = new global::TabView();
+>>>>>>> 8424af09449cc2c1fa75f23187d822067f67d715
             __self.Name = __selector0;
             return __self;
         }
@@ -182,12 +207,14 @@ public partial class MainView: Fuse.App
         router = new global::Fuse.Navigation.Router();
         var temp18 = new global::Fuse.Controls.Navigator();
         var login = new Template(this, this);
-        var tabView = new Template1(this, this);
+        var confirm = new Template1(this, this);
+        var tabView = new Template2(this, this);
         temp17.Color = float4(0.9764706f, 0.3215686f, 0.3215686f, 1f);
         temp17.IsVisible = true;
         router.Name = __selector0;
         temp18.DefaultPath = "login";
         temp18.Templates.Add(login);
+        temp18.Templates.Add(confirm);
         temp18.Templates.Add(tabView);
         this.Children.Add(temp17);
         this.Children.Add(router);

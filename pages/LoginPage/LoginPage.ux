@@ -1,7 +1,27 @@
+<<<<<<< HEAD
 <Page ux:Class="LoginPage">
     <Router ux:Dependency="router"/>
+=======
+<Page ux:Class="LoginPage" Alignment="Center" Width="100%" Height="100%" Background="#fff">
+    <Router ux:Dependency="mainRouter"/>
+    <JavaScript File="LoginPage.js"/>
+>>>>>>> 8424af09449cc2c1fa75f23187d822067f67d715
     <Panel>
-        <JavaScript File="LoginPage.js"/>
-        <Text Alignment="Center" Value="Login page" Clicked="{goTabView}"/>
+        <StackPanel Alignment="Top" Width="100%">
+            <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">
+                <ImageFill File="../../assets/logo.jpg" StretchMode="UniformToFill"/>
+            </Rectangle>
+            <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
+            <TextInput ActionStyle="Done" InputHint="Phone" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Номер вашего телефона" PlaceholderColor="#5E5E5E">
+                <Rectangle Alignment="Bottom" Height="2" Color="#14847b"/>
+                <TextInputActionTriggered>
+                    <ReleaseFocus />
+                </TextInputActionTriggered>
+            </TextInput>
+            <BottomBarBackground Dock="Bottom" IncludesKeyboard="true"/>
+        </StackPanel>
+        <Rectangle Clicked="{goConfirm}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="0.8">
+            <Text Value="ДАЛЕЕ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+        </Rectangle>
     </Panel>
 </Page>
