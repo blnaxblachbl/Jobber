@@ -27,33 +27,12 @@ public partial class MainView: Fuse.App
     {
         [Uno.WeakReference] internal readonly MainView __parent;
         [Uno.WeakReference] internal readonly MainView __parentInstance;
-        public Template1(MainView parent, MainView parentInstance): base("tabView", false)
+        public Template1(MainView parent, MainView parentInstance): base("confirm", false)
         {
             __parent = parent;
             __parentInstance = parentInstance;
         }
         static Template1()
-        {
-        }
-        public override object New()
-        {
-            var __self = new global::TabView(__parent.router);
-            __self.Name = __selector0;
-            return __self;
-        }
-        static global::Uno.UX.Selector __selector0 = "tabView";
-    }
-    [Uno.Compiler.UxGenerated]
-    public partial class Template2: Uno.UX.Template
-    {
-        [Uno.WeakReference] internal readonly MainView __parent;
-        [Uno.WeakReference] internal readonly MainView __parentInstance;
-        public Template2(MainView parent, MainView parentInstance): base("confirm", false)
-        {
-            __parent = parent;
-            __parentInstance = parentInstance;
-        }
-        static Template2()
         {
         }
         public override object New()
@@ -65,6 +44,7 @@ public partial class MainView: Fuse.App
         static global::Uno.UX.Selector __selector0 = "confirm";
     }
     internal global::Fuse.Navigation.Router router;
+    internal global::TabView tabView;
     static MainView()
     {
         global::Uno.UX.Resource.SetGlobalKey(global::Fuse.Animations.Easing.Linear, "Linear");
@@ -200,22 +180,24 @@ public partial class MainView: Fuse.App
         var temp14 = new global::FuseJS.Bundle();
         var temp15 = new global::FuseJS.FileReaderImpl();
         var temp16 = new global::FuseJS.UserEvents();
-        var temp17 = new global::Fuse.Android.StatusBarConfig();
         router = new global::Fuse.Navigation.Router();
+        var temp17 = new global::Fuse.Android.StatusBarConfig();
         var temp18 = new global::Fuse.Controls.Navigator();
         var login = new Template(this, this);
-        var tabView = new Template1(this, this);
-        var confirm = new Template2(this, this);
+        tabView = new global::TabView(router);
+        var confirm = new Template1(this, this);
         temp17.Color = float4(0.9764706f, 0.3215686f, 0.3215686f, 1f);
         temp17.IsVisible = true;
         router.Name = __selector0;
         temp18.DefaultPath = "login";
+        temp18.Children.Add(tabView);
         temp18.Templates.Add(login);
-        temp18.Templates.Add(tabView);
         temp18.Templates.Add(confirm);
+        tabView.Name = __selector1;
         this.Children.Add(temp17);
         this.Children.Add(router);
         this.Children.Add(temp18);
     }
     static global::Uno.UX.Selector __selector0 = "router";
+    static global::Uno.UX.Selector __selector1 = "tabView";
 }

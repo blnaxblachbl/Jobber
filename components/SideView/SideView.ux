@@ -1,0 +1,93 @@
+<Page ux:Class="SideView">
+    <Router ux:Dependency="sideRouter" />
+    <EdgeNavigator>
+        <StackPanel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
+            <Rectangle Alignment="Top" Height="25" Width="100%" Background="#F95252" />
+            <Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
+            <ActivatingAnimation>
+                <Change shadow.Color="#0004" />
+                <Change sidebarFade.Opacity="1" />
+            </ActivatingAnimation>
+            <StackPanel Height="100%" Width="100%" >
+                <Rectangle Height="150" Width="100%" Color="#F95252">
+                    <Grid Columns="1*,2*">
+                        <Circle  Height="50%">
+                            <ImageFill Url="https://a.d-cd.net/dedee9as-960.jpg" />
+                        </Circle>
+                        <StackPanel Alignment="CenterLeft" >
+                            <Text Margin="0,0,0,10" Color="#fff">Глупый Котэ</Text>
+                            <Text Margin="0,10,0,0" Color="#fff">Рейтинг: 4.6/5.0</Text>
+                        </StackPanel>
+                    </Grid>
+                </Rectangle>
+                <StackPanel Padding="20">
+                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goOrder}">
+                        <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="26" Value="&#xf015;"/>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Главная</Text>
+                    </Grid>
+                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goOrder}">
+                        <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="23" Value="&#xf2bd;"/>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Личный кабинет</Text>
+                    </Grid>
+                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goContact}">
+                        <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf155;"/>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Баланс</Text>
+                    </Grid>
+                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goContact}">
+                        <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf05a;"/>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="20">О программе</Text>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+		</StackPanel>
+		
+		<DockPanel>
+			<Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />
+			<StackPanel Dock="Top" Color="#F95252">
+				<Shadow Size="3" Distance="1" />
+				<StatusBarBackground/>
+				<Panel Height="56">
+					<Hamburger Alignment="Left">
+						<Clicked>
+							<NavigateToggle Target="sidebar" />
+						</Clicked>
+					</Hamburger>
+                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Jobber" />
+				</Panel>
+			</StackPanel>
+            <PageControl ux:Name="loggedInNavigation" Interaction="None">
+                <Page ux:Name="ads">
+                    <ResourceString Key="Title" Value="Обьявления" />
+                    <ResourceString Key="Icon" Value="&#xf03a;" />
+                    <AdsPage />
+                </Page>
+                <Page ux:Name="addAds">
+                    <ResourceString Key="Title" Value="Добавить обьявление" />
+                    <ResourceString Key="Icon" Value="&#xf055;" />
+                    <AddAdsPage />
+                </Page>
+                <Page ux:Name="favorite">
+                    <ResourceString Key="Title" Value="Избранные" />
+                    <ResourceString Key="Icon" Value="&#xf005;" />
+                    <FavoritePage />
+                </Page>
+            </PageControl>
+            <PageIndicator Color="#fff" Dock="Bottom" Height="70" Navigation="loggedInNavigation">
+                <DropShadow Size="10" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
+                <GridLayout ColumnCount="3" />
+                <Panel ux:Template="Dot" Height="45">
+                    <ActivatingAnimation>
+                        <Scale Factor="1.2" />
+                        <Change title.Color="#F95252" />
+                        <Change icon.Color="#F95252" />
+                    </ActivatingAnimation>
+                    <Clicked>
+                        <NavigateTo Target="{Page Visual}"/>
+                    </Clicked>
+                    <Text ux:Name="icon" Font="FontAwesome" Alignment="TopCenter" TextAlignment="Center" Value="{Page Icon}" FontSize="25" />
+                    <Text ux:Name="title" Alignment="BottomCenter" TextAlignment="Center" Value="{Page Title}" FontSize="10" />
+                </Panel>
+            </PageIndicator>
+		</DockPanel>
+	</EdgeNavigator>
+</Page>
