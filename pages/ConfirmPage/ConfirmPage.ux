@@ -7,7 +7,7 @@
         </Rectangle>
         <StackPanel Alignment="Center" Width="100%">
             <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
-            <Text Value="Введите код отправленный на номер телефона" Font="Medium" Color="#5E5E5E" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+            <Text FontSize="12" Value="Введите код отправленный на номер телефона" Font="Medium" Color="#5E5E5E" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
             <TextInput ActionStyle="Done" InputHint="Number" Height="50" Width="25%" TextAlignment="Center" TextColor="#5E5E5E" PlaceholderText="XXXX" PlaceholderColor="#5E5E5E">
                 <Rectangle Alignment="BottomCenter" Height="2" Color="#14847b" Width="100%"/>
                 <TextInputActionTriggered>

@@ -1,4 +1,44 @@
 <Panel ux:Class="AdsPage">
     <JavaScript File="AdsPage.js"/>
-    <Text Value="Ads page"/>
+    <Router ux:Name="adsRouter"/>
+    <ScrollView SnapMinTransform="false" SnapMaxTransform="false">
+        <StackPanel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Вакансии"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Юридические услуги"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Няни и сиделки"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Ремонт"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Строительство и ремонт"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Праздники и мероприятия"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Красота и здоровье"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Обучение по интересам"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+            <Panel Height="50" Width="100%">
+                <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="Грузчики"/>
+                <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+            </Panel>
+        </StackPanel>
+    </ScrollView>
 </Panel>
