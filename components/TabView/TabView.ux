@@ -1,4 +1,5 @@
 <Page ux:Class="TabView">
+    <Font File="../../assets/materialdesignicons.ttf" ux:Global="MaterialIcons" />
     <JavaScript>
         var innerLink = function(){
             router.pushRelative(innerNav, "innerPage2");
