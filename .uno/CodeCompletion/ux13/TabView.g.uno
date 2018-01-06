@@ -1,132 +1,75 @@
 [Uno.Compiler.UxGenerated]
-public partial class TabView: Fuse.Controls.Panel
+public partial class TabView: Fuse.Controls.Page
 {
+    readonly Fuse.Navigation.Router router;
     [Uno.Compiler.UxGenerated]
     public partial class Template: Uno.UX.Template
     {
         [Uno.WeakReference] internal readonly TabView __parent;
         [Uno.WeakReference] internal readonly TabView __parentInstance;
-        public Template(TabView parent, TabView parentInstance): base("innerPage1", false)
-        {
-            __parent = parent;
-            __parentInstance = parentInstance;
-        }
-        internal global::Fuse.Controls.Panel Button;
-        internal global::Fuse.Reactive.EventBinding temp_eb0;
-        static Template()
-        {
-        }
-        public override object New()
-        {
-            var __self = new global::Fuse.Controls.Page();
-            var temp = new global::Fuse.Reactive.Data("innerLink");
-            var temp1 = new global::Fuse.Controls.StackPanel();
-            var temp2 = new global::Fuse.Controls.Text();
-            Button = new global::Fuse.Controls.Panel();
-            var temp3 = new global::Fuse.Controls.Rectangle();
-            temp_eb0 = new global::Fuse.Reactive.EventBinding(temp);
-            __self.Name = __selector0;
-            temp1.Children.Add(temp2);
-            temp1.Children.Add(Button);
-            temp2.Value = "innerPage 1";
-            Button.Width = new Uno.UX.Size(60f, Uno.UX.Unit.Unspecified);
-            Button.Height = new Uno.UX.Size(30f, Uno.UX.Unit.Unspecified);
-            Button.Name = __selector1;
-            global::Fuse.Gestures.Clicked.AddHandler(Button, temp_eb0.OnEvent);
-            Button.Children.Add(temp3);
-            Button.Bindings.Add(temp_eb0);
-            temp3.Color = Fuse.Drawing.Colors.Red;
-            __self.Children.Add(temp1);
-            return __self;
-        }
-        static global::Uno.UX.Selector __selector0 = "innerPage1";
-        static global::Uno.UX.Selector __selector1 = "Button";
-    }
-    [Uno.Compiler.UxGenerated]
-    public partial class Template1: Uno.UX.Template
-    {
-        [Uno.WeakReference] internal readonly TabView __parent;
-        [Uno.WeakReference] internal readonly TabView __parentInstance;
-        public Template1(TabView parent, TabView parentInstance): base("innerPage2", false)
-        {
-            __parent = parent;
-            __parentInstance = parentInstance;
-        }
-        static Template1()
-        {
-        }
-        public override object New()
-        {
-            var __self = new global::Fuse.Controls.Page();
-            var temp = new global::Fuse.Controls.Text();
-            __self.Name = __selector0;
-            temp.Value = "innerPage 2";
-            __self.Children.Add(temp);
-            return __self;
-        }
-        static global::Uno.UX.Selector __selector0 = "innerPage2";
-    }
-    [Uno.Compiler.UxGenerated]
-    public partial class Template2: Uno.UX.Template
-    {
-        [Uno.WeakReference] internal readonly TabView __parent;
-        [Uno.WeakReference] internal readonly TabView __parentInstance;
-        public Template2(TabView parent, TabView parentInstance): base("Dot", false)
+        public Template(TabView parent, TabView parentInstance): base("Dot", false)
         {
             __parent = parent;
             __parentInstance = parentInstance;
         }
         global::Uno.UX.Property<Fuse.Visual> temp_Target_inst;
-        static Template2()
+        global::Uno.UX.Property<string> temp1_Value_inst;
+        static Template()
         {
         }
         public override object New()
         {
-            var __self = new global::Fuse.Controls.Rectangle();
+            var __self = new global::Fuse.Controls.Panel();
             var temp = new global::Fuse.Navigation.NavigateTo();
             temp_Target_inst = new Jobber_FuseNavigationNavigateTo_Target_Property(temp, __selector0);
-            var temp1 = new global::Fuse.Navigation.PageExpression("Visual");
-            var temp2 = new global::Fuse.Navigation.ActivatingAnimation();
-            var temp3 = new global::Fuse.Animations.Scale();
-            var temp4 = new global::Fuse.Gestures.Clicked();
-            var temp5 = new global::Fuse.Reactive.DataBinding(temp_Target_inst, temp1, Fuse.Reactive.BindingMode.Default);
-            __self.Color = float4(0.3333333f, 0.3333333f, 0.3333333f, 1f);
-            __self.Width = new Uno.UX.Size(30f, Uno.UX.Unit.Unspecified);
-            __self.Height = new Uno.UX.Size(30f, Uno.UX.Unit.Unspecified);
-            __self.Margin = float4(10f, 10f, 10f, 10f);
-            __self.Name = __selector1;
-            temp2.Animators.Add(temp3);
-            temp3.Factor = 1.3f;
-            temp4.Actions.Add(temp);
-            temp4.Bindings.Add(temp5);
-            __self.Children.Add(temp2);
+            var temp2 = new global::Fuse.Navigation.PageExpression("Visual");
+            var temp1 = new global::Fuse.Controls.Text();
+            temp1_Value_inst = new Jobber_FuseControlsTextControl_Value_Property(temp1, __selector1);
+            var temp3 = new global::Fuse.Navigation.PageExpression("Title");
+            var temp4 = new global::Fuse.Navigation.ActivatingAnimation();
+            var temp5 = new global::Fuse.Animations.Scale();
+            var temp6 = new global::Fuse.Gestures.Clicked();
+            var temp7 = new global::Fuse.Reactive.DataBinding(temp_Target_inst, temp2, Fuse.Reactive.BindingMode.Default);
+            var temp8 = new global::Fuse.Reactive.DataBinding(temp1_Value_inst, temp3, Fuse.Reactive.BindingMode.Default);
+            __self.Height = new Uno.UX.Size(45f, Uno.UX.Unit.Unspecified);
+            __self.Name = __selector2;
+            temp4.Animators.Add(temp5);
+            temp5.Factor = 1.1f;
+            temp6.Actions.Add(temp);
+            temp6.Bindings.Add(temp7);
+            temp1.FontSize = 10f;
+            temp1.TextAlignment = Fuse.Controls.TextAlignment.Center;
+            temp1.Alignment = Fuse.Elements.Alignment.BottomCenter;
+            temp1.Bindings.Add(temp8);
             __self.Children.Add(temp4);
+            __self.Children.Add(temp6);
+            __self.Children.Add(temp1);
             return __self;
         }
         static global::Uno.UX.Selector __selector0 = "Target";
-        static global::Uno.UX.Selector __selector1 = "Dot";
+        static global::Uno.UX.Selector __selector1 = "Value";
+        static global::Uno.UX.Selector __selector2 = "Dot";
     }
-    internal global::Fuse.Navigation.Router router2;
     internal global::Fuse.Controls.PageControl loggedInNavigation;
-    internal global::Fuse.Controls.Page page1;
-    internal global::Fuse.Controls.Page page2;
-    internal global::Fuse.Controls.Navigator innerNav;
-    internal global::Fuse.Controls.Page page3;
+    internal global::Fuse.Controls.Page ads;
+    internal global::Fuse.Controls.Page addAds;
+    internal global::Fuse.Controls.Page favorite;
     global::Uno.UX.NameTable __g_nametable;
     static string[] __g_static_nametable = new string[] {
-        "router2",
+        "router",
         "loggedInNavigation",
-        "page1",
-        "page2",
-        "innerNav",
-        "page3"
+        "ads",
+        "addAds",
+        "favorite"
     };
     static TabView()
     {
     }
     [global::Uno.UX.UXConstructor]
-    public TabView()
+    public TabView(
+		[global::Uno.UX.UXParameter("router")] Fuse.Navigation.Router router)
     {
+        this.router = router;
         InitializeUX();
     }
     void InitializeUX()
@@ -134,62 +77,68 @@ public partial class TabView: Fuse.Controls.Panel
         __g_nametable = new global::Uno.UX.NameTable(null, __g_static_nametable);
         loggedInNavigation = new global::Fuse.Controls.PageControl();
         var temp = new global::Fuse.Reactive.JavaScript(__g_nametable);
-        router2 = new global::Fuse.Navigation.Router();
         var temp1 = new global::Fuse.Controls.DockPanel();
-        page1 = new global::Fuse.Controls.Page();
-        var temp2 = new global::Fuse.Controls.Text();
-        page2 = new global::Fuse.Controls.Page();
-        innerNav = new global::Fuse.Controls.Navigator();
-        var innerPage1 = new Template(this, this);
-        var innerPage2 = new Template1(this, this);
-        page3 = new global::Fuse.Controls.Page();
-        var temp3 = new global::Fuse.Controls.Text();
-        var temp4 = new global::Fuse.Controls.PageIndicator(loggedInNavigation);
-        var temp5 = new global::Fuse.Layouts.GridLayout();
-        var Dot = new Template2(this, this);
-        temp.Code = "\n    var innerLink = function(){\n      router.pushRelative(innerNav, \"innerPage2\");\n    }\n    module.exports = {\n      innerLink: innerLink\n    };\n  ";
+        ads = new global::Fuse.Controls.Page();
+        var temp2 = new global::Fuse.Resources.ResourceString();
+        var temp3 = new global::AdsPage();
+        addAds = new global::Fuse.Controls.Page();
+        var temp4 = new global::Fuse.Resources.ResourceString();
+        var temp5 = new global::AddAdsPage();
+        favorite = new global::Fuse.Controls.Page();
+        var temp6 = new global::Fuse.Resources.ResourceString();
+        var temp7 = new global::FavoritePage();
+        var temp8 = new global::Fuse.Controls.PageIndicator(loggedInNavigation);
+        var temp9 = new global::Fuse.Effects.DropShadow();
+        var temp10 = new global::Fuse.Layouts.GridLayout();
+        var Dot = new Template(this, this);
+        temp.Code = "\n        var innerLink = function(){\n            router.pushRelative(innerNav, \"innerPage2\");\n        }\n        module.exports = {\n            innerLink: innerLink\n        };\n    ";
         temp.LineNumber = 2;
         temp.FileName = "components/TabView/TabView.ux";
-        router2.Name = __selector0;
         temp1.Children.Add(loggedInNavigation);
-        temp1.Children.Add(temp4);
+        temp1.Children.Add(temp8);
         loggedInNavigation.Interaction = Fuse.Controls.NavigationControlInteraction.None;
-        loggedInNavigation.Name = __selector1;
-        loggedInNavigation.Children.Add(page1);
-        loggedInNavigation.Children.Add(page2);
-        loggedInNavigation.Children.Add(page3);
-        page1.Name = __selector2;
-        page1.Children.Add(temp2);
-        temp2.Value = "Page 1";
-        page2.Name = __selector3;
-        page2.Children.Add(innerNav);
-        innerNav.DefaultPath = "innerPage1";
-        innerNav.Name = __selector4;
-        innerNav.Templates.Add(innerPage1);
-        innerNav.Templates.Add(innerPage2);
-        page3.Name = __selector5;
-        page3.Children.Add(temp3);
-        temp3.Value = "Page 3";
-        temp4.Height = new Uno.UX.Size(40f, Uno.UX.Unit.Unspecified);
-        global::Fuse.Controls.DockPanel.SetDock(temp4, Fuse.Layouts.Dock.Bottom);
-        temp4.Layout = temp5;
-        temp4.Templates.Add(Dot);
-        temp5.ColumnCount = 3;
+        loggedInNavigation.Name = __selector0;
+        loggedInNavigation.Children.Add(ads);
+        loggedInNavigation.Children.Add(addAds);
+        loggedInNavigation.Children.Add(favorite);
+        ads.Name = __selector1;
+        ads.Children.Add(temp2);
+        ads.Children.Add(temp3);
+        temp2.Key = "Title";
+        temp2.Value = "Обьявления";
+        addAds.Name = __selector2;
+        addAds.Children.Add(temp4);
+        addAds.Children.Add(temp5);
+        temp4.Key = "Title";
+        temp4.Value = "Добавить обьявление";
+        favorite.Name = __selector3;
+        favorite.Children.Add(temp6);
+        favorite.Children.Add(temp7);
+        temp6.Key = "Title";
+        temp6.Value = "Избранные";
+        temp8.Color = float4(1f, 1f, 1f, 1f);
+        temp8.Height = new Uno.UX.Size(60f, Uno.UX.Unit.Unspecified);
+        global::Fuse.Controls.DockPanel.SetDock(temp8, Fuse.Layouts.Dock.Bottom);
+        temp8.Layout = temp10;
+        temp8.Children.Add(temp9);
+        temp8.Templates.Add(Dot);
+        temp9.Size = 10f;
+        temp9.Angle = 90f;
+        temp9.Distance = 3f;
+        temp9.Spread = 0.05f;
+        temp9.Color = float4(0f, 0f, 0f, 0.5333334f);
+        temp10.ColumnCount = 3;
         __g_nametable.This = this;
-        __g_nametable.Objects.Add(router2);
+        __g_nametable.Objects.Add(router);
         __g_nametable.Objects.Add(loggedInNavigation);
-        __g_nametable.Objects.Add(page1);
-        __g_nametable.Objects.Add(page2);
-        __g_nametable.Objects.Add(innerNav);
-        __g_nametable.Objects.Add(page3);
+        __g_nametable.Objects.Add(ads);
+        __g_nametable.Objects.Add(addAds);
+        __g_nametable.Objects.Add(favorite);
         this.Children.Add(temp);
-        this.Children.Add(router2);
         this.Children.Add(temp1);
     }
-    static global::Uno.UX.Selector __selector0 = "router2";
-    static global::Uno.UX.Selector __selector1 = "loggedInNavigation";
-    static global::Uno.UX.Selector __selector2 = "page1";
-    static global::Uno.UX.Selector __selector3 = "page2";
-    static global::Uno.UX.Selector __selector4 = "innerNav";
-    static global::Uno.UX.Selector __selector5 = "page3";
+    static global::Uno.UX.Selector __selector0 = "loggedInNavigation";
+    static global::Uno.UX.Selector __selector1 = "ads";
+    static global::Uno.UX.Selector __selector2 = "addAds";
+    static global::Uno.UX.Selector __selector3 = "favorite";
 }
