@@ -56,4 +56,4 @@ Polyfills.Window:js/EventTarget.js:eventtarget-cda77f1e.js:js/fetch.js:fetch-f9f
 FuseJS
 Outracks.Simulator.Common.Uno
 Fuse.Preview.Core:fight.png:fight-8c16f395.png
-Jobber:components/TabView/TabView.js:tabview-ce6f6387.js:pages/LoginPage/LoginPage.js:loginpage-9182b8bb.js:pages/AddAdsPage/AddAdsPage.js:addadspage-e287b9ab.js:pages/AdsPage/AdsPage.js:adspage-499a99c4.js:pages/FavoritePage/FavoritePage.js:favoritepage-0b699f37.js
+Jobber:pages/LoginPage/LoginPage.js:loginpage-9182b8bb.js:pages/FavoritePage/FavoritePage.js:favoritepage-0b699f37.js:pages/AdsPage/AdsPage.js:adspage-499a99c4.js:pages/AddAdsPage/AddAdsPage.js:addadspage-e287b9ab.js
