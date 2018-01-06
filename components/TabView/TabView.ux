@@ -1,0 +1,14 @@
+<Panel ux:Class="TabView">
+    <Router ux:Name="router"/>
+    <JavaScript File="TabView.js"/>
+    <Navigator DefaultPath="ads">
+        <AdsPage ux:Template="ads" router="router" />
+        <AddAdsPage ux:Template="addAds" router="router" />
+        <FavoritePage ux:Template="favorite" router="router" />
+    </Navigator>
+    <Grid Alignment="Bottom" Columns="1*,1*,1*">
+        <Button Text="1111" Padding="20" Clicked="{goAds}" />
+        <Button Text="2222" Padding="20" Clicked="{goAddAds}" />
+        <Button Text="3333" Padding="20" Clicked="{goFavorite}" />
+    </Grid>
+</Panel>

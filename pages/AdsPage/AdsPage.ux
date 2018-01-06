@@ -1,0 +1,5 @@
+<Panel ux:Class="AdsPage">
+    <Router ux:Dependency="router"/>
+    <JavaScript File="AdsPage.js"/>
+    <Text Value="Ads page"/>
+</Panel>
