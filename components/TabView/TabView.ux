@@ -9,34 +9,56 @@
         };
     </JavaScript>
     <Router ux:Dependency="router" />
-    <DockPanel>
-    <PageControl ux:Name="loggedInNavigation" Interaction="None">
-        <Page ux:Name="ads">
-            <ResourceString Key="Title" Value="Обьявления" />
-            <AdsPage />
-        </Page>
-        <Page ux:Name="addAds">
-            <ResourceString Key="Title" Value="Добавить обьявление" />
-            <AddAdsPage />
-        </Page>
-        <Page ux:Name="favorite">
-            <ResourceString Key="Title" Value="Избранные" />
-            <FavoritePage />
-        </Page>
-    </PageControl>
-    <PageIndicator Color="#fff" Dock="Bottom" Height="60" Navigation="loggedInNavigation">
-        <DropShadow Size="10" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
-        <GridLayout ColumnCount="3" />
-        <Panel ux:Template="Dot" Height="45">
-            <ActivatingAnimation>
-                <Scale Factor="1.1" />
-                <Change title.Color="#F95252" />
-            </ActivatingAnimation>
-            <Clicked>
-                <NavigateTo Target="{Page Visual}"/>
-            </Clicked>
-            <Text ux:Name="title" Alignment="BottomCenter" TextAlignment="Center" Value="{Page Title}" FontSize="10" />
-        </Panel>
-    </PageIndicator>
-    </DockPanel>
+    <EdgeNavigator>
+		<Panel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
+			<Shadow ux:Name="shadow" Angle="180" Distance="8" Size="16" Color="#0000" />
+			<ActivatingAnimation>
+				<Change shadow.Color="#0004" />
+				<Change sidebarFade.Opacity="1" />
+			</ActivatingAnimation>
+		</Panel>
+		
+		<DockPanel>
+			<Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />
+			<StackPanel Dock="Top" Color="#F95252">
+				<Shadow Size="3" Distance="1" />
+				<StatusBarBackground />
+				<Panel Height="56">
+					<Hamburger Alignment="Left">
+						<Clicked>
+							<NavigateToggle Target="sidebar" />
+						</Clicked>
+					</Hamburger>
+				</Panel>
+			</StackPanel>
+            <PageControl ux:Name="loggedInNavigation" Interaction="None">
+                <Page ux:Name="ads">
+                    <ResourceString Key="Title" Value="Обьявления" />
+                    <AdsPage />
+                </Page>
+                <Page ux:Name="addAds">
+                    <ResourceString Key="Title" Value="Добавить обьявление" />
+                    <AddAdsPage />
+                </Page>
+                <Page ux:Name="favorite">
+                    <ResourceString Key="Title" Value="Избранные" />
+                    <FavoritePage />
+                </Page>
+            </PageControl>
+            <PageIndicator Color="#fff" Dock="Bottom" Height="60" Navigation="loggedInNavigation">
+                <DropShadow Size="10" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
+                <GridLayout ColumnCount="3" />
+                <Panel ux:Template="Dot" Height="45">
+                    <ActivatingAnimation>
+                        <Scale Factor="1.1" />
+                        <Change title.Color="#F95252" />
+                    </ActivatingAnimation>
+                    <Clicked>
+                        <NavigateTo Target="{Page Visual}"/>
+                    </Clicked>
+                    <Text ux:Name="title" Alignment="BottomCenter" TextAlignment="Center" Value="{Page Title}" FontSize="10" />
+                </Panel>
+            </PageIndicator>
+		</DockPanel>
+	</EdgeNavigator>
 </Page>
