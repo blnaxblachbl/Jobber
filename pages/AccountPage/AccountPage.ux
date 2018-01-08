@@ -56,6 +56,38 @@
                     <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Личный кабинет" />
 				</Panel>
 			</StackPanel>
+            <StackPanel>
+                <Circle Margin="0,10,0,20" Height="150">
+                    <ImageFill Url="https://a.d-cd.net/dedee9as-960.jpg" />
+                </Circle>
+                <TextInput ActionStyle="Next" Value="Глупый Котэ" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
+                    <Text Value="Ваше имя" Alignment="Top" TextAlignment="Left" />
+                    <Rectangle Opacity="0.3" ux:Name="name" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                    <WhileFocused>
+                        <Change name.Opacity="1"/>
+                        <Change name.Color="#14847b"/>
+                    </WhileFocused>
+                </TextInput>
+                <TextInput ActionStyle="Done" Value="dudecat@meow.cat" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
+                    <Text Value="Электронная почта" Alignment="Top" TextAlignment="Left" />
+                    <Rectangle Opacity="0.3" ux:Name="email" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                    <WhileFocused>
+                        <Change email.Opacity="1"/>
+                        <Change email.Color="#14847b"/>
+                    </WhileFocused>
+                    <TextInputActionTriggered>
+                        <ReleaseFocus />
+                    </TextInputActionTriggered>
+                </TextInput>
+                <TextInput PlaceholderText="+79991234567" IsEnabled="false" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
+                    <Text Value="Номер телефона" Alignment="Top" TextAlignment="Left" />
+                    <Rectangle Opacity="0.3" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                </TextInput>
+                <Rectangle  Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="0.8">
+                    <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+                </Rectangle>
+                <Text Value="ВЫЙТИ С АККАУНТА" Font="Medium" Color="#F95252" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+            </StackPanel>
 		</DockPanel>
 	</EdgeNavigator>
 </Page>
