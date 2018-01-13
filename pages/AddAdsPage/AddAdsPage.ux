@@ -1,6 +1,6 @@
 <Panel ux:Class="AddAdsPage">
     <JavaScript File="AddAdsPage.js"/>
-    <ScrollView ux:Name="scrollView" SnapMinTransform="false" SnapMaxTransform="false">
+    <ScrollView ux:Name="scrollView" SnapMinTransform="false">
         <StackPanel>
             <Rectangle Alignment="Top" Width="100%" Height="250" Margin="0,0,0,10">
                 <ImageFill Url="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg" StretchMode="UniformToFill"/>
@@ -25,6 +25,7 @@
                     <Change name.Opacity="1"/>
                     <Change name.Color="#14847b"/>
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
             </TextInput>
             <TextInput ActionStyle="Next" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Описание" PlaceholderColor="#5E5E5E">
@@ -33,6 +34,7 @@
                     <Change discription.Opacity="1"/>
                     <Change discription.Color="#14847b"/>
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
             </TextInput>
             <TextInput ActionStyle="Next" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Установите цену" PlaceholderColor="#5E5E5E">
@@ -41,14 +43,17 @@
                     <Change price.Opacity="1"/>
                     <Change price.Color="#14847b"/>
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
             </TextInput>
+            <Panel ux:Name="categoryPanel" Height="0" />
             <TextInput ActionStyle="Next" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Выбрать категорию" PlaceholderColor="#5E5E5E">
                 <Rectangle Opacity="0.3" ux:Name="ads" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
                 <WhileFocused>
                     <Change ads.Opacity="1"/>
                     <Change ads.Color="#14847b"/>
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
             </TextInput>
             <TextInput ActionStyle="Next" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Выбрать подкатегорию" PlaceholderColor="#5E5E5E">
@@ -57,6 +62,7 @@
                     <Change podAds.Opacity="1"/>
                     <Change podAds.Color="#14847b"/>
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
             </TextInput>
             <TextInput ActionStyle="Done" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Адрес" PlaceholderColor="#5E5E5E">
@@ -65,11 +71,13 @@
                     <Change adress.Opacity="1"/>
                     <Change adress.Color="#14847b"/> 
                     <Change scrollView.IsEnabled="false"/>
+                    <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
                 <TextInputActionTriggered>
                     <ReleaseFocus />
                 </TextInputActionTriggered>
             </TextInput>
+            <Panel ux:Name="KeyboardAvoiding" Height="50" />
         </StackPanel>
     </ScrollView>
 </Panel>
