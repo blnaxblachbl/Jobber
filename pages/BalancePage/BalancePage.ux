@@ -27,7 +27,7 @@
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="26" Value="&#xf015;"/>
                         <Text TextAlignment="Left" Font="Bold" FontSize="20">Главная</Text>
                     </Grid>
-                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goContact}">
+                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goAccount}">
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="23" Value="&#xf2bd;"/>
                         <Text TextAlignment="Left" Font="Bold" FontSize="20">Личный кабинет</Text>
                     </Grid>
@@ -47,14 +47,22 @@
 			<StackPanel Dock="Top" Color="#F95252">
 				<Shadow Size="3" Distance="1" />
 				<StatusBarBackground/>
-				<Panel Height="56">
-					<Hamburger Alignment="Left">
-						<Clicked>
-							<NavigateToggle Target="sidebar" />
-						</Clicked>
-					</Hamburger>
-                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Баланс" />
-				</Panel>
+                <StackPanel>
+                    <Panel Height="56">
+                        <Hamburger Alignment="Left">
+                            <Clicked>
+                                <NavigateToggle Target="sidebar" />
+                            </Clicked>
+                        </Hamburger>
+                        <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Баланс" />
+                    </Panel>
+                    <Panel Height="50">
+                         <Grid Columns="1.5*,1*">
+                            <Text FontSize="25" Value="2940.10" Font="Medium" TextAlignment="Right" Width="100%" Alignment="Center" Color="#fff"/>
+                            <Text FontSize="20" Value="&#xf158;" Font="FontAwesome" TextAlignment="Left" Width="100%" Alignment="Center" Margin="10,0,0,0" Color="#fff"/>
+                        </Grid>
+                    </Panel>
+                </StackPanel>
 			</StackPanel>
 		</DockPanel>
 	</EdgeNavigator>
