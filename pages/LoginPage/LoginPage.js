@@ -4,7 +4,7 @@ var Storage = require("FuseJS/Storage");
 var phoneNum = Observable('');
 
 Storage.read("token").then(function (content) {
-    router.push("tabView");
+   // router.push("tabView");
 }, function (error) {
 });
 
@@ -23,7 +23,7 @@ goConfirm = () => {
     }).then(function (responseObject) {
         // Do something with the result
         if (responseObject) {
-            router.push("confirm");
+            router.goto("confirm", {phone: '235'});
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain

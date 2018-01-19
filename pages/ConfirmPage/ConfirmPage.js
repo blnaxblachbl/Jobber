@@ -3,6 +3,12 @@ var Storage = require("FuseJS/Storage");
 
 var smsCode = Observable('')
 
+var params = this.Parameter.map(function(params){
+	return params.phone;
+})
+
+console.log(params);
+
 goTabView = () => {
     var status = 0;
     var response_ok = false;
