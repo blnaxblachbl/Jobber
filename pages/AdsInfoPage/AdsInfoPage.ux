@@ -1,0 +1,7 @@
+<Page ux:Class="AdsInfo"> 
+    <JavaScript File="AdsInfoPage.js"/>
+    <Router ux:Dependency="adsRouter" />
+    <Rectangle Alignment="Top" Width="100%" Height="250" Margin="0,0,0,10">
+        <Image File="../../assets/images.png" StretchMode="UniformToFill"/>
+    </Rectangle>
+</Page>

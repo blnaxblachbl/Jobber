@@ -4,7 +4,7 @@
     <ScrollView>
         <StackPanel>
             <Each Count="5">
-                <ItemCard Height="250" Title="Собакен" Price="1123" Image="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg"/>
+                <ItemCard Clicked="{goAdsInfo}" Height="250" Title="Собакен" Price="1123" Image="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg"/>
             </Each>
         </StackPanel>
     </ScrollView>
