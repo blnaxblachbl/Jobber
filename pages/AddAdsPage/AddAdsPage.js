@@ -1,4 +1,5 @@
 let Observable = require("FuseJS/Observable");
+let cameraRoll = require("FuseJS/CameraRoll");
 let images = Observable([]);
 let category = Observable("10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00");
 let selectCategory = Observable("Выбрать категорию");
@@ -60,13 +61,21 @@ subPick = (val) => {
     subCategoryOpened.value = false
 }
 
-images.replaceAll(data);
+addImage = () => {
+    cameraRoll.getImage()
+        .then(function (image) {
+            images.push({path: image.path});
+        }, function (error) {
+            // Will be called if the user aborted the selection or if an error occurred.
+        });
+}
 
 module.exports={
     pick: pick,
     subPick: subPick,
     pickImage: pickImage,
     images: images,
+    addImage: addImage,
     categories: categories,
     selectCategory: selectCategory,
     selectImage: selectImage,
