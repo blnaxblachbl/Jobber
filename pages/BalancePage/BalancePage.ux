@@ -64,6 +64,15 @@
                     </Panel>
                 </StackPanel>
 			</StackPanel>
+            <ScrollView>
+                <StackPanel>
+                    <Each Count="50">
+                        <Text Margin="20,5,0,5" Value="Пополнение баланса на 2000 ₽" />
+                        <Text Margin="20,0,0,5" Value="20.10.2017"/>
+                        <Rectangle Opacity="0.3" Alignment="Bottom" Height="0.8" Color="#5E5E5E"/>
+                    </Each>
+                </StackPanel>
+            </ScrollView>
 		</DockPanel>
 	</EdgeNavigator>
 </Page>
