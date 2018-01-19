@@ -56,6 +56,10 @@
                     <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="О программе" />
 				</Panel>
 			</StackPanel>
+            <StackPanel>
+                <Text Clicked="{huli}">124124</Text>
+                <Image File="{imagePick}" />
+            </StackPanel>
 		</DockPanel>
 	</EdgeNavigator>
 </Page>
