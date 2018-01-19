@@ -70,7 +70,7 @@
                 <Page ux:Name="favorite">
                     <ResourceString Key="Title" Value="Избранные" />
                     <ResourceString Key="Icon" Value="&#xf005;" />
-                    <FavoritePage />
+                    <FavoritePage adsRouter="sideRouter"/>
                 </Page>
             </PageControl>
             <PageIndicator Color="#fff" Dock="Bottom" Height="70" Navigation="loggedInNavigation">

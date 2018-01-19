@@ -1,5 +1,6 @@
 <Panel ux:Class="FavoritePage">
     <JavaScript File="FavoritePage.js"/>
+    <Router ux:Dependency="adsRouter" />
     <ScrollView>
         <StackPanel>
             <Each Count="5">
