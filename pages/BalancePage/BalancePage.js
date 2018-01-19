@@ -14,9 +14,14 @@ goInfo = () => {
     sideRouter.goto('info');
 }
 
+addBalance = () => {
+    console.log(true)
+}
+
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
     goBalance: goBalance,
-    goInfo: goInfo
+    goInfo: goInfo,
+    addBalance: addBalance
 }
