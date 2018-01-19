@@ -3,12 +3,12 @@
     <ScrollView ux:Name="scrollView" SnapMinTransform="false">
         <StackPanel>
             <Rectangle Alignment="Top" Width="100%" Height="250" Margin="0,0,0,10">
-                <ImageFill Url="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg" StretchMode="UniformToFill"/>
+                <ImageFill File="{selectImage}" StretchMode="UniformToFill"/>
             </Rectangle>
             <StackPanel Orientation="Horizontal" Alignment="Left">
                 <Each Items="{images}">
                     <StackPanel>
-                        <Rectangle CornerRadius="10" Alignment="Top" Width="70" Height="70" Margin="5">
+                        <Rectangle Clicked="{pickImage}" CornerRadius="10" Alignment="Top" Width="70" Height="70" Margin="5">
                             <ImageFill Url="{url}" StretchMode="UniformToFill"/>
                         </Rectangle>
                     </StackPanel>

@@ -6,11 +6,12 @@ let selectSubCategory = Observable("Выбрать подкатегорию");
 let data=[];
 let categoryOpened = Observable(false);
 let subCategoryOpened = Observable(false);
+let selectImage = Observable("../../assets/camera.png");
 
 data = [
     {url: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", picked: false},
-    {url: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", picked: false},
-    {url: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", picked: false},
+    {url: "https://a.d-cd.net/dedee9as-960.jpg", picked: false},
+    {url: "https://cs8.pikabu.ru/post_img/big/2016/05/05/10/1462467527112280134.jpg", picked: false},
 ]
 
 categories = [
@@ -37,6 +38,10 @@ subCategories = [
     {name: "Грузчики", picked: false}
 ]
 
+pickImage = (val) => {
+    selectImage.value = val.data.url
+}
+
 pick = (val) => {
     selectCategory.value = val.data.name
     categoryOpened.value = false
@@ -60,9 +65,11 @@ images.replaceAll(data);
 module.exports={
     pick: pick,
     subPick: subPick,
+    pickImage: pickImage,
     images: images,
     categories: categories,
     selectCategory: selectCategory,
+    selectImage: selectImage,
     categoryOpened: categoryOpened,
     categorySwitch: categorySwitch,
     subCategories: subCategories,
