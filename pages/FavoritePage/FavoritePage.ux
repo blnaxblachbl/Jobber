@@ -1,11 +1,17 @@
 <Panel ux:Class="FavoritePage">
     <JavaScript File="FavoritePage.js"/>
     <Router ux:Dependency="adsRouter" />
-    <ScrollView>
-        <StackPanel>
-            <Each Count="5">
-                <ItemCard Clicked="{goAdsInfo}" Height="250" Title="Собакен" Price="1123" Image="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg"/>
-            </Each>
-        </StackPanel>
-    </ScrollView>
+    <Router ux:Name="favoriteRouter" />
+    <Navigator DefaultPath="favorite">
+        <Page ux:Template="favorite">
+            <ScrollView>
+                <StackPanel>
+                    <Each Count="5">
+                        <ItemCard Clicked="{goAdsInfo}" Height="250" Title="Собакен" Price="1123" Image="https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg"/>
+                    </Each>
+                </StackPanel>
+            </ScrollView>
+        </Page>
+        <AdsInfo ux:Template="adsInfo" favoriteRouter="favoriteRouter"/>
+    </Navigator>
 </Panel>

@@ -1,9 +1,9 @@
 let Observable = require("FuseJS/Observable");
 
 
-goAdsInfo = () => {
-    console.log("yes")
-    adsRouter.push('adsInfo');
+goAdsInfo = (val) => {
+    console.log(JSON.stringify(val.data));
+    favoriteRouter.push("adsInfo");
 }
 
 module.exports = {

@@ -21,6 +21,7 @@
                     <Text Font="FontAwesome" Alignment="Center" FontSize="15" Margin="0,3,0,0" Value="&#xf095;" TextAlignment="Center" Width="100%" Color="#fff"/>
                     <Text Alignment="Center" FontSize="11" Value="Позвонить" TextAlignment="Center" Width="100%" Color="#fff"/>
                 </Grid>
+                <Rectangle Opacity="0.3" ux:Name="name" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
             </Rectangle>
         </StackPanel>
     </Grid>

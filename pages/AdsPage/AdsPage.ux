@@ -16,6 +16,5 @@
         </Page>
         <SubCategories ux:Template="subCategories" adsRouter="adsRouter"/>
         <FavoritePage ux:Template="favorite" adsRouter="adsRouter"/>
-        <AdsInfo ux:Template="adsInfo" adsRouter="adsRouter"/>
     </Navigator>
 </Panel>
