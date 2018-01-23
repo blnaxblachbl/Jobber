@@ -13,5 +13,6 @@
             </ScrollView>
         </Page>
         <AdsInfo ux:Template="adsInfo" favoriteRouter="favoriteRouter"/>
+        <OtherAccountPage ux:Template="otherAccount" favoriteRouter="favoriteRouter"/>
     </Navigator>
 </Panel>

@@ -1,0 +1,25 @@
+<Page ux:Class="OtherAccountPage">
+    <Router ux:Dependency="favoriteRouter" />
+    <JavaScript File="OtherAccountPage.js" />
+    <StackPanel>
+        <Circle Margin="0,20,0,20" Height="170" Width="170">
+            <ImageFill Url="https://a.d-cd.net/dedee9as-960.jpg" StretchMode="UniformToFill"/>
+        </Circle>
+        <Text Value="Глупый Котэ" Font="Medium" FontSize="25" Color="#000" Alignment="Center" TextAlignment="Center"/>
+        <StackPanel Alignment="Center" >
+            <Text Value="РЕЙТИНГ" Font="Light" Color="#000" Alignment="Center" Margin="0,20,0,20" TextAlignment="Center"/>
+            <StackPanel Alignment="Left" Orientation="Horizontal">
+                <Each Count="4">
+                    <Text FontSize="25" Value="&#xf005;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
+                </Each>
+                <Each Count="1">
+                    <Text FontSize="25" Value="&#xf006;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
+                </Each>
+            </StackPanel>
+        </StackPanel>
+        <Rectangle  Color="#F95252" Height="50" Width="60%" Margin="0,40,0,40" CornerRadius="30" Opacity="0.8">
+            <Text Value="ПОЗВОНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center"/>
+        </Rectangle>
+        <Text Value="ВЫЙТИ С АККАУНТА" Font="Medium" Color="#F95252" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+    </StackPanel>
+</Page>
