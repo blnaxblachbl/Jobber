@@ -1,20 +1,15 @@
 <Panel ux:Class="AdsPage">
     <JavaScript File="AdsPage.js"/>
-    <Router ux:Name="adsRouter"/>
-    <Navigator DefaultPath="home">
-        <Page ux:Template="home">
-            <ScrollView SnapMinTransform="false" SnapMaxTransform="false">
-                <StackPanel>
-                    <Each Items="{categories}" >
-                        <Panel Clicked="{goSubCategories}" Height="50" Width="100%">
-                            <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="{name}"/>
-                            <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
-                        </Panel>
-                    </Each>
-                </StackPanel>
-            </ScrollView>
-        </Page>
-        <SubCategories ux:Template="subCategories" adsRouter="adsRouter"/>
-        <FavoritePage ux:Template="favorite" adsRouter="adsRouter"/>
-    </Navigator>
+    <Router ux:Dependency="sideRouter" />
+    <Router ux:Dependency="router" />
+    <ScrollView>
+        <StackPanel>
+            <Each Items="{categories}" >
+                <Panel Clicked="{goSubCategories}" Height="50" Width="100%">
+                    <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="{name}"/>
+                    <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
+                </Panel>
+            </Each>
+        </StackPanel>
+    </ScrollView>
 </Panel>

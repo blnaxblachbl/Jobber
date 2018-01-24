@@ -19,7 +19,11 @@ let name = this.Parameter.map(function(param) {
 });
 
 goFavorite = () => {
-    adsRouter.push("favorite");
+    sideRouter.push("favorite");
+}
+
+goBack = () => {
+    sideRouter.goBack();
 }
 
 console.log(JSON.stringify(name))
@@ -27,4 +31,5 @@ console.log(JSON.stringify(name))
 module.exports = {
     subCategories: subCategories,
     goFavorite: goFavorite,
+    goBack: goBack
 }

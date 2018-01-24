@@ -3,11 +3,13 @@ var Storage = require("FuseJS/Storage");
 
 var smsCode = Observable('')
 
-var params = this.Parameter.map(function(params){
-	return params.phone;
+var params = this.Parameter.map(function (params) {
+    return params.phone;
 })
 
-console.log(params);
+params.subscribe(module);
+
+console.log(params.value);
 
 goTabView = () => {
     var status = 0;
@@ -16,7 +18,7 @@ goTabView = () => {
     fetch('http://jobber.creatif.team/api/v1/auth/access_token', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ phone: "+79991740248", code: smsCode.value })
+        body: JSON.stringify({ phone: params.value, code: smsCode.value })
     }).then(function (response) {
         status = response.status;  // Get the HTTP status code
         response_ok = response.ok; // Is response.status in the 200-range?
@@ -25,8 +27,14 @@ goTabView = () => {
         if (responseObject) {
             if (responseObject.content.access_token) {
                 console.log(responseObject.content.access_token)
-                router.push("tabView");
-                Storage.write("token", responseObject.content.access_token);
+                let token = Storage.writeSync("token", responseObject.content.access_token);
+                if (token) {
+                    console.log("Successfully wrote to file");
+                    router.goto("tabView");
+                }
+                else {
+                    console.log("An error occured!");
+                }
             }
         }
     }).catch(function (err) {

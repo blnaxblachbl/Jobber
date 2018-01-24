@@ -4,14 +4,14 @@ var Storage = require("FuseJS/Storage");
 var phoneNum = Observable('');
 
 Storage.read("token").then(function (content) {
-   // router.push("tabView");
+    router.goto("tabView");
 }, function (error) {
+    console.log('token undefined')
 });
 
 goConfirm = () => {
     var status = 0;
     var response_ok = false;
-
     fetch('http://jobber.creatif.team/api/v1/auth/send_code', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
@@ -21,9 +21,9 @@ goConfirm = () => {
         response_ok = response.ok; // Is response.status in the 200-range?
         return response.json();    // This returns a promise
     }).then(function (responseObject) {
-        // Do something with the result
+        console.log(JSON.stringify(responseObject))
         if (responseObject) {
-            router.goto("confirm", {phone: '235'});
+            router.push("confirm", { phone: phoneNum.value });
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain

@@ -14,7 +14,7 @@ categories = [
 ]
 
 goSubCategories = (val) => {
-    adsRouter.push("subCategories", {name: val.data.name})
+    sideRouter.push("sub", { name: val.data.name })
 }
 
 module.exports = {

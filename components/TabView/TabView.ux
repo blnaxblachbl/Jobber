@@ -17,5 +17,6 @@
         <AccountPage ux:Template="account" sideRouter="sideRouter" router="router"/>
         <BalancePage ux:Template="balance" sideRouter="sideRouter" router="router"/>
         <InfoPage ux:Template="info" sideRouter="sideRouter" router="router"/>
+        <SubCategoriesPage ux:Template="sub" sideRouter="sideRouter" router="router"/>
     </Navigator>
 </Page>
