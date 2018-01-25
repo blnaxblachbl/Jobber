@@ -11,7 +11,7 @@ let images = Observable();
 let buffer = Observable();
 
 Storage.read("token").then(function (content) {
-    token = content
+    token.value = content
 }, function (error) {
     console.log('token undefined')
 });
@@ -32,7 +32,7 @@ goHome = () => {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
-                access_token: token,
+                access_token: token.value,
                 email: mail.value,
                 username: username.value,
                 image: 'https://otvet.imgsmail.ru/download/88388439_ae15ebb787d081251a7ed75ebd0a1417_800.jpg',
@@ -45,7 +45,7 @@ goHome = () => {
         }).then(function (responseObject) {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
-                router.goto("tabView");
+                checkData()
             }
         }).catch(function (err) {
             // An error occurred somewhere in the Promise chain
@@ -56,13 +56,13 @@ goHome = () => {
     }
 }
 
-checkData = (token) => {
+checkData = () => {
     var status = 0;
     var response_ok = false;
     fetch('http://jobber.creatif.team/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ access_token: token })
+        body: JSON.stringify({ access_token: token.value })
     }).then(function (response) {
         status = response.status;  // Get the HTTP status code
         response_ok = response.ok; // Is response.status in the 200-range?

@@ -1,7 +1,27 @@
 var cameraRoll = require("FuseJS/CameraRoll");
 var Observable = require("FuseJS/Observable")
+let Storage = require("FuseJS/Storage");
+let avatar = Observable('');
+let username = Observable('');
+let rate = Observable('');
 
-var imagePick = Observable("")
+Storage.read("username").then(function (content) {
+    username.value = content
+}, function (error) {
+    console.log('token undefined')
+});
+
+Storage.read("avatar").then(function (content) {
+    avatar.value = content
+}, function (error) {
+    console.log('token undefined')
+});
+
+Storage.read("rate").then(function (content) {
+    rate.value = content
+}, function (error) {
+    console.log('token undefined')
+});
 
 goHome = () => {
     sideRouter.goto('home');
@@ -19,21 +39,12 @@ goInfo = () => {
     sideRouter.goto('info');
 }
 
-huli = () => {
-    cameraRoll.getImage()
-        .then(function (image) {
-            console.log(image.path)
-            imagePick.value = image.path
-        }, function (error) {
-            // Will be called if the user aborted the selection or if an error occurred.
-        });
-}
-
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
     goBalance: goBalance,
     goInfo: goInfo,
-    huli: huli,
-    imagePick: imagePick
+    username: username,
+    avatar: avatar,
+    rate: rate
 }
