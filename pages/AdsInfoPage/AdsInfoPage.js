@@ -1,9 +1,9 @@
 goBack = () => {
-    favoriteRouter.goBack();
+    sideRouter.goBack();
 }
 
 goAccount = () => {
-    favoriteRouter.push("otherAccount");
+    //favoriteRouter.push("otherAccount");
 }
 
 module.exports = {

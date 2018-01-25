@@ -14,22 +14,23 @@ subCategories = [
 ]
 
 
-let name = this.Parameter.map(function(param) {
+let title = this.Parameter.map(function(param) {
    return param.name
 });
 
-goFavorite = () => {
-    sideRouter.push("favorite");
+title.subscribe(module);
+
+goFavorite = (val) => {
+    sideRouter.push("scroll", { name: val.data.name });
 }
 
 goBack = () => {
     sideRouter.goBack();
 }
 
-console.log(JSON.stringify(name))
-
 module.exports = {
     subCategories: subCategories,
     goFavorite: goFavorite,
-    goBack: goBack
+    goBack: goBack,
+    title: title
 }

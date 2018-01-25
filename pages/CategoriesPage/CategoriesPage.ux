@@ -1,5 +1,5 @@
-<Panel ux:Class="AdsPage">
-    <JavaScript File="AdsPage.js"/>
+<Panel ux:Class="CategoriesPage">
+    <JavaScript File="CategoriesPage.js"/>
     <Router ux:Dependency="sideRouter" />
     <Router ux:Dependency="router" />
     <ScrollView>

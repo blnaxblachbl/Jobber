@@ -60,7 +60,7 @@
                 <Page ux:Name="ads">
                     <ResourceString Key="Title" Value="Обьявления" />
                     <ResourceString Key="Icon" Value="&#xf03a;" />
-                    <AdsPage router="router" sideRouter="sideRouter"/>
+                    <CategoriesPage router="router" sideRouter="sideRouter"/>
                 </Page>
                 <Page ux:Name="addAds">
                     <ResourceString Key="Title" Value="Добавить обьявление" />
@@ -70,7 +70,7 @@
                 <Page ux:Name="favorite">
                     <ResourceString Key="Title" Value="Избранные" />
                     <ResourceString Key="Icon" Value="&#xf005;" />
-                    <FavoritePage adsRouter="sideRouter"/>
+                    <FavoritePage router="router" sideRouter="sideRouter"/>
                 </Page>
             </PageControl>
             <PageIndicator Color="#fff" Dock="Bottom" Height="70" Navigation="loggedInNavigation">
