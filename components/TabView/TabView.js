@@ -1,20 +1,7 @@
-goAds = () =>{
-    router.goto("ads");
-    console.log("ads");
-}
+var Storage = require("FuseJS/Storage");
 
-goAddAds = () =>{
-    router.goto("addAds");
-    console.log("addAds");
-}
-
-goFavorite = () =>{
-    router.goto("favorite");
-    console.log("favorite");
-}
-
-module.exports={
-    goAds: goAds,
-    goAddAds: goAddAds,
-    goFavorite: goFavorite
-}
+Storage.read("token").then(function (token) {
+   
+}, function (error) {
+    console.log('token undefined')
+});

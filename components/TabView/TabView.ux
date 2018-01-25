@@ -1,14 +1,6 @@
 <Page ux:Class="TabView">
     <Font File="../../assets/FontAwesome.otf" ux:Global="FontAwesome" />
-    <JavaScript>
-        var innerLink = function(){
-            router.pushRelative(innerNav, "innerPage2");
-        }
-        module.exports = {
-            innerLink: innerLink
-        };
-    </JavaScript>
-    
+    <JavaScript File="TabView.js"/>
     <Router ux:Dependency="router" />
     <Router ux:Name="sideRouter" />
 
