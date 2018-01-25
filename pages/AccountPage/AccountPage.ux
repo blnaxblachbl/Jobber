@@ -98,7 +98,7 @@
                     <Text Value="Номер телефона" Alignment="Top" TextAlignment="Left" />
                     <Rectangle Opacity="0.3" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
                 </TextInput>
-                <Rectangle  Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="0.8">
+                <Rectangle Clicked="{saveData}" Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="0.8">
                     <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
                 </Rectangle>
                 <Text Value="ВЫЙТИ С АККАУНТА" Font="Medium" Color="#F95252" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>

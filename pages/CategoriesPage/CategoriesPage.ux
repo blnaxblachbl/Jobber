@@ -6,7 +6,7 @@
         <StackPanel>
             <Each Items="{categories}" >
                 <Panel Clicked="{goSubCategories}" Height="50" Width="100%">
-                    <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="{name}"/>
+                    <Text Alignment="Center" TextAlignment="Left" Width="100%" Margin="25,0,0,0" Color="#5E5E5E" Value="{title}"/>
                     <Rectangle Opacity="0.3" Width="100%" Height="1" Color="#5E5E5E" Alignment="Bottom"/>
                 </Panel>
             </Each>

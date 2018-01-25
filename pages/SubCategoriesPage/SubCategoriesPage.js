@@ -1,24 +1,15 @@
 let Observable = require("FuseJS/Observable");
 let subCategories = Observable();
 
-subCategories = [
-    { name: "Подкатегория 1", picked: false },
-    { name: "Подкатегория 2", picked: false },
-    { name: "Подкатегория 3", picked: false },
-    { name: "Подкатегория 4", picked: false },
-    { name: "Подкатегория 5", picked: false },
-    { name: "Подкатегория 6", picked: false },
-    { name: "Подкатегория 7", picked: false },
-    { name: "Подкатегория 8", picked: false },
-    { name: "Подкатегория 9", picked: false }
-]
 
-
-let title = this.Parameter.map(function (param) {
-    return param.name
+this.Parameter.onValueChanged(function(newParam){
+    subCategories.clear()
+    subCategories.addAll(newParam.subcategories)
 });
 
-title.subscribe(module);
+let name = this.Parameter.map(function (param) {
+    return param.title
+});
 
 goFavorite = (val) => {
     sideRouter.push("scroll", { name: val.data.name });
@@ -32,5 +23,5 @@ module.exports = {
     subCategories: subCategories,
     goFavorite: goFavorite,
     goBack: goBack,
-    title: title
+    name: name
 }
