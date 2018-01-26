@@ -15,9 +15,27 @@
         <ScrollView SnapMinTransform="false">
             <Panel>
                 <StackPanel >
-                    <Rectangle Alignment="Top" Height="250" Margin="0,0,0,10">
-                        <Image Url="{image}" StretchMode="UniformToFill"/>
-                    </Rectangle>
+                    <PageControl ux:Name="slides" ClipToBounds="true">
+                        <Each Items="{images}">
+                            <Page>
+                                <Rectangle Alignment="Top" Height="250" Margin="0,0,0,10">
+                                    <Image Url="{file}" StretchMode="UniformToFill"/>
+                                </Rectangle>
+                            </Page>
+                        </Each>
+                    </PageControl>
+                    <PageIndicator Dock="Bottom" Alignment="Center" Margin="5" Navigation="slides">
+                        <Circle ux:Template="Dot" Width="10" Height="10"  Margin="4">
+                            <SolidColor ux:Name="dotStrokeBody" Color="#0000" />
+                            <Stroke ux:Name="dotStroke" Width="2">
+                                <SolidColor ux:Name="dotStrokeColor" Color="#bbb" />
+                            </Stroke>
+                            <ActivatingAnimation>
+                                <Change dotStrokeBody.Color="#aaa" />
+                                <Change dotStrokeColor.Color="#aaa" />
+                            </ActivatingAnimation>
+                        </Circle>
+                    </PageIndicator>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Alignment="TopLeft" Margin="15,5,0,0">
                             <Text FontSize="20" Value="{price}" Font="Bold" TextAlignment="Left" Alignment="Center" Color="#000"/>
@@ -26,22 +44,22 @@
                         <Text Width="50%" Font="Bold" FontSize="20" Value="{title}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,0,5"/>
                         <Rectangle Opacity="0.1" Alignment="Bottom" Height="1" Color="#5E5E5E"/>
                         <Text Font="Bold" FontSize="12" Value="Описание" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,15,0,5"/>
-                        <Text FontSize="14" Value="Описание Описание Описание Описание Описание ОписаниеОписание Описание ОписаниеОписаниеОписаниеОписание Описание" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
+                        <Text FontSize="14" Value="{desc}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
                         <Text Font="Bold" FontSize="12" Value="Адрес" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,15,0,5"/>
-                        <Text FontSize="14" Value="ТЦ Республика, 4 этаж, 401 каб" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
+                        <Text FontSize="14" Value="{address}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
                         <Text FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
                         <StackPanel Clicked="{goAccount}" Width="70%" Alignment="Center" Orientation="Horizontal" Height="100">
                             <Circle Alignment="CenterLeft" Height="70" Width="70" Margin="0,0,20,0">
-                                <ImageFill Url="https://a.d-cd.net/dedee9as-960.jpg" />
+                                <ImageFill Url="{userImage}" />
                                 <DropShadow Size="3" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
                             </Circle>
                             <StackPanel Alignment="CenterRight" >
-                                <Text Margin="0,0,0,5" Color="#000">Глупый Котэ</Text>
+                                <Text Margin="0,0,0,5" Color="#000" Value="{userName}"/>
                                 <StackPanel Alignment="Left" Orientation="Horizontal">
-                                    <Each Count="4">
+                                    <Each Count="{userRaiting1}">
                                         <Text FontSize="25" Value="&#xf005;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
                                     </Each>
-                                    <Each Count="1">
+                                    <Each Count="{userRaiting2}">
                                         <Text FontSize="25" Value="&#xf006;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
                                     </Each>
                                 </StackPanel>
@@ -53,8 +71,8 @@
                                 <Text TextAlignment="Left" Width="100%" FontSize="12" Value="Подкатегория" Color="#000" Alignment="CenterLeft" Margin="15,15,0,5"/>
                             </StackPanel>
                             <StackPanel Width="100%">
-                                <Text TextAlignment="Right" Width="100%" FontSize="12" Value="Юридические услуги" Color="#000" Alignment="CenterRight" Margin="0,15,15,5" Font="Bold" />
-                                <Text TextAlignment="Right" Width="100%" FontSize="12" Value="Адвокаты" Color="#000" Alignment="CenterRight" Margin="0,15,15,5" Font="Bold" />
+                                <Text TextAlignment="Right" Width="100%" FontSize="12" Value="{parentCategory}" Color="#000" Alignment="CenterRight" Margin="0,15,15,5" Font="Bold" />
+                                <Text TextAlignment="Right" Width="100%" FontSize="12" Value="{subCategory}" Color="#000" Alignment="CenterRight" Margin="0,15,15,5" Font="Bold" />
                             </StackPanel>
                         </Grid>
                     </StackPanel>

@@ -17,6 +17,7 @@ Storage.read("token").then(function (token) {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             categories.addAll(responseObject.content)
+            console.log(JSON.stringify(ads))
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
