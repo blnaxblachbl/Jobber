@@ -3,13 +3,11 @@ let Storage = require("FuseJS/Storage");
 let id = Observable();
 let ads = Observable();
 let title = Observable();
+let token = Observable();
 
 this.Parameter.onValueChanged(function(newParam){
     id.clear()
     id.value = newParam.id
-});
-
-Storage.read("token").then(function (token) {
     var status = 0;
     var response_ok = false;
     let array = []
@@ -17,7 +15,7 @@ Storage.read("token").then(function (token) {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ 
-            access_token: token,
+            access_token: token.value,
             limit: 100,
             page: 0,
             category_id: id.value
@@ -35,22 +33,26 @@ Storage.read("token").then(function (token) {
                     price: l.price,
                     images: l.images[0].file,
                     title: l.title,
-                    id: l.id
+                    id: l.id,
+                    phone: l.phone_number
                 })
             })
-            ads.addAll(array)
+            ads.replaceAll(array)
             array = []
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
     });
+});
+
+Storage.read("token").then(function (data) {
+    token.value = data
 }, function (error) {
     console.log('token undefined')
 });
 
 goAdsInfo = (val) => {
-    console.log(JSON.stringify(val.data));
-    sideRouter.push("adsInfo", {id: val.data.id});
+    sideRouter.push("adsInfo", {id: val.data.id, phone: val.data.phone});
 }
 
 goBack = () => {

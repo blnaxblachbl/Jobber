@@ -14,10 +14,13 @@ let userName = Observable();
 let userRaiting1 = Observable();
 let userRaiting2 = Observable();
 let token = Observable();
+let userData = Observable();
+let phone = Observable();
 
 this.Parameter.onValueChanged(function (newParam) {
     id.value = null
     id.value = newParam.id
+    phone.value = newParam.phone
     let status = 0;
     let response_ok = false;
     let userStatus = 0;
@@ -25,7 +28,7 @@ this.Parameter.onValueChanged(function (newParam) {
     fetch('http://jobber.creatif.team/api/v1/ads/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ access_token: token })
+        body: JSON.stringify({ access_token: token.value })
     }).then(function (response) {
         status = response.status;  // Get the HTTP status code
         response_ok = response.ok; // Is response.status in the 200-range?
@@ -44,7 +47,7 @@ this.Parameter.onValueChanged(function (newParam) {
             fetch('http://jobber.creatif.team/api/v1/user/' + userId.value, {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
-                body: JSON.stringify({ access_token: token })
+                body: JSON.stringify({ access_token: token.value })
             }).then(function (response) {
                 userStatus = response.status;  // Get the HTTP status code
                 userResponse_ok = response.ok; // Is response.status in the 200-range?
@@ -56,6 +59,7 @@ this.Parameter.onValueChanged(function (newParam) {
                     userName.value = responseObject.content.username
                     userRaiting1.value = responseObject.content.raiting
                     userRaiting2.value = 5 - userRaiting1.value
+                    userData.value = responseObject.content
                 }
             }).catch(function (err) {
                 // An error occurred somewhere in the Promise chain
@@ -77,7 +81,8 @@ goBack = () => {
 }
 
 goAccount = () => {
-    //favoriteRouter.push("otherAccount");
+    console.log(JSON.stringify(userData.value))
+    sideRouter.push("other", {userData: userData.value, phone: phone.value, userId: userId.value});
 }
 
 module.exports = {
