@@ -1,5 +1,6 @@
-<Panel ux:Class="FavoritePage">
+<Page ux:Class="FavoritePage">
     <JavaScript File="FavoritePage.js"/>
+    <Activated Handler="{getFavorites}"/>
     <Router ux:Dependency="sideRouter" />
     <Router ux:Dependency="router" />
     <ScrollView>
@@ -9,4 +10,4 @@
             </Each>
         </StackPanel>
     </ScrollView>
-</Panel>
+</Page>

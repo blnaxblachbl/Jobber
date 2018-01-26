@@ -96,7 +96,7 @@ goBack = () => {
 }
 
 addToFavorite = () => {
-    favorite.push({
+    favorite.unshift({
         title: title.value,
         img: images.value.file,
         price: price.value,

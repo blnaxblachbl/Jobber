@@ -3,22 +3,24 @@ var Storage = require("FuseJS/Storage");
 let favoritesAds = Observable();
 let array = []
 
-Storage.read("favorite").then(function (data) {
-    array = []
-    JSON.parse(data).map((l,i)=>{
-        array.push({
-            title: l.title,
-            img: l.img,
-            price: l.price,
-            id: l.id,
-            phone: l.phone
+getFavorites = () => {
+    Storage.read("favorite").then(function (data) {
+        array = []
+        JSON.parse(data).map((l,i)=>{
+            array.push({
+                title: l.title,
+                img: l.img,
+                price: l.price,
+                id: l.id,
+                phone: l.phone
+            })
         })
-    })
-    favoritesAds.replaceAll(array)
-    console.log(array)
-}, function (error) {
-    console.log('token undefined')
-});
+        favoritesAds.replaceAll(array)
+        console.log(array)
+    }, function (error) {
+        console.log('token undefined')
+    });
+}
 
 goAdsInfo = (val) => {
     console.log(JSON.stringify(val.data))
@@ -28,4 +30,5 @@ goAdsInfo = (val) => {
 module.exports = {
     goAdsInfo: goAdsInfo,
     favoritesAds: favoritesAds,
+    getFavorites: getFavorites
 }

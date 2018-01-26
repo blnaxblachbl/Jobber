@@ -22,8 +22,8 @@ Storage.read("rate").then(function (content) {
     console.log('token undefined')
 });
 
-isFavorite = (val) => {
-    console.log(JSON.stringify(val.data))
+isFavorite = () => {
+    console.log(JSON.stringify("yes123"))
 }
 
 goHome = () => {
