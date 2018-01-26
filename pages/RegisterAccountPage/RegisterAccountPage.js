@@ -1,6 +1,7 @@
-let cameraRoll = require("FuseJS/CameraRoll");
+let CameraRoll = require("FuseJS/CameraRoll");
 let Observable = require("FuseJS/Observable");
 let Storage = require("FuseJS/Storage");
+let ImageTools = require("FuseJS/ImageTools");
 let selectImage = Observable("");
 let imageIsPicked = Observable(false);
 let username = Observable("");
@@ -8,6 +9,7 @@ let mail = Observable("");
 let token = Observable("");
 let images = Observable();
 let buffer = Observable();
+let base64Value = Observable('');
 
 Storage.read("token").then(function (content) {
     token.value = content
@@ -23,7 +25,7 @@ phone.subscribe(module);
 
 console.log(phone.value);
 
-goHome = () => {
+saveData = (image) => {
     if (selectImage.value != '' && username.value != '' && mail.value != '') {
         var status = 0;
         var response_ok = false;
@@ -34,7 +36,7 @@ goHome = () => {
                 access_token: token.value,
                 email: mail.value,
                 username: username.value,
-                image: 'https://otvet.imgsmail.ru/download/88388439_ae15ebb787d081251a7ed75ebd0a1417_800.jpg',
+                image: 'http://jobber.creatif.team/uploads/' + image,
                 phone: phone.value
             })
         }).then(function (response) {
@@ -81,9 +83,6 @@ checkData = () => {
     });
 }
 
-/*
-
-
 formEncode = (obj) => {
     var str = [];
     for (var p in obj)
@@ -92,42 +91,48 @@ formEncode = (obj) => {
 }
 
 uploadImage = () => {
-    var status = 0;
-    var response_ok = false;
+    if (selectImage.value != '' && username.value != '' && mail.value != '') {
+        console.log(token.value)
+        var status = 0;
+        var response_ok = false;
 
-    var requestObject = { file: buffer.value, access_token: 'l82PG6txBQ1vJofVO4gEhFMY5r9NRe' };
+        var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: token.value };
 
-    fetch('http://jobber.creatif.team/api/v1/fileupload', {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/x-www-form-urlencoded"
-        },
-        body: formEncode(requestObject)
-    }).then(function (response) {
-        status = response.status;  // Get the HTTP status code
-        response_ok = response.ok; // Is response.status in the 200-range?
-        return response.json();    // This returns a promise
-    }).then(function (responseObject) {
-        console.log(JSON.stringify(responseObject))
-    }).catch(function (err) {
-        // An error occurred somewhere in the Promise chain
-    });
+        fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+            method: 'POST',
+            headers: { "Content-type": "application/x-www-form-urlencoded" },
+            body: formEncode(requestObject)
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject))
+            if (responseObject.code == '200') {
+                saveData(responseObject.content.file_name)
+            }
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+        });
+    }
 }
-*/
 
 pickPhoto = () => {
-    cameraRoll.getImage()
+    CameraRoll.getImage()
         .then(function (image) {
-            imageIsPicked.value = true
-            selectImage.value = image.path
-            images.value = image
+            ImageTools.getBase64FromImage(image)
+                .then(function (base64Image) {
+                    imageIsPicked.value = true
+                    selectImage.value = image.path
+                    base64Value.value = base64Image
+                });
         }, function (error) {
 
         });
 }
 
 module.exports = {
-    goHome: goHome,
+    uploadImage: uploadImage,
     selectImage: selectImage,
     imageIsPicked: imageIsPicked,
     pickPhoto: pickPhoto,
