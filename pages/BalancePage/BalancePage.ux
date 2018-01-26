@@ -104,10 +104,9 @@
                         <ReleaseFocus />
                     </TextInputActionTriggered>
                 </TextInput>
-				<Button Margin="0,20,0,0" Text="ОПЛАТИТЬ">
+				<Button Clicked="{goWeb}" Margin="0,20,0,0" Text="ОПЛАТИТЬ">
 					<Clicked>
 						<Set ModalConfirm.IsEnabled="false"/>
-						<!-- perform action -->
 					</Clicked>
 				</Button>
 				

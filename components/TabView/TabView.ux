@@ -12,5 +12,6 @@
         <SubCategoriesPage ux:Template="sub" sideRouter="sideRouter" router="router"/>
         <AdsInfoPage ux:Template="adsInfo" sideRouter="sideRouter" router="router"/>
         <ScrollPage ux:Template="scroll" sideRouter="sideRouter" router="router"/>
+        <WebViewPage ux:Template="webview" sideRouter="sideRouter" router="router"/>
     </Navigator>
 </Page>

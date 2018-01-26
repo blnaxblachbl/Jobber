@@ -42,6 +42,10 @@ addBalance = () => {
     console.log(true)
 }
 
+goWeb = () => {
+    sideRouter.push("webview")
+}
+
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
@@ -50,5 +54,6 @@ module.exports = {
     addBalance: addBalance,
     username: username,
     avatar: avatar,
-    rate: rate
+    rate: rate,
+    goWeb: goWeb
 }
