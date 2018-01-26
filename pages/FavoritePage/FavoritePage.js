@@ -1,21 +1,28 @@
 let Observable = require("FuseJS/Observable");
+var Storage = require("FuseJS/Storage");
 let favoritesAds = Observable();
+let array = []
 
-favoritesAds = [
-    { title: "Обьявление 1", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 2", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 3", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 4", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 5", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 6", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 7", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 8", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' },
-    { title: "Обьявление 9", img: "https://dogsarethecoolest.files.wordpress.com/2009/03/fatdogonsand.jpg", price: '1000' }
-]
-
+Storage.read("favorite").then(function (data) {
+    array = []
+    JSON.parse(data).map((l,i)=>{
+        array.push({
+            title: l.title,
+            img: l.img,
+            price: l.price,
+            id: l.id,
+            phone: l.phone
+        })
+    })
+    favoritesAds.replaceAll(array)
+    console.log(array)
+}, function (error) {
+    console.log('token undefined')
+});
 
 goAdsInfo = (val) => {
-    sideRouter.push("adsInfo", { title: val.data.title, image: val.data.img, price: val.data.price });
+    console.log(JSON.stringify(val.data))
+    sideRouter.push("adsInfo", {id: val.data.id, phone: val.data.phone});
 }
 
 module.exports = {

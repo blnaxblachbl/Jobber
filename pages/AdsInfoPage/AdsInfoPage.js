@@ -16,6 +16,7 @@ let userRaiting2 = Observable();
 let token = Observable();
 let userData = Observable();
 let phone = Observable();
+let favorite = []
 
 this.Parameter.onValueChanged(function (newParam) {
     id.value = null
@@ -70,6 +71,20 @@ this.Parameter.onValueChanged(function (newParam) {
     });
 });
 
+Storage.read("favorite").then(function (data) {
+    JSON.parse(data).map((l, i) => {
+        favorite.push({
+            title: l.title,
+            img: l.img,
+            price: l.price,
+            id: l.id,
+            phone: l.phone
+        })
+    })
+}, function (error) {
+    console.log('token undefined')
+});
+
 Storage.read("token").then(function (data) {
     token.value = data
 }, function (error) {
@@ -80,9 +95,25 @@ goBack = () => {
     sideRouter.goBack();
 }
 
+addToFavorite = () => {
+    favorite.push({
+        title: title.value,
+        img: images.value.file,
+        price: price.value,
+        id: id.value,
+        phone: phone.value
+    })
+    let done = Storage.writeSync("favorite", JSON.stringify(favorite));
+    if (done) {
+        console.log("yes")
+    } else {
+        console.log("no")
+    }
+}
+
 goAccount = () => {
     console.log(JSON.stringify(userData.value))
-    sideRouter.push("other", {userData: userData.value, phone: phone.value, userId: userId.value});
+    sideRouter.push("other", { userData: userData.value, phone: phone.value, userId: userId.value });
 }
 
 module.exports = {
@@ -98,5 +129,6 @@ module.exports = {
     userImage: userImage,
     userName: userName,
     userRaiting1: userRaiting1,
-    userRaiting2: userRaiting2
+    userRaiting2: userRaiting2,
+    addToFavorite: addToFavorite
 }

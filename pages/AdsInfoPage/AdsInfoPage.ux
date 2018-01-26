@@ -47,7 +47,7 @@
                         <Text FontSize="14" Value="{desc}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
                         <Text Font="Bold" FontSize="12" Value="Адрес" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,15,0,5"/>
                         <Text FontSize="14" Value="{address}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
-                        <Text FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
+                        <Text Clicked="{addToFavorite}" FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
                         <StackPanel Clicked="{goAccount}" Width="70%" Alignment="Center" Orientation="Horizontal" Height="100">
                             <Circle Alignment="CenterLeft" Height="70" Width="70" Margin="0,0,20,0">
                                 <ImageFill Url="{userImage}" />

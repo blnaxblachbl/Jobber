@@ -22,6 +22,10 @@ Storage.read("rate").then(function (content) {
     console.log('token undefined')
 });
 
+isFavorite = (val) => {
+    console.log(JSON.stringify(val.data))
+}
+
 goHome = () => {
     sideRouter.goto('home');
 }
@@ -45,5 +49,6 @@ module.exports = {
     goInfo: goInfo,
     username: username,
     avatar: avatar,
-    rate: rate
+    rate: rate,
+    isFavorite: isFavorite
 }
