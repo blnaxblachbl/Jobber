@@ -6,7 +6,6 @@ let imageIsPicked = Observable(false);
 let username = Observable("");
 let mail = Observable("");
 let token = Observable("");
-let ImageTools = require("FuseJS/ImageTools");
 let images = Observable();
 let buffer = Observable();
 

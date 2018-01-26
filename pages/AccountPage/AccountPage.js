@@ -1,8 +1,9 @@
 let Observable = require("FuseJS/Observable");
-let cameraRoll = require("FuseJS/CameraRoll");
+let CameraRoll = require("FuseJS/CameraRoll");
+let ImageTools = require("FuseJS/ImageTools");
+let Storage = require("FuseJS/Storage");
 let selectImage = Observable("");
 let imageIsPicked = Observable(false)
-let Storage = require("FuseJS/Storage");
 let avatar = Observable('');
 let username = Observable('');
 let rate = Observable('');
@@ -12,6 +13,7 @@ let emailValue = Observable('');
 let phoneValue = Observable('');
 let imageValue = Observable('');
 let tokenValue = Observable('');
+let base64Value = Observable('');
 
 Storage.read("username").then(function (content) {
     username.value = content
@@ -48,10 +50,14 @@ goInfo = () => {
 }
 
 pickPhoto = () => {
-    cameraRoll.getImage()
+    CameraRoll.getImage()
         .then(function (image) {
-            imageIsPicked.value = true
-            selectImage.value = image.path
+            ImageTools.getBase64FromImage(image)
+                .then(function (base64Image) {
+                    imageIsPicked.value = true
+                    selectImage.value = image.path
+                    base64Value.value = base64Image
+                });
         }, function (error) {
 
         });
@@ -106,8 +112,8 @@ updateData = () => {
     });
 }
 
-saveData = () => {
-    if (nameValue.value != '' && emailValue.value != '') {
+saveData = (image) => {
+    if (nameValue.value != '' && emailValue.value != '' && selectImage.value != '') {
         var status = 0;
         var response_ok = false;
         fetch('http://jobber.creatif.team/api/v1/user/edit_profile', {
@@ -117,7 +123,7 @@ saveData = () => {
                 access_token: tokenValue.value,
                 email: emailValue.value,
                 username: nameValue.value,
-                image: 'https://otvet.imgsmail.ru/download/88388439_ae15ebb787d081251a7ed75ebd0a1417_800.jpg',
+                image: 'http://jobber.creatif.team/uploads/' + image,
                 phone: phoneValue.value
             })
         }).then(function (response) {
@@ -128,7 +134,7 @@ saveData = () => {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
                 let username = Storage.writeSync("username", nameValue.value);
-                let avatar = Storage.writeSync("avatar", imageValue.value);
+                let avatar = Storage.writeSync("avatar", 'http://jobber.creatif.team/uploads/' + image);
                 if (username && avatar) {
                     console.log('Save complete')
                     updateData()
@@ -140,6 +146,40 @@ saveData = () => {
 
     } else {
         console.log('Заполните все данные')
+    }
+}
+
+formEncode = (obj) => {
+    var str = [];
+    for (var p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    return str.join("&");
+}
+
+uploadImage = () => {
+    if (nameValue.value != '' && emailValue.value != '' && selectImage.value != '') {
+        console.log(tokenValue.value)
+        var status = 0;
+        var response_ok = false;
+
+        var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: tokenValue.value };
+
+        fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+            method: 'POST',
+            headers: { "Content-type": "application/x-www-form-urlencoded" },
+            body: formEncode(requestObject)
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject))
+            if (responseObject.code == '200') {
+                saveData(responseObject.content.file_name)
+            }
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+        });
     }
 }
 
@@ -158,5 +198,5 @@ module.exports = {
     emailValue: emailValue,
     phoneValue: phoneValue,
     imageValue: imageValue,
-    saveData: saveData
+    uploadImage: uploadImage
 }
