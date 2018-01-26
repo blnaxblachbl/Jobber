@@ -16,7 +16,7 @@
                 <Rectangle Height="150" Width="100%" Color="#F95252">
                     <Grid Columns="1*,2*">
                         <Circle  Height="50%">
-                            <ImageFill Url="{avatar}" />
+                            <ImageFill Url="{avatar}" StretchMode="UniformToFill"/>
                         </Circle>
                         <StackPanel Alignment="CenterLeft" >
                             <Text Margin="0,0,0,10" Color="#fff" Value="{username}" />
@@ -104,10 +104,9 @@
                         <ReleaseFocus />
                     </TextInputActionTriggered>
                 </TextInput>
-				<Button Margin="0,20,0,0" Text="ОПЛАТИТЬ">
+				<Button Clicked="{goWeb}" Margin="0,20,0,0" Text="ОПЛАТИТЬ">
 					<Clicked>
 						<Set ModalConfirm.IsEnabled="false"/>
-						<!-- perform action -->
 					</Clicked>
 				</Button>
 				

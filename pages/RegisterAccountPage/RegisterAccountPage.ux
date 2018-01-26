@@ -15,7 +15,7 @@
             <Panel>
                 <WhileFalse Value="{imageIsPicked}">
                     <Circle Margin="0,10,0,20" Height="150">
-                        <ImageFill Url="https://myspace.com/common/images/user.png" />
+                        <ImageFill Url="https://myspace.com/common/images/user.png" StretchMode="UniformToFill"/>
                     </Circle>
                     <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
                         <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
@@ -23,7 +23,7 @@
                 </WhileFalse>
                 <WhileTrue Value="{imageIsPicked}">
                     <Circle Margin="0,10,0,20" Height="150">
-                        <ImageFill File="{selectImage}" />
+                        <ImageFill File="{selectImage}" StretchMode="UniformToFill"/>
                     </Circle>
                     <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
                         <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>

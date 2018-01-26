@@ -14,7 +14,7 @@
                 <Rectangle Height="150" Width="100%" Color="#F95252">
                     <Grid Columns="1*,2*">
                         <Circle  Height="50%">
-                            <ImageFill Url="{avatar}" />
+                            <ImageFill Url="{avatar}" StretchMode="UniformToFill"/>
                         </Circle>
                         <StackPanel Alignment="CenterLeft" >
                             <Text Margin="0,0,0,10" Color="#fff" Value="{username}" />
@@ -60,7 +60,7 @@
                 <Panel>
                     <WhileFalse Value="{imageIsPicked}">
                         <Circle Margin="0,10,0,20" Height="150">
-                            <ImageFill Url="{imageValue}" />
+                            <ImageFill  StretchMode="UniformToFill" Url="{imageValue}" />
                         </Circle>
                         <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
                             <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
@@ -68,7 +68,7 @@
                     </WhileFalse>
                     <WhileTrue Value="{imageIsPicked}">
                         <Circle Margin="0,10,0,20" Height="150">
-                            <ImageFill File="{selectImage}" />
+                            <ImageFill  StretchMode="UniformToFill" File="{selectImage}" />
                         </Circle>
                         <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
                             <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>

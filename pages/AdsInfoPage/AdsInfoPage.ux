@@ -50,7 +50,7 @@
                         <Text Clicked="{addToFavorite}" FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
                         <StackPanel Clicked="{goAccount}" Width="70%" Alignment="Center" Orientation="Horizontal" Height="100">
                             <Circle Alignment="CenterLeft" Height="70" Width="70" Margin="0,0,20,0">
-                                <ImageFill Url="{userImage}" />
+                                <ImageFill Url="{userImage}" StretchMode="UniformToFill"/>
                                 <DropShadow Size="3" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
                             </Circle>
                             <StackPanel Alignment="CenterRight" >

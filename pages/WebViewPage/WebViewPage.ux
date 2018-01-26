@@ -1,0 +1,36 @@
+<Page ux:Class="WebViewPage">
+    <Router ux:Dependency="sideRouter" />
+    <Router ux:Dependency="router" />
+    <JavaScript File="WebViewPage.js" />
+    <JavaScript>
+            module.exports = {
+                onPageLoaded : function(res) {
+                    console.log("WebView arrived at "+ JSON.parse(res.json).url);
+            }
+        };
+    </JavaScript>
+    <DockPanel>
+        <Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />
+        <StackPanel Dock="Top" Color="#F95252">
+            <Shadow Size="3" Distance="1" />
+            <StatusBarBackground/>
+            <Panel Height="56">
+                <Text Alignment="CenterLeft" Margin="15,0,0,0" Font="FontAwesome" FontSize="20" TextAlignment="Center" Color="#fff" Value="&#xf053;" Clicked="{goBack}"/>
+                <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Оплата" />
+            </Panel>
+        </StackPanel>
+        <NativeViewHost>
+            <WebView ZoomEnabled="false" Url="https://money.yandex.ru/payments/fail?reason=invalid-scid">
+                <PageLoaded>
+                    <EvaluateJS Handler="{onPageLoaded}">
+                        var result = {
+                            url : document.location.href
+                        };
+                        return result;
+                    </EvaluateJS>
+                </PageLoaded>
+            </WebView>
+        </NativeViewHost>
+        <BottomBarBackground Dock="Bottom" />
+    </DockPanel>
+</Page>
