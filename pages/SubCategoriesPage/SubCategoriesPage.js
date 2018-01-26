@@ -12,7 +12,7 @@ let name = this.Parameter.map(function (param) {
 });
 
 goFavorite = (val) => {
-    sideRouter.push("scroll", { name: val.data.name });
+    sideRouter.push("scroll", { id: val.data.id });
 }
 
 goBack = () => {
