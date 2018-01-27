@@ -183,6 +183,20 @@ uploadImage = () => {
     }
 }
 
+logout = () => {
+    let avatar = Storage.deleteSync("avatar")
+    let rate = Storage.deleteSync("rate")
+    let username = Storage.deleteSync("username")
+    let token = Storage.deleteSync("token")
+    let favorite = Storage.deleteSync("favorite")
+    if (avatar && rate && username && token && favorite){
+        console.log("logout")
+        router.goto("login")
+    }else{
+        console.log("logout error")
+    }
+}
+
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
@@ -198,5 +212,6 @@ module.exports = {
     emailValue: emailValue,
     phoneValue: phoneValue,
     imageValue: imageValue,
-    uploadImage: uploadImage
+    uploadImage: uploadImage,
+    logout: logout
 }

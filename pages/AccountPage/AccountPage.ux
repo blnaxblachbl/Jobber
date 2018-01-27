@@ -101,7 +101,7 @@
                 <Rectangle Clicked="{uploadImage}" Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="0.8">
                     <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
                 </Rectangle>
-                <Text Value="ВЫЙТИ С АККАУНТА" Font="Medium" Color="#F95252" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+                <Text Clicked="{logout}" Value="ВЫЙТИ С АККАУНТА" Font="Medium" Color="#F95252" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
             </StackPanel>
 		</DockPanel>
 	</EdgeNavigator>
