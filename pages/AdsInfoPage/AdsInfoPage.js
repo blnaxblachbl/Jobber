@@ -17,6 +17,7 @@ let token = Observable();
 let userData = Observable();
 let phone = Observable();
 let favorite = []
+let isFavorite = false
 
 this.Parameter.onValueChanged(function (newParam) {
     id.value = null
@@ -73,6 +74,11 @@ this.Parameter.onValueChanged(function (newParam) {
 
 Storage.read("favorite").then(function (data) {
     JSON.parse(data).map((l, i) => {
+        if (l.id == id.value){
+            isFavorite.value = true
+        }else{
+            isFavorite.value = false
+        }
         favorite.push({
             title: l.title,
             img: l.img,
@@ -105,6 +111,24 @@ addToFavorite = () => {
     })
     let done = Storage.writeSync("favorite", JSON.stringify(favorite));
     if (done) {
+        isFavorite.value = true
+        console.log("yes")
+    } else {
+        console.log("no")
+    }
+}
+
+removeFromFavorite = () => {
+    favorite.remove({
+        title: title.value,
+        img: images.value.file,
+        price: price.value,
+        id: id.value,
+        phone: phone.value
+    })
+    let done = Storage.writeSync("favorite", JSON.stringify(favorite));
+    if (done) {
+        isFavorite.value = false
         console.log("yes")
     } else {
         console.log("no")
@@ -130,5 +154,7 @@ module.exports = {
     userName: userName,
     userRaiting1: userRaiting1,
     userRaiting2: userRaiting2,
-    addToFavorite: addToFavorite
+    addToFavorite: addToFavorite,
+    removeFromFavorite: removeFromFavorite,
+    isFavorite: isFavorite
 }
