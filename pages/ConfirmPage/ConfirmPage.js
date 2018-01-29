@@ -63,10 +63,11 @@ checkData = (token) => {
             if (responseObject.content.username == null) {
                 router.push('reg', { phone: params.value })
             } else {
+                let userid = Storage.writeSync("userid", responseObject.content.id);
                 let username = Storage.writeSync("username", responseObject.content.username);
                 let avatar = Storage.writeSync("avatar", responseObject.content.image);
                 let rate = Storage.writeSync("rate", responseObject.content.raiting);
-                if (username && avatar && rate) {
+                if (username && avatar && rate && userid) {
                     router.goto("tabView");
                 }
                 else {

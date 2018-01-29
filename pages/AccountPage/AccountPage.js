@@ -201,7 +201,8 @@ logout = () => {
     let username = Storage.deleteSync("username")
     let token = Storage.deleteSync("token")
     let favorite = Storage.deleteSync("favorite")
-    if (avatar && rate && username && token && favorite){
+    let userid = Storage.deleteSync("userid")
+    if (avatar && rate && username && token && favorite && userid){
         console.log("logout")
         router.goto("login")
     }else{

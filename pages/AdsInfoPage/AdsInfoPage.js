@@ -17,7 +17,9 @@ let token = Observable();
 let userData = Observable();
 let phone = Observable();
 let favorite = []
-let isFavorite = false
+let isFavorite = Observable(false);
+let myads = Observable(false);
+let myId = Observable();
 
 this.Parameter.onValueChanged(function (newParam) {
     id.value = null
@@ -46,6 +48,9 @@ this.Parameter.onValueChanged(function (newParam) {
             subCategory.value = responseObject.content.sub_category.title
             images.replaceAll(responseObject.content.images)
             userId.value = responseObject.content.user_id
+            if (userId.value == myId.value) {
+                myads.value = true
+            }
             fetch('http://jobber.creatif.team/api/v1/user/' + userId.value, {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
@@ -72,11 +77,18 @@ this.Parameter.onValueChanged(function (newParam) {
     });
 });
 
+Storage.read("userid").then(function (data) {
+    myId.value = data
+}, function (error) {
+    console.log("get id error")
+})
+
 Storage.read("favorite").then(function (data) {
     JSON.parse(data).map((l, i) => {
-        if (l.id == id.value){
+        if (l.id == id.value) {
             isFavorite.value = true
-        }else{
+            return null
+        } else {
             isFavorite.value = false
         }
         favorite.push({
@@ -119,13 +131,14 @@ addToFavorite = () => {
 }
 
 removeFromFavorite = () => {
-    favorite.remove({
+    let i = favorite.indexOf({
         title: title.value,
         img: images.value.file,
         price: price.value,
         id: id.value,
         phone: phone.value
     })
+    favorite.splice(i, 1);
     let done = Storage.writeSync("favorite", JSON.stringify(favorite));
     if (done) {
         isFavorite.value = false
@@ -138,6 +151,28 @@ removeFromFavorite = () => {
 goAccount = () => {
     console.log(JSON.stringify(userData.value))
     sideRouter.push("other", { userData: userData.value, phone: phone.value, userId: userId.value });
+}
+
+removeAds = () => {
+    fetch('http://jobber.creatif.team/api/v1/ads/delete', {
+        method: 'POST',
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ 
+            access_token: token.value,
+             ads: id.value
+        })
+    }).then(function (response) {
+        status = response.status;  // Get the HTTP status code
+        response_ok = response.ok; // Is response.status in the 200-range?
+        return response.json();    // This returns a promise
+    }).then(function (responseObject) {
+        console.log(JSON.stringify(responseObject))
+        if (responseObject.code == "200") {
+            console.log("deleted")
+        }
+    }).catch(function (err) {
+        console.log("error")
+    });
 }
 
 module.exports = {
@@ -156,5 +191,7 @@ module.exports = {
     userRaiting2: userRaiting2,
     addToFavorite: addToFavorite,
     removeFromFavorite: removeFromFavorite,
-    isFavorite: isFavorite
+    isFavorite: isFavorite,
+    myads: myads,
+    removeAds: removeAds
 }
