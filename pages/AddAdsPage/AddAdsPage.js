@@ -178,10 +178,16 @@ createAds = () => {
         response_ok = response.ok; // Is response.status in the 200-range?
         return response.json();    // This returns a promise
     }).then(function (responseObject) {
-        imageToSave=[]
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == '200') {
-
+            imageToSave=[]
+            adsName.value = "",
+            adsDesc.value = "",
+            adsPrice.value = "",
+            selectCategoryId = 0
+            adsAddress.value = ""
+            selectCategory = "Выбрать категорию",
+            selectSubCategory = "Выбрать подкатегорию"
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
