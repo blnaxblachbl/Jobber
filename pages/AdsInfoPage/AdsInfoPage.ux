@@ -67,23 +67,25 @@
                                     </Clicked>
                                 </Text>
                             </WhileTrue>
-                            <StackPanel Clicked="{goAccount}" Width="70%" Alignment="Center" Orientation="Horizontal" Height="100">
-                                <Circle Alignment="CenterLeft" Height="70" Width="70" Margin="0,0,20,0">
-                                    <ImageFill Url="{userImage}" StretchMode="UniformToFill"/>
-                                    <DropShadow Size="3" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
-                                </Circle>
-                                <StackPanel Alignment="CenterRight" >
-                                    <Text Margin="0,0,0,5" Color="#000" Value="{userName}"/>
-                                    <StackPanel Alignment="Left" Orientation="Horizontal">
-                                        <Each Count="{userRaiting1}">
-                                            <Text FontSize="25" Value="&#xf005;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
-                                        </Each>
-                                        <Each Count="{userRaiting2}">
-                                            <Text FontSize="25" Value="&#xf006;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
-                                        </Each>
+                            <WhileFalse Value="{myads}">
+                                <StackPanel Clicked="{goAccount}" Width="70%" Alignment="Center" Orientation="Horizontal" Height="100">
+                                    <Circle Alignment="CenterLeft" Height="70" Width="70" Margin="0,0,20,0">
+                                        <ImageFill Url="{userImage}" StretchMode="UniformToFill"/>
+                                        <DropShadow Size="3" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
+                                    </Circle>
+                                    <StackPanel Alignment="CenterRight" >
+                                        <Text Margin="0,0,0,5" Color="#000" Value="{userName}"/>
+                                        <StackPanel Alignment="Left" Orientation="Horizontal">
+                                            <Each Count="{userRaiting1}">
+                                                <Text FontSize="25" Value="&#xf005;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
+                                            </Each>
+                                            <Each Count="{userRaiting2}">
+                                                <Text FontSize="25" Value="&#xf006;" Font="FontAwesome" TextAlignment="Center" Alignment="Center" Margin="0,0,10,0" Color="#f8e71c"/>
+                                            </Each>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
+                            </WhileFalse>
                             <Grid Width="100%" Margin="0,0,0,20" Columns="1*,1*">
                                 <StackPanel Width="100%">
                                     <Text TextAlignment="Left" Width="100%" FontSize="12" Value="Категория" Color="#000" Alignment="CenterLeft" Margin="15,15,0,5"/>
