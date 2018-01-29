@@ -141,13 +141,16 @@ uploadImage = () => {
             }).then(function (responseObject) {
                 console.log(JSON.stringify(responseObject))
                 if (responseObject.code == '200') {
-                    imageToSave.unshift({ file: "http://jobber.creatif.team/uploads/" + responseObject.content.file_name })
+                    imageToSave.push({ file: "http://jobber.creatif.team/uploads/" + responseObject.content.file_name })
                     if (imageToSave.length == images.length) {
                         createAds();
                     }
                     //saveData(responseObject.content.file_name)
+                }else{
+                    imageToSave = []
                 }
             }).catch(function (err) {
+                imageToSave = []
                 // An error occurred somewhere in the Promise chain
             });
         }
@@ -181,16 +184,20 @@ createAds = () => {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == '200') {
             imageToSave=[]
-            adsName.value = "",
-            adsDesc.value = "",
-            adsPrice.value = "",
-            selectCategoryId = 0
+            adsName.value = ""
+            adsDesc.value = ""
+            adsPrice.value = ""
+            selectCategoryId.value = 0
             adsAddress.value = ""
-            selectCategory = "Выбрать категорию",
-            selectSubCategory = "Выбрать подкатегорию"
+            selectCategory.value = "Выбрать категорию",
+            selectSubCategory.value = "Выбрать подкатегорию"
+            images.replaceAll(imageToSave)
+            selectImage.value = "../../assets/camera.png"
+            imagesIsLoad.value = false
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
+        console.log("error")
     });
 }
 
