@@ -100,10 +100,15 @@
                             </Grid>
                         </StackPanel>
                     </StackPanel>
-                    <Circle Clicked="{callIt}" Margin="0,225,30,0" Alignment="TopRight" Color="#2f8232" Height="50" Width="50" ZOffset="999">
-                        <DropShadow Size="4" Distance="4" Spread="0.05" Color="#0008" Angle="90" />
-                        <Text Alignment="Center" Value="&#xf095;"  Color="#fff" FontSize="30" Font="FontAwesome"/>
-                    </Circle>
+                    <WhileFalse Value="{myads}">
+                        <Circle Margin="0,225,30,0" Alignment="TopRight" Color="#2f8232" Height="50" Width="50" ZOffset="999">
+                            <DropShadow Size="4" Distance="4" Spread="0.05" Color="#0008" Angle="90" />
+                            <Text Alignment="Center" Value="&#xf095;"  Color="#fff" FontSize="30" Font="FontAwesome"/>
+                            <Clicked>
+                                <Set ModalCall.IsEnabled="true"/>
+                            </Clicked>
+                        </Circle>
+                    </WhileFalse>
                 </Panel>
             </ScrollView>
         </DockPanel>
@@ -124,6 +129,28 @@
                     <Button Margin="0,10,0,0"  Text="ОТМЕНА">
                         <Clicked>
                             <Set ModalConfirm.IsEnabled="false"/>
+                        </Clicked>
+                    </Button>
+                </StackPanel>
+            </Panel>
+        </AlternateRoot>
+        <AlternateRoot IsEnabled="false" ParentNode="{Resource FullWindowAds}" ux:Name="ModalCall">
+            <Panel ZOffset="999" Color="0,0,0,0.9">
+                <StackPanel Alignment="Center" Padding="30">
+                    <Rectangle Layer="Background"  Color="1,1,0.98,1">
+                        <Stroke Width="1" Color="0,0,0,1"/>
+                    </Rectangle>
+                    
+                    <Text Margin="0,0,0,10">ПОЗВОНИТЬ?</Text>
+                    <Button Clicked="{callIt}" Margin="0,20,0,0" Text="ДА">
+                        <Clicked>
+                            <Set ModalCall.IsEnabled="false"/>
+                        </Clicked>
+                    </Button>
+                    
+                    <Button Margin="0,10,0,0"  Text="НЕТ">
+                        <Clicked>
+                            <Set ModalCall.IsEnabled="false"/>
                         </Clicked>
                     </Button>
                 </StackPanel>

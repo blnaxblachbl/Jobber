@@ -183,7 +183,24 @@ removeAds = () => {
 }
 
 callIt = () => {
-    phoneCall.call(phone.value)
+    fetch('http://jobber.creatif.team/api/v1/ads/show_number/' + id.value,{
+        method: 'POST',
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({access_token: token.value})
+    }).then(function (response) {
+        userStatus = response.status;  // Get the HTTP status code
+        userResponse_ok = response.ok; // Is response.status in the 200-range?
+        return response.json();    // This returns a promise
+    }).then(function (responseObject) {
+        console.log(JSON.stringify(responseObject))
+        if (responseObject.code == "200") {
+            phoneCall.call(phone.value)
+        }else{
+            console.log("error")
+        }
+    }).catch(function (err) {
+        // An error occurred somewhere in the Promise chain
+    });
 }
 
 module.exports = {
