@@ -20,7 +20,7 @@ getAds = () => {
         response_ok = response.ok; // Is response.status in the 200-range?
         return response.json();    // This returns a promise
     }).then(function (responseObject) {
-        console.log(JSON.stringify(responseObject))
+        console.log("success - " + JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             title.value = responseObject.msg
             responseObject.content.map((l,i)=>{
@@ -37,6 +37,7 @@ getAds = () => {
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
+        console.log("error-" + JSON.stringify(err))
     });
 }
 

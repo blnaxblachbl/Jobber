@@ -57,7 +57,6 @@ loadingData = () => {
 }
 
 module.exports = {
-    closeTest: closeTest,
     goHome: goHome,
     goAccount: goAccount,
     goBalance: goBalance,

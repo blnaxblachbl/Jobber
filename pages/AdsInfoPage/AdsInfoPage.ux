@@ -1,4 +1,5 @@
 <Page ux:Class="AdsInfoPage"> 
+    <Activated Handler="{isFavoriteAds}"/>
     <Deactivated Handler="{getAds}"/>
     <Deactivated Handler="{getFavorites}"/>
     <JavaScript File="AdsInfoPage.js"/>

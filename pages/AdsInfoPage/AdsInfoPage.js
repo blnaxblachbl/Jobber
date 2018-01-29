@@ -85,12 +85,6 @@ Storage.read("userid").then(function (data) {
 
 Storage.read("favorite").then(function (data) {
     JSON.parse(data).map((l, i) => {
-        if (l.id == id.value) {
-            isFavorite.value = true
-            return null
-        } else {
-            isFavorite.value = false
-        }
         favorite.push({
             title: l.title,
             img: l.img,
@@ -111,6 +105,15 @@ Storage.read("token").then(function (data) {
 
 goBack = () => {
     sideRouter.goBack();
+}
+
+isFavoriteAds = () => {
+    favorite.map((l, i) => {
+        if (l.id == id.value) {
+            isFavorite.value = true
+            console.log("no")
+        } 
+    })
 }
 
 addToFavorite = () => {
@@ -194,5 +197,6 @@ module.exports = {
     removeFromFavorite: removeFromFavorite,
     isFavorite: isFavorite,
     myads: myads,
-    removeAds: removeAds
+    removeAds: removeAds,
+    isFavoriteAds: isFavoriteAds
 }
