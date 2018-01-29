@@ -3,6 +3,10 @@ let Storage = require("FuseJS/Storage");
 let avatar = Observable('');
 let username = Observable('');
 let rate = Observable('');
+let token = Observable('');
+let summ = Observable('');
+let balance = Observable('');
+let transactions = Observable()
 
 loadingData = () => {
     Storage.read("username").then(function (content) {
@@ -19,6 +23,32 @@ loadingData = () => {
 
     Storage.read("rate").then(function (content) {
         rate.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
+
+    Storage.read("token").then(function (content) {
+        token.value = content
+        var status = 0;
+        var response_ok = false;
+        console.log(token.value)
+        fetch('http://jobber.creatif.team/api/v1/user/profile', {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({ access_token: content })
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject.content.transactions))
+            if (responseObject.code == "200") {
+                balance.value = responseObject.content.balance;
+                transactions.replaceAll(responseObject.content.transactions);
+            }
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+        });
     }, function (error) {
         console.log('token undefined')
     });
@@ -58,7 +88,24 @@ addBalance = () => {
 }
 
 goWeb = () => {
-    sideRouter.push("webview")
+    if (summ.value > 0) {
+        var status = 0;
+        var response_ok = false;
+        fetch('http://jobber.creatif.team/api/v1/user/up_balance', {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({ access_token: token.value, sum: summ.value })
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject))
+            sideRouter.push("webview")
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+        });
+    }
 }
 
 module.exports = {
@@ -71,5 +118,8 @@ module.exports = {
     avatar: avatar,
     rate: rate,
     goWeb: goWeb,
-    loadingData: loadingData
+    loadingData: loadingData,
+    summ: summ,
+    balance: balance,
+    transactions: transactions
 }

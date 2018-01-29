@@ -59,9 +59,9 @@
                         </Hamburger>
                         <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Баланс" />
                     </Panel>
-                    <Panel Height="50">
-                         <Grid Columns="1.5*,1*">
-                            <Text FontSize="25" Value="2940.10" Font="Medium" TextAlignment="Right" Width="100%" Alignment="Center" Color="#fff"/>
+                    <Panel  Height="50">
+                         <Grid Columns="1.2*,1*">
+                            <Text FontSize="25" Value="{balance}" Font="Medium" TextAlignment="Right" Width="100%" Alignment="Center" Color="#fff"/>
                             <Text FontSize="20" Value="&#xf158;" Font="FontAwesome" TextAlignment="Left" Width="100%" Alignment="Center" Margin="10,0,0,0" Color="#fff"/>
                         </Grid>
                     </Panel>
@@ -77,9 +77,9 @@
             </Grid >
             <ScrollView>
                 <StackPanel>
-                    <Each Count="50">
-                        <Text Margin="20,5,0,5" Value="Пополнение баланса на 2000 ₽" />
-                        <Text Margin="20,0,0,5" Value="20.10.2017"/>
+                    <Each Items="{transactions}">
+                        <Text Margin="20,5,0,5" Value="{desc} {sum} рублей" />
+                        <Text Margin="20,0,0,5" Value="{datetime}"/>
                         <Rectangle Opacity="0.3" Alignment="Bottom" Height="0.8" Color="#5E5E5E"/>
                     </Each>
                 </StackPanel>
@@ -95,7 +95,7 @@
 				</Rectangle>
 				
 				<Text Margin="0,0,0,10">ВВЕДИТЕ СУММУ ОПЛАТЫ</Text>
-				<TextInput InputHint="Number" ActionStyle="Done" Height="40" Width="90%" TextColor="#5E5E5E" PlaceholderText="Сумма" PlaceholderColor="#5E5E5E">
+				<TextInput Value="{summ}" InputHint="Number" ActionStyle="Done" Height="40" Width="90%" TextColor="#5E5E5E" PlaceholderText="Сумма" PlaceholderColor="#5E5E5E">
                     <Rectangle Opacity="0.3" ux:Name="discription" Alignment="Bottom" Height="1" Color="#5E5E5E"/>
                     <WhileFocused>
                         <Change discription.Opacity="1"/>
