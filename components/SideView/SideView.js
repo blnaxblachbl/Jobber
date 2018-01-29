@@ -27,22 +27,39 @@ isFavorite = () => {
 }
 
 goHome = () => {
-    sideRouter.goto('home');
+    SideMenu.dismiss()
+    setTimeout(() => {
+        sideRouter.goto('home');
+    }, 400)
 }
 
 goAccount = () => {
-    sideRouter.goto('account');
+    SideMenu.dismiss()
+    setTimeout(() => {
+        sideRouter.goto('account');
+    }, 400)
 }
 
 goBalance = () => {
-    sideRouter.goto('balance');
+    SideMenu.dismiss()
+    setTimeout(() => {
+        sideRouter.goto('balance');
+    }, 400)
 }
 
 goInfo = () => {
-    sideRouter.goto('info');
+    SideMenu.dismiss()
+    setTimeout(() => {
+        sideRouter.goto('info');
+    }, 400)
+}
+
+closeTest = () => {
+    SideMenu.dismiss()
 }
 
 module.exports = {
+    closeTest: closeTest,
     goHome: goHome,
     goAccount: goAccount,
     goBalance: goBalance,
