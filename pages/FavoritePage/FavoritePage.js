@@ -16,7 +16,6 @@ getFavorites = () => {
             })
         })
         favoritesAds.replaceAll(array)
-        console.log(array)
     }, function (error) {
         console.log('token undefined')
     });

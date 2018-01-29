@@ -169,6 +169,7 @@ removeAds = () => {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             console.log("deleted")
+            goBack()
         }
     }).catch(function (err) {
         console.log("error")
