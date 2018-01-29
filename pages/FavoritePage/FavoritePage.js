@@ -4,9 +4,11 @@ let favoritesAds = Observable();
 let array = []
 
 getFavorites = () => {
-    Storage.read("favorite").then(function (data) {
-        array = []
-        JSON.parse(data).map((l,i)=>{
+    var data = Storage.readSync("favorite")
+    array = []
+    let db = JSON.parse(data);
+    if (db) {
+        db.map((l, i) => {
             array.push({
                 title: l.title,
                 img: l.img,
@@ -16,14 +18,14 @@ getFavorites = () => {
             })
         })
         favoritesAds.replaceAll(array)
-    }, function (error) {
-        console.log('token undefined')
-    });
+    } else {
+        favoritesAds.clear();
+    }
 }
 
 goAdsInfo = (val) => {
     console.log(JSON.stringify(val.data))
-    sideRouter.push("adsInfo", {id: val.data.id, phone: val.data.phone});
+    sideRouter.push("adsInfo", { id: val.data.id, phone: val.data.phone });
 }
 
 module.exports = {

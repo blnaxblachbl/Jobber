@@ -1,6 +1,7 @@
 <Panel ux:Class="ScrollPage">
     <JavaScript File="ScrollPage.js"/>
     <Router ux:Dependency="sideRouter" />
+    <Activated Handler="{requestData}"/>
     <Router ux:Dependency="router" />
      <DockPanel>
         <Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />

@@ -9,7 +9,7 @@ getAds = () => {
     fetch('http://jobber.creatif.team/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             access_token: token.value,
             limit: 100,
             page: 0,
@@ -23,7 +23,8 @@ getAds = () => {
         console.log("success - " + JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             title.value = responseObject.msg
-            responseObject.content.map((l,i)=>{
+            console.log(responseObject.content.length)
+            responseObject.content.map((l, i) => {
                 array.push({
                     price: l.price,
                     images: l.images[0].file,
@@ -41,16 +42,33 @@ getAds = () => {
     });
 }
 
-this.Parameter.onValueChanged(function(newParam){
+this.Parameter.onValueChanged(function (newParam) {
     id.clear()
     id.value = newParam.id
+});
+
+Storage.read("token").then(function (data) {
+    token.value = data
+}, function (error) {
+    console.log('token undefined')
+});
+
+goAdsInfo = (val) => {
+    sideRouter.push("adsInfo", { id: val.data.id, phone: val.data.phone });
+}
+
+goBack = () => {
+    sideRouter.goBack();
+}
+
+requestData = () => {
     var status = 0;
     var response_ok = false;
     let array = []
     fetch('http://jobber.creatif.team/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             access_token: token.value,
             limit: 100,
             page: 0,
@@ -64,7 +82,7 @@ this.Parameter.onValueChanged(function(newParam){
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             title.value = responseObject.msg
-            responseObject.content.map((l,i)=>{
+            responseObject.content.map((l, i) => {
                 array.push({
                     price: l.price,
                     images: l.images[0].file,
@@ -79,20 +97,6 @@ this.Parameter.onValueChanged(function(newParam){
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
     });
-});
-
-Storage.read("token").then(function (data) {
-    token.value = data
-}, function (error) {
-    console.log('token undefined')
-});
-
-goAdsInfo = (val) => {
-    sideRouter.push("adsInfo", {id: val.data.id, phone: val.data.phone});
-}
-
-goBack = () => {
-    sideRouter.goBack();
 }
 
 module.exports = {
@@ -100,5 +104,6 @@ module.exports = {
     goBack: goBack,
     ads: ads,
     title: title,
-    getAds: getAds
+    getAds: getAds,
+    requestData: requestData
 }
