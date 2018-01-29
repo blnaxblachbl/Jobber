@@ -1,10 +1,6 @@
 <Page ux:Class="AdsInfoPage"> 
     <Activated Handler="{isFavoriteAds}"/>
-    <Deactivated Handler="{getAds}"/>
-    <Deactivated Handler="{getFavorites}"/>
     <JavaScript File="AdsInfoPage.js"/>
-    <JavaScript File="../ScrollPage/ScrollPage.js"/>
-    <JavaScript File="../FavoritePage/FavoritePage.js"/>
     <Router ux:Dependency="sideRouter" />
     <Router ux:Dependency="router" />
     <Panel ux:Name="FullWindowAds" Layer="Overlay">
