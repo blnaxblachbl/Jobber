@@ -1,5 +1,6 @@
 let Observable = require("FuseJS/Observable");
 let Storage = require("FuseJS/Storage");
+let phoneCall = require("FuseJS/Phone");
 let id = Observable();
 let images = Observable();
 let title = Observable();
@@ -181,6 +182,10 @@ removeAds = () => {
     });
 }
 
+callIt = () => {
+    phoneCall.call(phone.value)
+}
+
 module.exports = {
     goBack: goBack,
     goAccount: goAccount,
@@ -200,5 +205,6 @@ module.exports = {
     isFavorite: isFavorite,
     myads: myads,
     removeAds: removeAds,
-    isFavoriteAds: isFavoriteAds
+    isFavoriteAds: isFavoriteAds,
+    callIt: callIt
 }

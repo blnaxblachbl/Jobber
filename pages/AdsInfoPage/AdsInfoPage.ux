@@ -100,7 +100,7 @@
                             </Grid>
                         </StackPanel>
                     </StackPanel>
-                    <Circle Margin="0,225,30,0" Alignment="TopRight" Color="#2f8232" Height="50" Width="50" ZOffset="999">
+                    <Circle Clicked="{callIt}" Margin="0,225,30,0" Alignment="TopRight" Color="#2f8232" Height="50" Width="50" ZOffset="999">
                         <DropShadow Size="4" Distance="4" Spread="0.05" Color="#0008" Angle="90" />
                         <Text Alignment="Center" Value="&#xf095;"  Color="#fff" FontSize="30" Font="FontAwesome"/>
                     </Circle>
