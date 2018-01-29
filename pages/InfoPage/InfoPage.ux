@@ -25,19 +25,19 @@
                 <StackPanel Padding="20">
                     <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goHome}">
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="26" Value="&#xf015;"/>
-                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Главная</Text>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="17">Главная</Text>
                     </Grid>
                     <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goAccount}">
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="23" Value="&#xf2bd;"/>
-                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Личный кабинет</Text>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="17">Личный кабинет</Text>
                     </Grid>
                     <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goBalance}">
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf155;"/>
-                        <Text TextAlignment="Left" Font="Bold" FontSize="20">Баланс</Text>
+                        <Text TextAlignment="Left" Font="Bold" FontSize="17">Баланс</Text>
                     </Grid>
                     <Grid Columns="1*, 3*" Margin='0,0,0,30'>
                         <Text TextAlignment="Center" Color="#F95252" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf05a;"/>
-                        <Text TextAlignment="Left" Color="#F95252" Font="Bold" FontSize="20">О программе</Text>
+                        <Text TextAlignment="Left" Color="#F95252" Font="Bold" FontSize="17">О программе</Text>
                     </Grid>
                 </StackPanel>
             </StackPanel>
