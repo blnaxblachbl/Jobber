@@ -51,7 +51,7 @@ this.Parameter.onValueChanged(function (newParam) {
             userId.value = responseObject.content.user_id
             if (userId.value == myId.value) {
                 myads.value = true
-            }else{
+            } else {
                 myads.value = false
             }
             fetch('http://jobber.creatif.team/api/v1/user/' + userId.value, {
@@ -115,7 +115,7 @@ isFavoriteAds = () => {
         if (l.id == id.value) {
             isFavorite.value = true
             console.log("no")
-        } 
+        }
     })
 }
 
@@ -149,6 +149,7 @@ removeFromFavorite = () => {
     if (done) {
         isFavorite.value = false
         console.log("yes")
+        goBack()
     } else {
         console.log("no")
     }
@@ -163,9 +164,9 @@ removeAds = () => {
     fetch('http://jobber.creatif.team/api/v1/ads/delete', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             access_token: token.value,
-             ads: id.value
+            ads: id.value
         })
     }).then(function (response) {
         status = response.status;  // Get the HTTP status code
@@ -183,10 +184,10 @@ removeAds = () => {
 }
 
 callIt = () => {
-    fetch('http://jobber.creatif.team/api/v1/ads/show_number/' + id.value,{
+    fetch('http://jobber.creatif.team/api/v1/ads/show_number/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({access_token: token.value})
+        body: JSON.stringify({ access_token: token.value })
     }).then(function (response) {
         userStatus = response.status;  // Get the HTTP status code
         userResponse_ok = response.ok; // Is response.status in the 200-range?
@@ -195,7 +196,7 @@ callIt = () => {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             phoneCall.call(phone.value)
-        }else{
+        } else {
             console.log("error")
         }
     }).catch(function (err) {
