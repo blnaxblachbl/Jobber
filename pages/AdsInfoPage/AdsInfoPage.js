@@ -50,6 +50,8 @@ this.Parameter.onValueChanged(function (newParam) {
             userId.value = responseObject.content.user_id
             if (userId.value == myId.value) {
                 myads.value = true
+            }else{
+                myads.value = false
             }
             fetch('http://jobber.creatif.team/api/v1/user/' + userId.value, {
                 method: 'POST',
