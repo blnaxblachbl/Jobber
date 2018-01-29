@@ -1,7 +1,22 @@
 <App>
     <Android.StatusBarConfig Color="#F95252" IsVisible="True" />
     <Router ux:Name="router"/>
-    <Navigator DefaultPath="login">
+
+    <JavaScript>
+        var Storage = require("FuseJS/Storage");
+
+        Storage.read("token").then(function (content) {
+            router.goto("tabView");
+        }, function (error) {
+            console.log('token undefined')
+        });
+    </JavaScript>
+
+    <Page ux:Class="CheckPage">
+    </Page>
+
+    <Navigator DefaultPath="check">
+        <CheckPage ux:Template="check" />
         <LoginPage ux:Template="login" router="router"/>
         <TabView Name="tabView" router="router"/>
         <ConfirmPage ux:Template="confirm" router="router"/>

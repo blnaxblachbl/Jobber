@@ -3,12 +3,6 @@ var Storage = require("FuseJS/Storage");
 
 var phoneNum = Observable('');
 
-Storage.read("token").then(function (content) {
-    router.goto("tabView");
-}, function (error) {
-    console.log('token undefined')
-});
-
 goConfirm = () => {
     if (phoneNum.value != '') {
         var status = 0;
