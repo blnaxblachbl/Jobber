@@ -1,5 +1,7 @@
 let Observable = require("FuseJS/Observable");
 let cameraRoll = require("FuseJS/CameraRoll");
+let ImageTools = require("FuseJS/ImageTools");
+let Storage = require("FuseJS/Storage");
 let images = Observable();
 let category = Observable("10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00");
 let selectCategory = Observable("Выбрать категорию");
@@ -10,43 +12,70 @@ let subCategoryOpened = Observable(false);
 let imageAddEnabled = Observable(true);
 let selectImage = Observable("../../assets/camera.png");
 let selectToDelete = Observable();
+let token = Observable();
+let categories = Observable();
+let subCategories = Observable();
+let adsName = Observable();
+let adsDesc = Observable();
+let adsPrice = Observable();
+let adsAddress = Observable();
+let base64Value = Observable();
+let ready = Observable(false);
+let phone = Observable();
+let email = Observable();
+let selectCategoryId = Observable();
+let imageToSave = []
 
-categories = [
-    { name: "Вакансии", picked: false },
-    { name: "Юридические услуги", picked: false },
-    { name: "Няни и сиделки", picked: false },
-    { name: "Ремонт" },
-    { name: "Строительство и ремонт", picked: false },
-    { name: "Праздники и мероприятия", picked: false },
-    { name: "Красота и здоровье", picked: false },
-    { name: "Обучение по интересам", picked: false },
-    { name: "Грузчики", picked: false }
-]
+Storage.read("token").then(function (data) {
+    token.value = data
+}, function (error) {
+    console.log('token undefined')
+});
 
-subCategories = [
-    { name: "Вакансии", picked: false },
-    { name: "Юридические услуги", picked: false },
-    { name: "Няни и сиделки", picked: false },
-    { name: "Ремонт" },
-    { name: "Строительство и ремонт", picked: false },
-    { name: "Праздники и мероприятия", picked: false },
-    { name: "Красота и здоровье", picked: false },
-    { name: "Обучение по интересам", picked: false },
-    { name: "Грузчики", picked: false }
-]
+Storage.read("phone").then(function (data) {
+    phone.value = data
+}, function (error) {
+    console.log('token undefined')
+});
+
+Storage.read("email").then(function (data) {
+    email.value = data
+}, function (error) {
+    console.log('token undefined')
+});
+
+getCategories = () => {
+    fetch('http://jobber.creatif.team/api/v1/categories', {
+        method: 'POST',
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ access_token: token.value })
+    }).then(function (response) {
+        status = response.status;  // Get the HTTP status code
+        response_ok = response.ok; // Is response.status in the 200-range?
+        return response.json();    // This returns a promise
+    }).then(function (responseObject) {
+        console.log(JSON.stringify(responseObject.content))
+        if (responseObject.code == "200") {
+            categories.replaceAll(responseObject.content)
+        }
+    }).catch(function (err) {
+        // An error occurred somewhere in the Promise chain
+    });
+}
 
 pickImage = (val) => {
     selectImage.value = val.data.path
     selectToDelete.value = val.data
-    console.log(JSON.stringify(selectToDelete))
 }
 
 pick = (val) => {
-    selectCategory.value = val.data.name
+    selectCategory.value = val.data.title
+    subCategories.replaceAll(val.data.children)
     categoryOpened.value = false
 }
 
 categorySwitch = () => {
+    getCategories();
     categoryOpened.value = !categoryOpened.value;
 }
 
@@ -55,7 +84,8 @@ subCategorySwitch = () => {
 }
 
 subPick = (val) => {
-    selectSubCategory.value = val.data.name
+    selectCategoryId.value = val.data.id
+    selectSubCategory.value = val.data.title
     subCategoryOpened.value = false
 }
 
@@ -71,22 +101,98 @@ deleteImage = (val) => {
 }
 
 addImage = () => {
-    cameraRoll.getImage()
-        .then(function (image) {
-            if (images.length == 0) {
-                selectImage.value = image.path
-                imagesIsLoad.value = true
-                images.add({ path: image.path });
-            } else {
-                images.add({ path: image.path });
-                imagesIsLoad.value = true
-                if (images.length > 3) {
-                    imageAddEnabled.value = false
-                }
+    cameraRoll.getImage().then(function (image) {
+        if (images.length == 0) {
+            selectImage.value = image.path
+        }
+        imagesIsLoad.value = true
+        ImageTools.getBase64FromImage(image).then(function (base64Image) {
+            images.add({
+                path: image.path,
+                base: base64Image
+            });
+            if (images.length > 3) {
+                imageAddEnabled.value = false
             }
-        }, function (error) {
-
+            console.log(images.length)
         });
+    }, function (error) {
+
+    });
+}
+
+uploadImage = () => {
+    if (adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
+        let status = 0;
+        let response_ok = false;
+        let i = 0
+        console.log("qwe")
+        for (i = 0; i < images.length; i++) {
+            console.log("while")
+            let requestObject = { file: 'data:image/jpeg;base64,' + images._values[i].base, access_token: token.value };
+            fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+                method: 'POST',
+                headers: { "Content-type": "application/x-www-form-urlencoded" },
+                body: formEncode(requestObject)
+            }).then(function (response) {
+                status = response.status;  // Get the HTTP status code
+                response_ok = response.ok; // Is response.status in the 200-range?
+                return response.json();    // This returns a promise
+            }).then(function (responseObject) {
+                console.log(JSON.stringify(responseObject))
+                if (responseObject.code == '200') {
+                    imageToSave.unshift({ file: "http://jobber.creatif.team/uploads/" + responseObject.content.file_name })
+                    if (imageToSave.length == images.length) {
+                        createAds();
+                    }
+                    //saveData(responseObject.content.file_name)
+                }
+            }).catch(function (err) {
+                // An error occurred somewhere in the Promise chain
+            });
+        }
+    } else {
+        console.log("not empty")
+    }
+}
+
+createAds = () => {
+    console.log("creating")
+    fetch('http://jobber.creatif.team/api/v1/ads/insert', {
+        method: 'POST',
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ 
+            access_token: token.value,
+            title: adsName.value,
+            desc: adsDesc.value,
+            price: adsPrice.value,
+            phone_number: phone.value,
+            datetime: new Date(),
+            category_id: selectCategoryId.value.toString(),
+            address: adsAddress.value,
+            images: imageToSave,
+            email: email.value
+        })
+    }).then(function (response) {
+        status = response.status;  // Get the HTTP status code
+        response_ok = response.ok; // Is response.status in the 200-range?
+        return response.json();    // This returns a promise
+    }).then(function (responseObject) {
+        imageToSave=[]
+        console.log(JSON.stringify(responseObject))
+        if (responseObject.code == '200') {
+
+        }
+    }).catch(function (err) {
+        // An error occurred somewhere in the Promise chain
+    });
+}
+
+formEncode = (obj) => {
+    let str = [];
+    for (let p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    return str.join("&");
 }
 
 module.exports = {
@@ -107,4 +213,10 @@ module.exports = {
     subCategoryOpened: subCategoryOpened,
     selectSubCategory: selectSubCategory,
     subCategorySwitch: subCategorySwitch,
+    getCategories: getCategories,
+    adsAddress: adsAddress,
+    adsDesc: adsDesc,
+    adsName: adsName,
+    adsPrice: adsPrice,
+    uploadImage: uploadImage
 }
