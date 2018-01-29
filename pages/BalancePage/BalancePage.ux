@@ -4,6 +4,7 @@
     <JavaScript File="BalancePage.js" />
     <Panel ux:Name="FullWindow" Layer="Overlay"/>
 	<ResourceObject Key="FullWindow" Value="FullWindow"/>
+    <Activated Handler="{loadingData}"/>
     <EdgeNavigator ux:Name="SideMenu">
         <StackPanel ux:Name="sidebar" Edge="Left" Width="100%" Margin="0,0,56,0" Background="#fff">
             <Rectangle Alignment="Top" Height="25" Width="100%" Background="#F95252" />

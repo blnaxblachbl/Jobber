@@ -4,23 +4,25 @@ let avatar = Observable('');
 let username = Observable('');
 let rate = Observable('');
 
-Storage.read("username").then(function (content) {
-    username.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+loadingData = () => {
+    Storage.read("username").then(function (content) {
+        username.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
 
-Storage.read("avatar").then(function (content) {
-    avatar.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+    Storage.read("avatar").then(function (content) {
+        avatar.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
 
-Storage.read("rate").then(function (content) {
-    rate.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+    Storage.read("rate").then(function (content) {
+        rate.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
+}
 
 goHome = () => {
     SideMenu.dismiss()
@@ -68,5 +70,6 @@ module.exports = {
     username: username,
     avatar: avatar,
     rate: rate,
-    goWeb: goWeb
+    goWeb: goWeb,
+    loadingData: loadingData
 }

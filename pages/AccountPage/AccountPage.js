@@ -15,23 +15,25 @@ let imageValue = Observable('');
 let tokenValue = Observable('');
 let base64Value = Observable('');
 
-Storage.read("username").then(function (content) {
-    username.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+loadingData = () => {
+    Storage.read("username").then(function (content) {
+        username.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
 
-Storage.read("avatar").then(function (content) {
-    avatar.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+    Storage.read("avatar").then(function (content) {
+        avatar.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
 
-Storage.read("rate").then(function (content) {
-    rate.value = content
-}, function (error) {
-    console.log('token undefined')
-});
+    Storage.read("rate").then(function (content) {
+        rate.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
+}
 
 goHome = () => {
     SideMenu.dismiss()
@@ -226,5 +228,6 @@ module.exports = {
     phoneValue: phoneValue,
     imageValue: imageValue,
     uploadImage: uploadImage,
-    logout: logout
+    logout: logout,
+    loadingData: loadingData
 }

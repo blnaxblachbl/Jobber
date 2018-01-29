@@ -4,24 +4,6 @@ let avatar = Observable('');
 let username = Observable('');
 let rate = Observable('');
 
-Storage.read("username").then(function (content) {
-    username.value = content
-}, function (error) {
-    console.log('token undefined')
-});
-
-Storage.read("avatar").then(function (content) {
-    avatar.value = content
-}, function (error) {
-    console.log('token undefined')
-});
-
-Storage.read("rate").then(function (content) {
-    rate.value = content
-}, function (error) {
-    console.log('token undefined')
-});
-
 isFavorite = () => {
     console.log(JSON.stringify("yes123"))
 }
@@ -54,8 +36,24 @@ goInfo = () => {
     }, 400)
 }
 
-closeTest = () => {
-    SideMenu.dismiss()
+loadingData = () => {
+    Storage.read("username").then(function (content) {
+        username.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
+
+    Storage.read("avatar").then(function (content) {
+        avatar.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
+
+    Storage.read("rate").then(function (content) {
+        rate.value = content
+    }, function (error) {
+        console.log('token undefined')
+    });
 }
 
 module.exports = {
@@ -67,5 +65,6 @@ module.exports = {
     username: username,
     avatar: avatar,
     rate: rate,
-    isFavorite: isFavorite
+    isFavorite: isFavorite,
+    loadingData: loadingData,
 }
