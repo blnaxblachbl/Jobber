@@ -68,7 +68,7 @@
                 <Text TextColor="#5E5E5E" Value="{selectCategory}" Alignment="Center" TextAlignment="Left" Width="100%" Color="#5E5E5E"/>
                 <Rectangle Opacity="0.3" ux:Name="ads1" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
                 <WhileTrue Value="{categoryOpened}">
-                    <Change categoryPanel.Height = "300" Duration="0.2"/>
+                    <Change categoryPanel.Height = "{categoriesHeight}" Duration="0.2"/>
                     <Change categoryEach.Visibility = "Visible" Duration="0.2"/>
                     <Change categoryPanel.Margin = "0,0,0,10" Duration="0.2"/>
                     <Change ads1.Color="#14847b" Duration="0.2"/>
@@ -86,7 +86,7 @@
                 <Text TextColor="#5E5E5E" Value="{selectSubCategory}" Alignment="Center" TextAlignment="Left" Width="100%" Color="#5E5E5E"/>
                 <Rectangle Opacity="0.3" ux:Name="ads2" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
                 <WhileTrue Value="{subCategoryOpened}">
-                    <Change subCategoryPanel.Height = "300" Duration="0.2"/>
+                    <Change subCategoryPanel.Height = "{subCategoriesHeight}" Duration="0.2"/>
                     <Change subCategoryEach.Visibility = "Visible" Duration="0.2"/>
                     <Change subCategoryPanel.Margin = "0,0,0,10" Duration="0.2"/>
                     <Change ads2.Color="#14847b" Duration="0.2"/>

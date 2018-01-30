@@ -25,6 +25,8 @@ let phone = Observable();
 let email = Observable();
 let selectCategoryId = Observable();
 let imageToSave = []
+let categoriesHeight = Observable();
+let subCategoriesHeight = Observable();
 
 Storage.read("phone").then(function (data) {
     phone.value = data
@@ -51,6 +53,7 @@ getCategories = () => {
         console.log(JSON.stringify(responseObject.content))
         if (responseObject.code == "200") {
             categories.replaceAll(responseObject.content)
+            categoriesHeight.value = categories.length*35
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
@@ -65,6 +68,7 @@ pickImage = (val) => {
 pick = (val) => {
     selectCategory.value = val.data.title
     subCategories.replaceAll(val.data.children)
+    subCategoriesHeight.value = val.data.children.length*35
     categoryOpened.value = false
 }
 
@@ -230,5 +234,7 @@ module.exports = {
     adsDesc: adsDesc,
     adsName: adsName,
     adsPrice: adsPrice,
-    uploadImage: uploadImage
+    uploadImage: uploadImage,
+    categoriesHeight: categoriesHeight,
+    subCategoriesHeight: subCategoriesHeight
 }
