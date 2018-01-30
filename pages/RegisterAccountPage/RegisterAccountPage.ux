@@ -11,47 +11,52 @@
                 <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="Введите данные" />
             </Panel>
         </StackPanel>
-        <StackPanel>
-            <Panel>
-                <WhileFalse Value="{imageIsPicked}">
-                    <Circle Margin="0,10,0,20" Height="150">
-                        <ImageFill Url="https://myspace.com/common/images/user.png" StretchMode="UniformToFill"/>
-                    </Circle>
-                    <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
-                        <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
-                    </Circle>
-                </WhileFalse>
-                <WhileTrue Value="{imageIsPicked}">
-                    <Circle Margin="0,10,0,20" Height="150">
-                        <ImageFill File="{selectImage}" StretchMode="UniformToFill"/>
-                    </Circle>
-                    <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
-                        <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
-                    </Circle>
-                </WhileTrue>
-            </Panel>
-            <TextInput ActionStyle="Next" Value="{username}" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
-                <Text Value="Ваше имя" Alignment="Top" TextAlignment="Left" />
-                <Rectangle Opacity="0.3" ux:Name="name" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
-                <WhileFocused>
-                    <Change name.Opacity="1"/>
-                    <Change name.Color="#14847b"/>
-                </WhileFocused>
-            </TextInput>
-            <TextInput ActionStyle="Done" Value="{mail}" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
-                <Text Value="Электронная почта" Alignment="Top" TextAlignment="Left" />
-                <Rectangle Opacity="0.3" ux:Name="email" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
-                <WhileFocused>
-                    <Change email.Opacity="1"/>
-                    <Change email.Color="#14847b"/>
-                </WhileFocused>
-                <TextInputActionTriggered>
-                    <ReleaseFocus />
-                </TextInputActionTriggered>
-            </TextInput>
-            <Rectangle Clicked='{uploadImage}' Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="0.8">
-                <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
-            </Rectangle>
+        <ScrollView SnapMaxTransform="false" SnapMinTransform="false">
+            <StackPanel>
+                <Panel>
+                    <WhileFalse Value="{imageIsPicked}">
+                        <Circle Margin="0,10,0,20" Height="150">
+                            <ImageFill Url="https://myspace.com/common/images/user.png" StretchMode="UniformToFill"/>
+                        </Circle>
+                        <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
+                            <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
+                        </Circle>
+                    </WhileFalse>
+                    <WhileTrue Value="{imageIsPicked}">
+                        <Circle Margin="0,10,0,20" Height="150">
+                            <ImageFill File="{selectImage}" StretchMode="UniformToFill"/>
+                        </Circle>
+                        <Circle Clicked="{pickPhoto}" Margin="100,0,0,20" Alignment="Bottom"  Color="#2f8232" Height="50" ZOffset="999">
+                            <Text Alignment="Center" Value="&#xf030;"  Color="#fff" FontSize="25" Font="FontAwesome"/>
+                        </Circle>
+                    </WhileTrue>
+                </Panel>
+                <TextInput ActionStyle="Next" Value="{username}" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
+                    <Text Value="Ваше имя" Alignment="Top" TextAlignment="Left" />
+                    <Rectangle Opacity="0.3" ux:Name="name" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                    <WhileFocused>
+                        <Change name.Opacity="1"/>
+                        <Change name.Color="#14847b"/>
+                        <Change keybordAvoid.Height="300"/>
+                    </WhileFocused>
+                </TextInput>
+                <TextInput ActionStyle="Done" Value="{mail}" Height="70" Width="90%" TextColor="#5E5E5E" PlaceholderColor="#5E5E5E">
+                    <Text Value="Электронная почта" Alignment="Top" TextAlignment="Left" />
+                    <Rectangle Opacity="0.3" ux:Name="email" Margin="0,0,0,15" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
+                    <WhileFocused>
+                        <Change email.Opacity="1"/>
+                        <Change email.Color="#14847b"/>
+                        <Change keybordAvoid.Height="300"/>
+                    </WhileFocused>
+                    <TextInputActionTriggered>
+                        <ReleaseFocus />
+                    </TextInputActionTriggered>
+                </TextInput>
+                <Panel ux:Name="keybordAvoid" Alignment="Bottom" Height="0"/>
             </StackPanel>
+        </ScrollView>
+        <Rectangle ZOffset="999" Alignment="Bottom" Clicked='{uploadImage}' Color="#F95252" Height="50" Width="60%" Margin="0,20,0,30" CornerRadius="30" Opacity="1">
+            <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="1"/>
+        </Rectangle>
     </DockPanel>
 </Page>
