@@ -28,6 +28,9 @@ let imageToSave = []
 let categoriesHeight = Observable();
 let subCategoriesHeight = Observable();
 
+let toastVisible = Observable(false);
+let toastText = Observable("");
+
 Storage.read("phone").then(function (data) {
     phone.value = data
 }, function (error) {
@@ -125,6 +128,8 @@ addImage = () => {
 uploadImage = () => {
     let token = Storage.readSync("token");
     if (token && adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
+        toastText.value = "Подождите, идет загрузка"
+        setToast();
         let status = 0;
         let response_ok = false;
         let i = 0
@@ -154,8 +159,16 @@ uploadImage = () => {
             });
         }
     } else {
-        console.log("not empty")
+        //console.log("not empty")
+        console.log('Заполните все данные')
+        toastText.value = "Все поля должны быть заполнены"
+        setToast()
     }
+}
+
+setToast = () => {
+    toastVisible.value = true
+    setTimeout(() => { toastVisible.value = false }, 1500)
 }
 
 createAds = () => {
@@ -191,10 +204,12 @@ createAds = () => {
                 selectCategoryId.value = 0
                 adsAddress.value = ""
                 selectCategory.value = "Выбрать категорию",
-                    selectSubCategory.value = "Выбрать подкатегорию"
+                selectSubCategory.value = "Выбрать подкатегорию"
                 images.replaceAll(imageToSave)
-                selectImage.value = "../../assets/camera.png"
+                selectImage.value = ""
                 imagesIsLoad.value = false
+                toastText.value = "Обьявление добавлено"
+                setToast()
             }
         }).catch(function (err) {
             // An error occurred somewhere in the Promise chain
@@ -235,5 +250,7 @@ module.exports = {
     adsPrice: adsPrice,
     uploadImage: uploadImage,
     categoriesHeight: categoriesHeight,
-    subCategoriesHeight: subCategoriesHeight
+    subCategoriesHeight: subCategoriesHeight,
+    toastText: toastText,
+    toastVisible: toastVisible
 }
