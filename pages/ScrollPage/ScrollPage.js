@@ -6,6 +6,7 @@ let title = Observable();
 let token = Observable();
 
 getAds = () => {
+    title.value = "Загрузка..."
     fetch('http://192.168.1.11/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
@@ -64,6 +65,7 @@ goBack = () => {
 }
 
 requestData = () => {
+    title.value = "Загрузка..."
     var status = 0;
     var response_ok = false;
     let array = []

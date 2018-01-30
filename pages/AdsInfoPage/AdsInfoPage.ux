@@ -14,7 +14,7 @@
                     <Panel Alignment="CenterLeft" Clicked="{goBack}" Height="100%" HitTestMode="LocalBounds" Width="56">
                         <Text Alignment="CenterLeft" Margin="15,0,0,0" Font="FontAwesome" FontSize="20" TextAlignment="Center" Color="#fff" Value="&#xf053;"/>
                     </Panel>
-                    <Text Alignment="Center" Value="Информация" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" />
+                    <Text Alignment="Center" Value="{info}" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" />
                 </Panel>
             </StackPanel>
             <ScrollView SnapMinTransform="false">

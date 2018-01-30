@@ -21,8 +21,10 @@ let favorite = []
 let isFavorite = Observable(false);
 let myads = Observable(false);
 let myId = Observable();
+let info = Observable();
 
 this.Parameter.onValueChanged(function (newParam) {
+    info.value = "Загрузка"
     id.value = null
     id.value = newParam.id
     phone.value = newParam.phone
@@ -77,6 +79,7 @@ this.Parameter.onValueChanged(function (newParam) {
                     userRaiting1.value = responseObject.content.raiting
                     userRaiting2.value = 5 - userRaiting1.value
                     userData.value = responseObject.content
+                    info.value = "Информация"
                 }
             }).catch(function (err) {
                 // An error occurred somewhere in the Promise chain
@@ -231,5 +234,6 @@ module.exports = {
     myads: myads,
     removeAds: removeAds,
     isFavoriteAds: isFavoriteAds,
-    callIt: callIt
+    callIt: callIt,
+    info: info
 }
