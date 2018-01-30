@@ -67,7 +67,7 @@ checkData = (token) => {
             } else {
                 let userid = Storage.writeSync("userid", responseObject.content.id);
                 let username = Storage.writeSync("username", responseObject.content.username);
-                let avatar = Storage.writeSync("avatar", server.ip + 'uploads/' + responseObject.content.image);
+                let avatar = Storage.writeSync("avatar", server.ip + '/uploads/' + responseObject.content.image);
                 let rate = Storage.writeSync("rate", responseObject.content.raiting);
                 let phone = Storage.writeSync("phone", responseObject.content.phone);
                 let email = Storage.writeSync("email", responseObject.content.email);
