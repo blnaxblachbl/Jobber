@@ -58,7 +58,7 @@
                     <ReleaseFocus />
                 </TextInputActionTriggered>
             </TextInput>
-            <TextInput ActionStyle="Next" Value="{adsPrice}" ActionTriggered="{categorySwitch}" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Установите цену" PlaceholderColor="#5E5E5E">
+            <TextInput ActionStyle="Next" InputHint="Number" Value="{adsPrice}" ActionTriggered="{categorySwitch}" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Установите цену" PlaceholderColor="#5E5E5E">
                 <Rectangle Opacity="0.3" ux:Name="price" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
                 <WhileFocused>
                     <Change price.Opacity="1"/>

@@ -41,23 +41,26 @@ Storage.read("email").then(function (data) {
 });
 
 getCategories = () => {
-    fetch('http://192.168.1.11/api/v1/categories', {
-        method: 'POST',
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ access_token: token.value })
-    }).then(function (response) {
-        status = response.status;  // Get the HTTP status code
-        response_ok = response.ok; // Is response.status in the 200-range?
-        return response.json();    // This returns a promise
-    }).then(function (responseObject) {
-        console.log(JSON.stringify(responseObject.content))
-        if (responseObject.code == "200") {
-            categories.replaceAll(responseObject.content)
-            categoriesHeight.value = categories.length*35
-        }
-    }).catch(function (err) {
-        // An error occurred somewhere in the Promise chain
-    });
+    let token = Storage.readSync("token");
+    if (token) {
+        fetch('http://192.168.1.11/api/v1/categories', {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({ access_token: token })
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject.content))
+            if (responseObject.code == "200") {
+                categories.replaceAll(responseObject.content)
+                categoriesHeight.value = categories.length * 35
+            }
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+        });
+    }
 }
 
 pickImage = (val) => {
@@ -68,7 +71,7 @@ pickImage = (val) => {
 pick = (val) => {
     selectCategory.value = val.data.title
     subCategories.replaceAll(val.data.children)
-    subCategoriesHeight.value = val.data.children.length*35
+    subCategoriesHeight.value = val.data.children.length * 35
     categoryOpened.value = false
 }
 
@@ -120,41 +123,34 @@ addImage = () => {
 }
 
 uploadImage = () => {
-    Storage.read("token").then(function (data) {
-        token.value = data
-    }, function (error) {
-        console.log('token undefined')
-    });
-    if (adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
+    let token = Storage.readSync("token");
+    if (token && adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
         let status = 0;
         let response_ok = false;
         let i = 0
-        console.log("qwe")
         for (i = 0; i < images.length; i++) {
             console.log("while")
-            let requestObject = { file: 'data:image/jpeg;base64,' + images._values[i].base, access_token: token.value };
+            let requestObject = { file: 'data:image/jpeg;base64,' + images._values[i].base, access_token: token };
             fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
                 method: 'POST',
                 headers: { "Content-type": "application/x-www-form-urlencoded" },
                 body: formEncode(requestObject)
             }).then(function (response) {
-                status = response.status;  // Get the HTTP status code
-                response_ok = response.ok; // Is response.status in the 200-range?
-                return response.json();    // This returns a promise
+                status = response.status;
+                response_ok = response.ok;
+                return response.json();
             }).then(function (responseObject) {
                 console.log(JSON.stringify(responseObject))
                 if (responseObject.code == '200') {
-                    imageToSave.push({ file: "http://192.168.1.11/uploads/" + responseObject.content.file_name })
+                    imageToSave.push({ file: responseObject.content.file_name })
                     if (imageToSave.length == images.length) {
                         createAds();
                     }
-                    //saveData(responseObject.content.file_name)
                 } else {
                     imageToSave = []
                 }
             }).catch(function (err) {
                 imageToSave = []
-                // An error occurred somewhere in the Promise chain
             });
         }
     } else {
@@ -163,45 +159,48 @@ uploadImage = () => {
 }
 
 createAds = () => {
-    console.log("creating")
-    fetch('http://192.168.1.11/api/v1/ads/insert', {
-        method: 'POST',
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-            access_token: token.value,
-            title: adsName.value,
-            desc: adsDesc.value,
-            price: adsPrice.value,
-            phone_number: phone.value,
-            datetime: new Date(),
-            category_id: selectCategoryId.value.toString(),
-            address: adsAddress.value,
-            images: imageToSave,
-            email: email.value
-        })
-    }).then(function (response) {
-        status = response.status;  // Get the HTTP status code
-        response_ok = response.ok; // Is response.status in the 200-range?
-        return response.json();    // This returns a promise
-    }).then(function (responseObject) {
-        console.log(JSON.stringify(responseObject))
-        if (responseObject.code == '200') {
-            imageToSave = []
-            adsName.value = ""
-            adsDesc.value = ""
-            adsPrice.value = ""
-            selectCategoryId.value = 0
-            adsAddress.value = ""
-            selectCategory.value = "Выбрать категорию",
-                selectSubCategory.value = "Выбрать подкатегорию"
-            images.replaceAll(imageToSave)
-            selectImage.value = "../../assets/camera.png"
-            imagesIsLoad.value = false
-        }
-    }).catch(function (err) {
-        // An error occurred somewhere in the Promise chain
-        console.log("error")
-    });
+    let token = Storage.readSync("token");
+    if (token) {
+        console.log("creating")
+        fetch('http://192.168.1.11/api/v1/ads/insert', {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                access_token: token,
+                title: adsName.value,
+                desc: adsDesc.value,
+                price: adsPrice.value,
+                phone_number: phone.value,
+                datetime: new Date(),
+                category_id: selectCategoryId.value.toString(),
+                address: adsAddress.value,
+                images: imageToSave,
+                email: email.value
+            })
+        }).then(function (response) {
+            status = response.status;  // Get the HTTP status code
+            response_ok = response.ok; // Is response.status in the 200-range?
+            return response.json();    // This returns a promise
+        }).then(function (responseObject) {
+            console.log(JSON.stringify(responseObject))
+            if (responseObject.code == '200') {
+                imageToSave = []
+                adsName.value = ""
+                adsDesc.value = ""
+                adsPrice.value = ""
+                selectCategoryId.value = 0
+                adsAddress.value = ""
+                selectCategory.value = "Выбрать категорию",
+                    selectSubCategory.value = "Выбрать подкатегорию"
+                images.replaceAll(imageToSave)
+                selectImage.value = "../../assets/camera.png"
+                imagesIsLoad.value = false
+            }
+        }).catch(function (err) {
+            // An error occurred somewhere in the Promise chain
+            console.log("error")
+        });
+    }
 }
 
 formEncode = (obj) => {
