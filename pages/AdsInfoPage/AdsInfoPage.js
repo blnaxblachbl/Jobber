@@ -22,6 +22,7 @@ let isFavorite = Observable(false);
 let myads = Observable(false);
 let myId = Observable();
 let info = Observable();
+let server = require('serverPath');
 
 this.Parameter.onValueChanged(function (newParam) {
     info.value = "Загрузка"
@@ -32,7 +33,7 @@ this.Parameter.onValueChanged(function (newParam) {
     let response_ok = false;
     let userStatus = 0;
     let userResponse_ok = false;
-    fetch('http://192.168.1.11/api/v1/ads/' + id.value, {
+    fetch(server.ip + '/api/v1/ads/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })
@@ -53,7 +54,7 @@ this.Parameter.onValueChanged(function (newParam) {
             responseObject.content.images.map((object) => {
                 arrayImages.push({
                     id: object.id,
-                    file: 'http://192.168.1.11/uploads/' + object.file
+                    file: server.ip + '/uploads/' + object.file
                 })
             })
             images.replaceAll(arrayImages)
@@ -63,7 +64,7 @@ this.Parameter.onValueChanged(function (newParam) {
             } else {
                 myads.value = false
             }
-            fetch('http://192.168.1.11/api/v1/user/' + userId.value, {
+            fetch(server.ip + '/api/v1/user/' + userId.value, {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ access_token: token.value })
@@ -74,7 +75,7 @@ this.Parameter.onValueChanged(function (newParam) {
             }).then(function (responseObject) {
                 console.log(JSON.stringify(responseObject))
                 if (responseObject.code == "200") {
-                    userImage.value = 'http://192.168.1.11/uploads/' + responseObject.content.image
+                    userImage.value = server.ip + '/uploads/' + responseObject.content.image
                     userName.value = responseObject.content.username
                     userRaiting1.value = responseObject.content.raiting
                     userRaiting2.value = 5 - userRaiting1.value
@@ -171,7 +172,7 @@ goAccount = () => {
 }
 
 removeAds = () => {
-    fetch('http://192.168.1.11/api/v1/ads/delete', {
+    fetch(server.ip + '/api/v1/ads/delete', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -194,7 +195,7 @@ removeAds = () => {
 }
 
 callIt = () => {
-    fetch('http://192.168.1.11/api/v1/ads/show_number/' + id.value, {
+    fetch(server.ip + '/api/v1/ads/show_number/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })

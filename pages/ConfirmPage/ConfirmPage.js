@@ -1,6 +1,8 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require("FuseJS/Storage");
 
+let server = require('serverPath');
+
 var smsCode = Observable('')
 
 var params = this.Parameter.map(function (params) {
@@ -16,7 +18,7 @@ goTabView = () => {
         var status = 0;
         var response_ok = false;
 
-        fetch('http://192.168.1.11/api/v1/auth/access_token', {
+        fetch(server.ip + '/api/v1/auth/access_token', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ phone: params.value, code: smsCode.value })
@@ -49,7 +51,7 @@ goTabView = () => {
 checkData = (token) => {
     var status = 0;
     var response_ok = false;
-    fetch('http://192.168.1.11/api/v1/user/profile', {
+    fetch(server.ip + '/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token })

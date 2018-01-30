@@ -10,6 +10,8 @@ let id = Observable();
 let token = Observable();
 let userId = Observable();
 
+let server = require('serverPath');
+
 
 Storage.read("token").then(function (data) {
     token.value = data
@@ -38,7 +40,7 @@ this.Parameter.onValueChanged(function (newParam) {
         }
     }
     raiting.replaceAll(array)
-    image.value = 'http://192.168.1.11/uploads/' + newParam.userData.image
+    image.value = server.ip + '/uploads/' + newParam.userData.image
 })
 
 insertRaiting = (val) => {
@@ -56,7 +58,7 @@ insertRaiting = (val) => {
             })
         }
     }
-    fetch('http://192.168.1.11/api/v1/raiting/insert', {
+    fetch(server.ip + '/api/v1/raiting/insert', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -84,7 +86,7 @@ goBack = () => {
 }
 
 callIt = () => {
-    fetch('http://192.168.1.11/api/v1/ads/show_number/' + id.value, {
+    fetch(server.ip + '/api/v1/ads/show_number/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })

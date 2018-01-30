@@ -4,10 +4,11 @@ let id = Observable();
 let ads = Observable();
 let title = Observable();
 let token = Observable();
+let server = require('serverPath');
 
 getAds = () => {
     title.value = "Загрузка..."
-    fetch('http://192.168.1.11/api/v1/ads', {
+    fetch(server.ip + '/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -69,7 +70,7 @@ requestData = () => {
     var status = 0;
     var response_ok = false;
     let array = []
-    fetch('http://192.168.1.11/api/v1/ads', {
+    fetch(server.ip + '/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

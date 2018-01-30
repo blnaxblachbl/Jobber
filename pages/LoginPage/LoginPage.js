@@ -1,5 +1,6 @@
 var Observable = require("FuseJS/Observable");
 var Storage = require("FuseJS/Storage");
+let server = require('serverPath');
 
 var phoneNum = Observable('');
 
@@ -7,7 +8,7 @@ goConfirm = () => {
     if (phoneNum.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://192.168.1.11/api/v1/auth/send_code', {
+        fetch(server.ip + '/api/v1/auth/send_code', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ phone: phoneNum.value })

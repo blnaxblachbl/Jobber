@@ -10,6 +10,7 @@ let token = Observable("");
 let images = Observable();
 let buffer = Observable();
 let base64Value = Observable('');
+let server = require('serverPath');
 
 let toastVisible = Observable(false);
 let toastText = Observable("");
@@ -32,7 +33,7 @@ saveData = (image) => {
     if (selectImage.value != '' && username.value != '' && mail.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://192.168.1.11/api/v1/user/edit_profile', {
+        fetch(server.ip + '/api/v1/user/edit_profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -65,7 +66,7 @@ saveData = (image) => {
 checkData = () => {
     var status = 0;
     var response_ok = false;
-    fetch('http://192.168.1.11/api/v1/user/profile', {
+    fetch(server.ip + '/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })
@@ -78,7 +79,7 @@ checkData = () => {
         if (responseObject.code == "200") {
             let userid = Storage.writeSync("userid", responseObject.content.id);
             let username = Storage.writeSync("username", responseObject.content.username);
-            let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + responseObject.content.image);
+            let avatar = Storage.writeSync("avatar", server.ip + '/uploads/' + responseObject.content.image);
             let rate = Storage.writeSync("rate", responseObject.content.raiting);
             let phone = Storage.writeSync("phone", responseObject.content.phone);
             let email = Storage.writeSync("email", responseObject.content.email);
@@ -108,7 +109,7 @@ uploadImage = () => {
 
         var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: token.value };
 
-        fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
+        fetch(server.ip + '/api/v1/fileupload/base64_upload', {
             method: 'POST',
             headers: { "Content-type": "application/x-www-form-urlencoded" },
             body: formEncode(requestObject)
