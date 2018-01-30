@@ -99,7 +99,7 @@ Storage.read("token").then(function (token) {
                 nameValue.value = responseObject.content.username;
                 emailValue.value = responseObject.content.email;
                 phoneValue.value = responseObject.content.phone;
-                imageValue.value = responseObject.content.image;
+                imageValue.value = 'http://192.168.1.11/uploads/' + responseObject.content.image;
             }
         }
     }).catch(function (err) {
@@ -142,12 +142,12 @@ saveData = (image = null) => {
             phone: phoneValue.value
         })
     } else {
-        array = avatar.value
+        array = imageValue.value.split('http://192.168.1.11/uploads/')[1]
         body = JSON.stringify({
             access_token: tokenValue.value,
             email: emailValue.value,
             username: nameValue.value,
-            image: array.split('http://192.168.1.11/uploads/')[1],
+            image: array,
             phone: phoneValue.value
         })
     }
@@ -198,6 +198,8 @@ formEncode = (obj) => {
 uploadImage = () => {
     if (nameValue.value != '' && emailValue.value != '' && selectImage.value != '') {
         console.log(tokenValue.value)
+        toastText.value = "Подождите, идет загрузка";
+        setToast();
         var status = 0;
         var response_ok = false;
 
