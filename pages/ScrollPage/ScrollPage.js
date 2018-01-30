@@ -55,6 +55,10 @@ goAdsInfo = (val) => {
     sideRouter.push("adsInfo", { id: val.data.id, phone: val.data.phone });
 }
 
+adsClear = () => {
+    ads.clear();
+}
+
 goBack = () => {
     sideRouter.goBack();
 }
@@ -103,5 +107,6 @@ module.exports = {
     ads: ads,
     title: title,
     getAds: getAds,
-    requestData: requestData
+    requestData: requestData,
+    adsClear: adsClear
 }
