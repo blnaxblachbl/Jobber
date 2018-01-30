@@ -106,4 +106,5 @@
             </StackPanel>
 		</DockPanel>
 	</EdgeNavigator>
+    <Toast Text="{toastText}" Visible="{toastVisible}"/>
 </Page>

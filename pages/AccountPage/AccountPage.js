@@ -15,6 +15,9 @@ let imageValue = Observable('');
 let tokenValue = Observable('');
 let base64Value = Observable('');
 
+let toastVisible = Observable(false);
+let toastText = Observable("");
+
 loadingData = () => {
     Storage.read("username").then(function (content) {
         username.value = content
@@ -128,19 +131,23 @@ updateData = () => {
 
 saveData = (image = null) => {
     let body
+    let array
     if (image != null) {
+        array = image
         body = JSON.stringify({
             access_token: tokenValue.value,
             email: emailValue.value,
             username: nameValue.value,
-            image: 'http://192.168.1.11/uploads/' + image,
+            image: array,
             phone: phoneValue.value
         })
     } else {
+        array = avatar.value
         body = JSON.stringify({
             access_token: tokenValue.value,
             email: emailValue.value,
             username: nameValue.value,
+            image: array.split('http://192.168.1.11/uploads/')[1],
             phone: phoneValue.value
         })
     }
@@ -159,12 +166,16 @@ saveData = (image = null) => {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
                 let username = Storage.writeSync("username", nameValue.value);
-                let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + image);
+                let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + array);
                 if (username && avatar) {
                     console.log('Save complete')
-                    selectImage.value = ""
+                    toastText.value = "ИЗМЕНЕНИЯ СОХРАНЕНЫ"
                     updateData()
+                    setToast()
                 }
+            } else if (responseObject.code == '203') {
+                toastText.value = responseObject.msg
+                setToast()
             }
         }).catch(function (err) {
             // An error occurred somewhere in the Promise chain
@@ -172,6 +183,8 @@ saveData = (image = null) => {
 
     } else {
         console.log('Заполните все данные')
+        toastText.value = "Все поля должны быть заполнены"
+        setToast()
     }
 }
 
@@ -224,6 +237,11 @@ logout = () => {
     router.goto("login")
 }
 
+setToast = () => {
+    toastVisible.value = true
+    setTimeout(() => { toastVisible.value = false }, 1500)
+}
+
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
@@ -241,5 +259,7 @@ module.exports = {
     imageValue: imageValue,
     uploadImage: uploadImage,
     logout: logout,
-    loadingData: loadingData
+    loadingData: loadingData,
+    toastText: toastText,
+    toastVisible: toastVisible
 }

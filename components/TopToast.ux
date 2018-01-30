@@ -1,0 +1,12 @@
+<Panel ZOffset="999" ux:Class="Toast">
+    <Rectangle ux:Name="reactangle" Opacity="0" Visibility="Collapsed" ZOffset="999" Color="#fff" Margin="0,0,0,25" Alignment="BottomCenter" CornerRadius="15" Width="90%" Height="70">
+        <string ux:Property="Text"/>
+        <bool ux:Property="Visible"/>
+        <WhileTrue Value="{Property Visible}">
+            <Change reactangle.Visibility="Visible"/>
+            <Change reactangle.Opacity="1" Duration="0.5"/>
+        </WhileTrue>
+        <Text Width="100%" TextWrapping="Wrap" Alignment="Center" TextAlignment="Center" Value="{Property Text}" Color="#000" />
+        <DropShadow Size="10" Distance="3" Spread="0.05" Color="#0008" Angle="90" />
+    </Rectangle>
+</Panel>

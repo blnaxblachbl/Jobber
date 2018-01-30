@@ -1,6 +1,7 @@
 let Observable = require("FuseJS/Observable");
 let Storage = require("FuseJS/Storage");
 let categories = Observable();
+let toastVisible = Observable(false);
 
 getCategories = () => {
     var token = Storage.readSync("token");
@@ -29,8 +30,15 @@ goSubCategories = (val) => {
     sideRouter.push("sub", { subcategories: val.data.children, title: val.data.title })
 }
 
+setToast = () => {
+    toastVisible.value = true
+    setTimeout(()=>{toastVisible.value = false},1500)
+}
+
 module.exports = {
     categories: categories,
     goSubCategories: goSubCategories,
-    getCategories: getCategories
+    getCategories: getCategories,
+    setToast: setToast,
+    toastVisible: toastVisible
 }
