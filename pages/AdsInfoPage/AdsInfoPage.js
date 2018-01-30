@@ -47,7 +47,14 @@ this.Parameter.onValueChanged(function (newParam) {
             address.value = responseObject.content.address
             parentCategory.value = responseObject.content.parent_category.title
             subCategory.value = responseObject.content.sub_category.title
-            images.replaceAll(responseObject.content.images)
+            let arrayImages = [];
+            responseObject.content.images.map((object) => {
+                arrayImages.push({
+                    id: object.id,
+                    file: 'http://192.168.1.11/uploads/' + object.file
+                })
+            })
+            images.replaceAll(arrayImages)
             userId.value = responseObject.content.user_id
             if (userId.value == myId.value) {
                 myads.value = true

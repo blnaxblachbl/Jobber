@@ -20,14 +20,12 @@ getAds = () => {
         response_ok = response.ok; // Is response.status in the 200-range?
         return response.json();    // This returns a promise
     }).then(function (responseObject) {
-        console.log("success - " + JSON.stringify(responseObject))
         if (responseObject.code == "200") {
             title.value = responseObject.msg
-            console.log(responseObject.content.length)
             responseObject.content.map((l, i) => {
                 array.push({
                     price: l.price,
-                    images: l.images[0].file,
+                    images: "http://192.168.1.11/uploads/" + l.images[0].file,
                     title: l.title,
                     id: l.id,
                     phone: l.phone_number
@@ -85,7 +83,7 @@ requestData = () => {
             responseObject.content.map((l, i) => {
                 array.push({
                     price: l.price,
-                    images: l.images[0].file,
+                    images: "http://192.168.1.11/uploads/" + l.images[0].file,
                     title: l.title,
                     id: l.id,
                     phone: l.phone_number

@@ -42,6 +42,9 @@
                     <Change scrollView.IsEnabled="false"/>
                     <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
+                <TextInputActionTriggered>
+                    <ReleaseFocus />
+                </TextInputActionTriggered>
             </TextInput>
             <TextInput ActionStyle="Next" Value="{adsDesc}" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Описание" PlaceholderColor="#5E5E5E">
                 <Rectangle Opacity="0.3" ux:Name="discription" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
@@ -51,6 +54,9 @@
                     <Change scrollView.IsEnabled="false"/>
                     <Change KeyboardAvoiding.Height="500"/>
                 </WhileFocused>
+                <TextInputActionTriggered>
+                    <ReleaseFocus />
+                </TextInputActionTriggered>
             </TextInput>
             <TextInput ActionStyle="Next" Value="{adsPrice}" ActionTriggered="{categorySwitch}" Height="50" Width="90%" TextColor="#5E5E5E" PlaceholderText="Установите цену" PlaceholderColor="#5E5E5E">
                 <Rectangle Opacity="0.3" ux:Name="price" Alignment="Bottom" Height="2" Color="#5E5E5E"/>
@@ -113,7 +119,7 @@
                 </TextInputActionTriggered>
             </TextInput>
             <Rectangle Clicked="{uploadImage}" Alignment="Bottom" Color="#F95252" Height="50" Width="90%" Margin="0,50,0,0" CornerRadius="30" Opacity="0.8">
-                <Text Value="ПОДАТЬ ОБЪЯВЛЕНИЕ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+                <Text Value="ПОДАТЬ ОБЪЯВЛЕНИЕ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" />
             </Rectangle>
             <Panel ux:Name="KeyboardAvoiding" Height="50" />
         </StackPanel>

@@ -39,28 +39,28 @@ goHome = () => {
     SideMenu.dismiss()
     setTimeout(() => {
         sideRouter.goto('home');
-    }, 400)
+    }, 500)
 }
 
 goAccount = () => {
     SideMenu.dismiss()
     setTimeout(() => {
         sideRouter.goto('account');
-    }, 400)
+    }, 500)
 }
 
 goBalance = () => {
     SideMenu.dismiss()
     setTimeout(() => {
         sideRouter.goto('balance');
-    }, 400)
+    }, 500)
 }
 
 goInfo = () => {
     SideMenu.dismiss()
     setTimeout(() => {
         sideRouter.goto('info');
-    }, 400)
+    }, 500)
 }
 
 pickPhoto = () => {
