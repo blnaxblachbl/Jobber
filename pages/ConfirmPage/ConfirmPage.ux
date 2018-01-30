@@ -1,7 +1,10 @@
 <Page ux:Class="ConfirmPage" Alignment="Center" Width="100%" Height="100%" Background="#fff">
     <Router ux:Dependency="router"/>
     <JavaScript File="ConfirmPage.js"/>
-     <DockPanel>
+    <Activated>
+        <GiveFocus Target="input" />
+    </Activated>
+    <DockPanel>
         <Rectangle ux:Name="sidebarFade" Layer="Overlay" Color="#0005" Opacity="0" HitTestMode="None" />
          <StackPanel Dock="Top" Color="#F95252">
             <Shadow Size="3" Distance="1" />
@@ -19,7 +22,7 @@
                 <StackPanel Alignment="Center" Width="100%">
                     <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
                     <Text FontSize="14" Value="Введите код отправленный на номер телефона" Font="Medium" Color="#5E5E5E" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
-                    <TextInput ActionStyle="Done" Alignment="Center" FontSize="20" Value="{smsCode}" InputHint="Number" Height="50" Width="35%" TextAlignment="Center" TextColor="#5E5E5E" PlaceholderText="смс код" PlaceholderColor="#5E5E5E">
+                    <TextInput ux:Name="input" ActionStyle="Done" Alignment="Center" FontSize="20" Value="{smsCode}" InputHint="Number" Height="50" Width="35%" TextAlignment="Center" TextColor="#5E5E5E" PlaceholderText="смс код" PlaceholderColor="#5E5E5E">
                         <Rectangle ux:Name="sms" Opacity="0.3" Alignment="BottomCenter" Height="2" Color="#5E5E5E" Width="100%"/>
                         <WhileFocused>
                             <Change sms.Opacity="1"/>
@@ -34,8 +37,8 @@
                 <Panel ux:Name="keybordAvoid" Alignment="Bottom" Height="0"/>
             </StackPanel>
         </ScrollView>
-        <Rectangle Clicked="{goTabView}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="0.8">
-            <Text Value="ПОДТВЕРДИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+        <Rectangle ZOffset="999" Clicked="{goTabView}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="1">
+            <Text Value="ПОДТВЕРДИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="1"/>
         </Rectangle>
     </DockPanel>
 </Page>
