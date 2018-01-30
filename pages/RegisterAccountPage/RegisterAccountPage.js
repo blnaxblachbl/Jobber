@@ -11,6 +11,9 @@ let images = Observable();
 let buffer = Observable();
 let base64Value = Observable('');
 
+let toastVisible = Observable(false);
+let toastText = Observable("");
+
 Storage.read("token").then(function (content) {
     token.value = content
 }, function (error) {
@@ -54,6 +57,8 @@ saveData = (image) => {
 
     } else {
         console.log('Заполните все данные')
+        toastText.value = "ЗАПОЛНИТЕ ВСЕ ПОЛЯ"
+        setToast();
     }
 }
 
@@ -83,6 +88,8 @@ checkData = () => {
         }
     }).catch(function (err) {
         // An error occurred somewhere in the Promise chain
+        toastText.value = "ОШИБКА СЕРВЕРА"
+        setToast();
     });
 }
 
@@ -115,8 +122,12 @@ uploadImage = () => {
                 saveData(responseObject.content.file_name)
             }
         }).catch(function (err) {
-            // An error occurred somewhere in the Promise chain
+            toastText.value = "ОШИБКА СЕРВЕРА"
+            setToast();
         });
+    }else{
+        toastText.value = "ЗАПОЛНИТЕ ВСЕ ПОЛЯ"
+        setToast();
     }
 }
 
@@ -132,6 +143,11 @@ pickPhoto = () => {
         }, function (error) {
 
         });
+}
+
+setToast = () => {
+    toastVisible.value = true
+    setTimeout(() => { toastVisible.value = false }, 1500)
 }
 
 module.exports = {

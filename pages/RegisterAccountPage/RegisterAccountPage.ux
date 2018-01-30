@@ -59,4 +59,5 @@
             <Text Value="СОХРАНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="1"/>
         </Rectangle>
     </DockPanel>
+    <Toast Text="{toastText}" Visible="{toastVisible}"/>
 </Page>
