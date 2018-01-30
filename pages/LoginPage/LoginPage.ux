@@ -1,7 +1,7 @@
 <Page ux:Class="LoginPage" Alignment="Center" Width="100%" Height="100%" Background="#fff">
     <Router ux:Dependency="router"/>
     <JavaScript File="LoginPage.js"/>
-    <Panel>
+    <ScrollView SnapMaxTransform="false" SnapMinTransform="false">
         <StackPanel Alignment="Top" Width="100%">
             <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">
                 <ImageFill File="../../assets/logo.jpg" StretchMode="UniformToFill"/>
@@ -12,15 +12,16 @@
                 <WhileFocused>
                     <Change phone.Opacity="1"/>
                     <Change phone.Color="#14847b"/>
+                    <Change keybordAvoid.Height="300"/>
                 </WhileFocused>
                 <TextInputActionTriggered>
                     <ReleaseFocus />
                 </TextInputActionTriggered>
             </TextInput>
-            <BottomBarBackground Dock="Bottom" IncludesKeyboard="true"/>
+            <Panel ux:Name="keybordAvoid" Alignment="Bottom" Height="0"/>
         </StackPanel>
-        <Rectangle Clicked="{goConfirm}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="0.8">
-            <Text Value="ДАЛЕЕ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
-        </Rectangle>
-    </Panel>
+    </ScrollView>
+    <Rectangle ZOffset="999" Clicked="{goConfirm}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="1">
+        <Text Value="ДАЛЕЕ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="1"/>
+    </Rectangle>
 </Page>

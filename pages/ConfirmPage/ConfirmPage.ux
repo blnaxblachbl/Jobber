@@ -11,27 +11,31 @@
                 <Text Alignment="Center" Font="Bold" FontSize="17" Color="#fff" TextAlignment="Center" Value="Подтвердите номер телефона" />
             </Panel>
         </StackPanel>
-        <Panel>
-            <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">
-                <ImageFill File="../../assets/logo.jpg" StretchMode="UniformToFill"/>
-            </Rectangle>
-            <StackPanel Alignment="Center" Width="100%">
-                <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
-                <Text FontSize="12" Value="Введите код отправленный на номер телефона" Font="Medium" Color="#5E5E5E" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
-                <TextInput ActionStyle="Done" Value="{smsCode}" InputHint="Number" Height="30" Width="25%" TextAlignment="Center" TextColor="#5E5E5E" PlaceholderText="Смс код" PlaceholderColor="#5E5E5E">
-                    <Rectangle ux:Name="sms" Opacity="0.3" Alignment="BottomCenter" Height="2" Color="#5E5E5E" Width="100%"/>
-                    <WhileFocused>
-                        <Change sms.Opacity="1"/>
-                        <Change sms.Color="#14847b"/>
-                    </WhileFocused>
-                    <TextInputActionTriggered>
-                        <ReleaseFocus />
-                    </TextInputActionTriggered>
-                </TextInput>
+        <ScrollView SnapMaxTransform="false" SnapMinTransform="false">
+            <StackPanel>
+                <Rectangle CornerRadius="30" Alignment="Top" Width="120" Height="120" Margin="0,90,0,0">
+                    <ImageFill File="../../assets/logo.jpg" StretchMode="UniformToFill"/>
+                </Rectangle>
+                <StackPanel Alignment="Center" Width="100%">
+                    <Text Margin="0,50,0,50" Value="РЕГИСТРАЦИЯ" TextAlignment="Center" FontSize="25" Color="#F95252" Font="Medium" Opacity="0.7"/>
+                    <Text FontSize="14" Value="Введите код отправленный на номер телефона" Font="Medium" Color="#5E5E5E" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+                    <TextInput ActionStyle="Done" Alignment="Center" FontSize="20" Value="{smsCode}" InputHint="Number" Height="50" Width="35%" TextAlignment="Center" TextColor="#5E5E5E" PlaceholderText="смс код" PlaceholderColor="#5E5E5E">
+                        <Rectangle ux:Name="sms" Opacity="0.3" Alignment="BottomCenter" Height="2" Color="#5E5E5E" Width="100%"/>
+                        <WhileFocused>
+                            <Change sms.Opacity="1"/>
+                            <Change sms.Color="#14847b"/>
+                            <Change keybordAvoid.Height="300"/>
+                        </WhileFocused>
+                        <TextInputActionTriggered>
+                            <ReleaseFocus />
+                        </TextInputActionTriggered>
+                    </TextInput>
+                </StackPanel>
+                <Panel ux:Name="keybordAvoid" Alignment="Bottom" Height="0"/>
             </StackPanel>
-            <Rectangle Clicked="{goTabView}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="0.8">
-                <Text Value="ПОДТВЕРДИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
-            </Rectangle>
-        </Panel>
+        </ScrollView>
+        <Rectangle Clicked="{goTabView}" Alignment="Bottom" Color="#F95252" Height="50" Width="60%" Margin="0,0,0,30" CornerRadius="30" Opacity="0.8">
+            <Text Value="ПОДТВЕРДИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center" Opacity="0.7"/>
+        </Rectangle>
     </DockPanel>
 </Page>

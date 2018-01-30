@@ -4,6 +4,7 @@ var Storage = require("FuseJS/Storage");
 var phoneNum = Observable('');
 
 goConfirm = () => {
+    console.log("yes")
     if (phoneNum.value != '') {
         var status = 0;
         var response_ok = false;
