@@ -7,6 +7,7 @@ let token = Observable('');
 let summ = Observable('');
 let balance = Observable('');
 let transactions = Observable()
+let server = require('serverPath');
 
 loadingData = () => {
     Storage.read("username").then(function (content) {
@@ -32,7 +33,7 @@ loadingData = () => {
         var status = 0;
         var response_ok = false;
         console.log(token.value)
-        fetch('http://192.168.1.11/api/v1/user/profile', {
+        fetch(server.ip + '/api/v1/user/profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: content })
@@ -91,7 +92,7 @@ goWeb = () => {
     if (summ.value > 0) {
         var status = 0;
         var response_ok = false;
-        fetch('http://192.168.1.11/api/v1/user/up_balance', {
+        fetch(server.ip + '/api/v1/user/up_balance', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: token.value, sum: summ.value })

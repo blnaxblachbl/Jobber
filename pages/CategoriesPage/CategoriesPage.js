@@ -3,12 +3,14 @@ let Storage = require("FuseJS/Storage");
 let categories = Observable();
 let toastVisible = Observable(false);
 
+let server = require('serverPath');
+
 getCategories = () => {
     var token = Storage.readSync("token");
     if (token) {
         var status = 0;
         var response_ok = false;
-        fetch('http://192.168.1.11/api/v1/categories', {
+        fetch(server.ip + '/api/v1/categories', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: token })

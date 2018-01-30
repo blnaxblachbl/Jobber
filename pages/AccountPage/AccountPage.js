@@ -101,7 +101,7 @@ Storage.read("token").then(function (token) {
                 nameValue.value = responseObject.content.username;
                 emailValue.value = responseObject.content.email;
                 phoneValue.value = responseObject.content.phone;
-                imageValue.value = 'http://192.168.1.11/uploads/' + responseObject.content.image;
+                imageValue.value = server.ip + '/uploads/' + responseObject.content.image;
             }
         }
     }).catch(function (err) {
@@ -144,7 +144,7 @@ saveData = (image = null) => {
             phone: phoneValue.value
         })
     } else {
-        array = imageValue.value.split('http://192.168.1.11/uploads/')[1]
+        array = imageValue.value.split(server.ip + '/uploads/')[1]
         body = JSON.stringify({
             access_token: tokenValue.value,
             email: emailValue.value,
@@ -156,7 +156,7 @@ saveData = (image = null) => {
     if (nameValue.value != '' && emailValue.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://192.168.1.11/api/v1/user/edit_profile', {
+        fetch(server.ip + '/api/v1/user/edit_profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: body
@@ -168,7 +168,7 @@ saveData = (image = null) => {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
                 let username = Storage.writeSync("username", nameValue.value);
-                let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + array);
+                let avatar = Storage.writeSync("avatar", server.ip + '/uploads/' + array);
                 if (username && avatar) {
                     console.log('Save complete')
                     toastText.value = "ИЗМЕНЕНИЯ СОХРАНЕНЫ"
@@ -207,7 +207,7 @@ uploadImage = () => {
 
         var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: tokenValue.value };
 
-        fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
+        fetch(server.ip + '/api/v1/fileupload/base64_upload', {
             method: 'POST',
             headers: { "Content-type": "application/x-www-form-urlencoded" },
             body: formEncode(requestObject)

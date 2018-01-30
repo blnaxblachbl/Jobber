@@ -4,6 +4,8 @@ let avatar = Observable('');
 let username = Observable('');
 let rate = Observable('');
 
+let server = require('serverPath');
+
 isFavorite = () => {
     console.log(JSON.stringify("yes123"))
 }

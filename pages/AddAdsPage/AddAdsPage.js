@@ -31,6 +31,7 @@ let block = Observable();
 
 let toastVisible = Observable(false);
 let toastText = Observable("");
+let server = require('serverPath');
 
 Storage.read("phone").then(function (data) {
     phone.value = data
