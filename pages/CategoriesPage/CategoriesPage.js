@@ -26,6 +26,8 @@ getCategories = () => {
     }
 }
 
+getCategories()
+
 goSubCategories = (val) => {
     sideRouter.push("sub", { subcategories: val.data.children, title: val.data.title })
 }
