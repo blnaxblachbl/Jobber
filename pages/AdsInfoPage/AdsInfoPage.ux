@@ -14,7 +14,7 @@
                     <Panel Alignment="CenterLeft" Clicked="{goBack}" Height="100%" HitTestMode="LocalBounds" Width="56">
                         <Text Alignment="CenterLeft" Margin="15,0,0,0" Font="FontAwesome" FontSize="20" TextAlignment="Center" Color="#fff" Value="&#xf053;"/>
                     </Panel>
-                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" />
+                    <Text Alignment="Center" Value="Информация" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" />
                 </Panel>
             </StackPanel>
             <ScrollView SnapMinTransform="false">
@@ -133,20 +133,20 @@
             </Panel>
         </AlternateRoot>
         <AlternateRoot IsEnabled="false" ParentNode="{Resource FullWindowAds}" ux:Name="ModalCall">
-            <Panel ZOffset="999" Color="0,0,0,0.9">
+            <Panel ZOffset="999" Color="0,0,0,0.9" >
                 <StackPanel Alignment="Center" Padding="30">
                     <Rectangle Layer="Background"  Color="1,1,0.98,1">
                         <Stroke Width="1" Color="0,0,0,1"/>
                     </Rectangle>
                     
                     <Text Margin="0,0,0,10">ПОЗВОНИТЬ?</Text>
-                    <Button Clicked="{callIt}" Margin="0,20,0,0" Text="ДА">
+                    <Button Clicked="{callIt}" Margin="0,20,0,0" Text="Позвонить">
                         <Clicked>
                             <Set ModalCall.IsEnabled="false"/>
                         </Clicked>
                     </Button>
                     
-                    <Button Margin="0,10,0,0"  Text="НЕТ">
+                    <Button Margin="0,10,0,0"  Text="Отменить">
                         <Clicked>
                             <Set ModalCall.IsEnabled="false"/>
                         </Clicked>
