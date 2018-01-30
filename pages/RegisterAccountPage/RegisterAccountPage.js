@@ -71,9 +71,12 @@ checkData = () => {
     }).then(function (responseObject) {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == "200") {
+            let userid = Storage.writeSync("userid", responseObject.content.id);
             let username = Storage.writeSync("username", responseObject.content.username);
             let avatar = Storage.writeSync("avatar", responseObject.content.image);
             let rate = Storage.writeSync("rate", responseObject.content.raiting);
+            let phone = Storage.writeSync("phone", responseObject.content.phone);
+            let email = Storage.writeSync("email", responseObject.content.email);
             if (username && avatar && rate) {
                 router.goto("tabView");
             }

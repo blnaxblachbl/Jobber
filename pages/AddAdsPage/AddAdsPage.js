@@ -26,12 +26,6 @@ let email = Observable();
 let selectCategoryId = Observable();
 let imageToSave = []
 
-Storage.read("token").then(function (data) {
-    token.value = data
-}, function (error) {
-    console.log('token undefined')
-});
-
 Storage.read("phone").then(function (data) {
     phone.value = data
 }, function (error) {
@@ -122,6 +116,11 @@ addImage = () => {
 }
 
 uploadImage = () => {
+    Storage.read("token").then(function (data) {
+        token.value = data
+    }, function (error) {
+        console.log('token undefined')
+    });
     if (adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
         let status = 0;
         let response_ok = false;
@@ -146,7 +145,7 @@ uploadImage = () => {
                         createAds();
                     }
                     //saveData(responseObject.content.file_name)
-                }else{
+                } else {
                     imageToSave = []
                 }
             }).catch(function (err) {
@@ -164,7 +163,7 @@ createAds = () => {
     fetch('http://jobber.creatif.team/api/v1/ads/insert', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             access_token: token.value,
             title: adsName.value,
             desc: adsDesc.value,
@@ -183,14 +182,14 @@ createAds = () => {
     }).then(function (responseObject) {
         console.log(JSON.stringify(responseObject))
         if (responseObject.code == '200') {
-            imageToSave=[]
+            imageToSave = []
             adsName.value = ""
             adsDesc.value = ""
             adsPrice.value = ""
             selectCategoryId.value = 0
             adsAddress.value = ""
             selectCategory.value = "Выбрать категорию",
-            selectSubCategory.value = "Выбрать подкатегорию"
+                selectSubCategory.value = "Выбрать подкатегорию"
             images.replaceAll(imageToSave)
             selectImage.value = "../../assets/camera.png"
             imagesIsLoad.value = false

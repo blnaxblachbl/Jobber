@@ -8,7 +8,7 @@
         Storage.read("token").then(function (content) {
             router.goto("tabView");
         }, function (error) {
-            console.log('token undefined')
+            router.goto("login");
         });
     </JavaScript>
 
