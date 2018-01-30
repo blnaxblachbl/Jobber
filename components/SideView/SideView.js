@@ -58,7 +58,23 @@ loadingData = () => {
     });
 }
 
-loadingData()
+Storage.read("username").then(function (content) {
+    username.value = content
+}, function (error) {
+    console.log('token undefined')
+});
+
+Storage.read("avatar").then(function (content) {
+    avatar.value = content
+}, function (error) {
+    console.log('token undefined')
+});
+
+Storage.read("rate").then(function (content) {
+    rate.value = content
+}, function (error) {
+    console.log('token undefined')
+});
 
 module.exports = {
     goHome: goHome,
