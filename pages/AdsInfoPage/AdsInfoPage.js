@@ -118,6 +118,7 @@ goBack = () => {
 }
 
 isFavoriteAds = () => {
+    isFavorite.value = false
     favorite.map((l, i) => {
         if (l.id == id.value) {
             isFavorite.value = true
@@ -156,7 +157,6 @@ removeFromFavorite = () => {
     if (done) {
         isFavorite.value = false
         console.log("yes")
-        goBack()
     } else {
         console.log("no")
     }
