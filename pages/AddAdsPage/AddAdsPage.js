@@ -27,6 +27,7 @@ let selectCategoryId = Observable();
 let imageToSave = []
 let categoriesHeight = Observable();
 let subCategoriesHeight = Observable();
+let block = Observable();
 
 let toastVisible = Observable(false);
 let toastText = Observable("");
@@ -127,9 +128,10 @@ addImage = () => {
 
 uploadImage = () => {
     let token = Storage.readSync("token");
-    if (token && adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
+    if (token && images.length != 0 && adsName.value != '' && adsPrice.value != '' && adsDesc.value != '' && adsAddress.value != '' && selectCategory.value != 'Выбрать категорию' && selectSubCategory.value != 'Выбрать подкатегорию') {
         toastText.value = "Подождите, идет загрузка"
         setToast();
+        block.value = false
         let status = 0;
         let response_ok = false;
         let i = 0
@@ -152,6 +154,7 @@ uploadImage = () => {
                         createAds();
                     }
                 } else {
+                    block.value = true
                     imageToSave = []
                 }
             }).catch(function (err) {
@@ -197,6 +200,7 @@ createAds = () => {
         }).then(function (responseObject) {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
+                block.value = true
                 imageToSave = []
                 adsName.value = ""
                 adsDesc.value = ""
@@ -204,12 +208,14 @@ createAds = () => {
                 selectCategoryId.value = 0
                 adsAddress.value = ""
                 selectCategory.value = "Выбрать категорию",
-                selectSubCategory.value = "Выбрать подкатегорию"
+                    selectSubCategory.value = "Выбрать подкатегорию"
                 images.replaceAll(imageToSave)
                 selectImage.value = ""
                 imagesIsLoad.value = false
                 toastText.value = "Обьявление добавлено"
                 setToast()
+            } else {
+                block.value = true
             }
         }).catch(function (err) {
             // An error occurred somewhere in the Promise chain
@@ -252,5 +258,6 @@ module.exports = {
     categoriesHeight: categoriesHeight,
     subCategoriesHeight: subCategoriesHeight,
     toastText: toastText,
-    toastVisible: toastVisible
+    toastVisible: toastVisible,
+    block: block
 }
