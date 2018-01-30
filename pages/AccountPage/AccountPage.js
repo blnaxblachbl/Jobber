@@ -126,20 +126,31 @@ updateData = () => {
     });
 }
 
-saveData = (image) => {
-    if (nameValue.value != '' && emailValue.value != '' && selectImage.value != '') {
+saveData = (image = null) => {
+    let body
+    if (image != null) {
+        body = JSON.stringify({
+            access_token: tokenValue.value,
+            email: emailValue.value,
+            username: nameValue.value,
+            image: 'http://192.168.1.11/uploads/' + image,
+            phone: phoneValue.value
+        })
+    } else {
+        body = JSON.stringify({
+            access_token: tokenValue.value,
+            email: emailValue.value,
+            username: nameValue.value,
+            phone: phoneValue.value
+        })
+    }
+    if (nameValue.value != '' && emailValue.value != '') {
         var status = 0;
         var response_ok = false;
         fetch('http://192.168.1.11/api/v1/user/edit_profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
-            body: JSON.stringify({
-                access_token: tokenValue.value,
-                email: emailValue.value,
-                username: nameValue.value,
-                image: 'http://192.168.1.11/uploads/' + image,
-                phone: phoneValue.value
-            })
+            body: body
         }).then(function (response) {
             status = response.status;  // Get the HTTP status code
             response_ok = response.ok; // Is response.status in the 200-range?
@@ -151,6 +162,7 @@ saveData = (image) => {
                 let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + image);
                 if (username && avatar) {
                     console.log('Save complete')
+                    selectImage.value = ""
                     updateData()
                 }
             }
@@ -194,6 +206,10 @@ uploadImage = () => {
         }).catch(function (err) {
             // An error occurred somewhere in the Promise chain
         });
+    } else if (selectImage.value == '') {
+        saveData()
+    } else {
+        console.log("empty strings")
     }
 }
 
