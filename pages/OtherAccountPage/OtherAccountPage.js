@@ -1,5 +1,6 @@
 let Observable = require("FuseJS/Observable");
 let Storage = require("FuseJS/Storage");
+let phoneCall = require("FuseJS/Phone");
 let phone = Observable();
 let name = Observable();
 let raiting = Observable();
@@ -7,6 +8,7 @@ let raitingIndex = Observable();
 let image = Observable();
 let id = Observable();
 let token = Observable();
+let userId = Observable();
 
 
 Storage.read("token").then(function (data) {
@@ -20,7 +22,8 @@ this.Parameter.onValueChanged(function (newParam) {
     phone.value = newParam.phone
     name.value = newParam.userData.username
     raitingIndex.value = newParam.raiting
-    id.value = newParam.userId
+    id.value = newParam.id
+    userId.value = newParam.userId
     for (let i = 0; i < 5; i++) {
         if (i < newParam.userData.raiting) {
             array.push({
@@ -35,7 +38,7 @@ this.Parameter.onValueChanged(function (newParam) {
         }
     }
     raiting.replaceAll(array)
-    image.value = newParam.userData.image
+    image.value = 'http://192.168.1.11/uploads/' + newParam.userData.image
 })
 
 insertRaiting = (val) => {
@@ -60,7 +63,7 @@ insertRaiting = (val) => {
             access_token: token.value,
             review: "",
             raiting: val.data.i + 1,
-            for_user_id: id.value
+            for_user_id: userId.value
         })
     }).then(function (response) {
         userStatus = response.status;  // Get the HTTP status code
@@ -80,11 +83,33 @@ goBack = () => {
     sideRouter.goBack();
 }
 
+callIt = () => {
+    fetch('http://192.168.1.11/api/v1/ads/show_number/' + id.value, {
+        method: 'POST',
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ access_token: token.value })
+    }).then(function (response) {
+        userStatus = response.status;  // Get the HTTP status code
+        userResponse_ok = response.ok; // Is response.status in the 200-range?
+        return response.json();    // This returns a promise
+    }).then(function (responseObject) {
+        console.log(JSON.stringify(responseObject))
+        if (responseObject.code == "200") {
+            phoneCall.call(phone.value)
+        } else {
+            console.log("error")
+        }
+    }).catch(function (err) {
+        // An error occurred somewhere in the Promise chain
+    });
+}
+
 module.exports = {
     goBack: goBack,
     phone: phone,
     raiting: raiting,
     image: image,
     name: name,
-    insertRaiting: insertRaiting
+    insertRaiting: insertRaiting,
+    callIt: callIt
 }

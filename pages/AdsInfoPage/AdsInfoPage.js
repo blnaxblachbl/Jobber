@@ -72,7 +72,7 @@ this.Parameter.onValueChanged(function (newParam) {
             }).then(function (responseObject) {
                 console.log(JSON.stringify(responseObject))
                 if (responseObject.code == "200") {
-                    userImage.value = responseObject.content.image
+                    userImage.value = 'http://192.168.1.11/uploads/' + responseObject.content.image
                     userName.value = responseObject.content.username
                     userRaiting1.value = responseObject.content.raiting
                     userRaiting2.value = 5 - userRaiting1.value
@@ -164,7 +164,7 @@ removeFromFavorite = () => {
 
 goAccount = () => {
     console.log(JSON.stringify(userData.value))
-    sideRouter.push("other", { userData: userData.value, phone: phone.value, userId: userId.value });
+    sideRouter.push("other", { userData: userData.value, phone: phone.value, userId: userId.value, id: id.value });
 }
 
 removeAds = () => {

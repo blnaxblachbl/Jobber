@@ -31,7 +31,7 @@
                 </Each>
             </StackPanel>
         </StackPanel>
-        <Rectangle  Color="#F95252" Height="50" Width="60%" Margin="0,40,0,40" CornerRadius="30" Opacity="0.8">
+        <Rectangle Clicked="{callIt}" Color="#F95252" Height="50" Width="60%" Margin="0,40,0,40" CornerRadius="30" Opacity="0.8">
             <Text Value="ПОЗВОНИТЬ" Font="Medium" Color="#fff" Alignment="Center" TextAlignment="Center"/>
         </Rectangle>
     </StackPanel>
