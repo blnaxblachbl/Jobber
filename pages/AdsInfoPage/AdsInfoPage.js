@@ -30,7 +30,7 @@ this.Parameter.onValueChanged(function (newParam) {
     let response_ok = false;
     let userStatus = 0;
     let userResponse_ok = false;
-    fetch('http://jobber.creatif.team/api/v1/ads/' + id.value, {
+    fetch('http://192.168.1.11/api/v1/ads/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })
@@ -54,7 +54,7 @@ this.Parameter.onValueChanged(function (newParam) {
             } else {
                 myads.value = false
             }
-            fetch('http://jobber.creatif.team/api/v1/user/' + userId.value, {
+            fetch('http://192.168.1.11/api/v1/user/' + userId.value, {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ access_token: token.value })
@@ -161,7 +161,7 @@ goAccount = () => {
 }
 
 removeAds = () => {
-    fetch('http://jobber.creatif.team/api/v1/ads/delete', {
+    fetch('http://192.168.1.11/api/v1/ads/delete', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -184,7 +184,7 @@ removeAds = () => {
 }
 
 callIt = () => {
-    fetch('http://jobber.creatif.team/api/v1/ads/show_number/' + id.value, {
+    fetch('http://192.168.1.11/api/v1/ads/show_number/' + id.value, {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })

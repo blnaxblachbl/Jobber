@@ -39,7 +39,7 @@ Storage.read("email").then(function (data) {
 });
 
 getCategories = () => {
-    fetch('http://jobber.creatif.team/api/v1/categories', {
+    fetch('http://192.168.1.11/api/v1/categories', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })
@@ -129,7 +129,7 @@ uploadImage = () => {
         for (i = 0; i < images.length; i++) {
             console.log("while")
             let requestObject = { file: 'data:image/jpeg;base64,' + images._values[i].base, access_token: token.value };
-            fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+            fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
                 method: 'POST',
                 headers: { "Content-type": "application/x-www-form-urlencoded" },
                 body: formEncode(requestObject)
@@ -140,7 +140,7 @@ uploadImage = () => {
             }).then(function (responseObject) {
                 console.log(JSON.stringify(responseObject))
                 if (responseObject.code == '200') {
-                    imageToSave.push({ file: "http://jobber.creatif.team/uploads/" + responseObject.content.file_name })
+                    imageToSave.push({ file: "http://192.168.1.11/uploads/" + responseObject.content.file_name })
                     if (imageToSave.length == images.length) {
                         createAds();
                     }
@@ -160,7 +160,7 @@ uploadImage = () => {
 
 createAds = () => {
     console.log("creating")
-    fetch('http://jobber.creatif.team/api/v1/ads/insert', {
+    fetch('http://192.168.1.11/api/v1/ads/insert', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

@@ -81,7 +81,7 @@ Storage.read("token").then(function (token) {
     tokenValue.value = token
     var status = 0;
     var response_ok = false;
-    fetch('http://jobber.creatif.team/api/v1/user/profile', {
+    fetch('http://192.168.1.11/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token })
@@ -130,14 +130,14 @@ saveData = (image) => {
     if (nameValue.value != '' && emailValue.value != '' && selectImage.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://jobber.creatif.team/api/v1/user/edit_profile', {
+        fetch('http://192.168.1.11/api/v1/user/edit_profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
                 access_token: tokenValue.value,
                 email: emailValue.value,
                 username: nameValue.value,
-                image: 'http://jobber.creatif.team/uploads/' + image,
+                image: 'http://192.168.1.11/uploads/' + image,
                 phone: phoneValue.value
             })
         }).then(function (response) {
@@ -148,7 +148,7 @@ saveData = (image) => {
             console.log(JSON.stringify(responseObject))
             if (responseObject.code == '200') {
                 let username = Storage.writeSync("username", nameValue.value);
-                let avatar = Storage.writeSync("avatar", 'http://jobber.creatif.team/uploads/' + image);
+                let avatar = Storage.writeSync("avatar", 'http://192.168.1.11/uploads/' + image);
                 if (username && avatar) {
                     console.log('Save complete')
                     updateData()
@@ -178,7 +178,7 @@ uploadImage = () => {
 
         var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: tokenValue.value };
 
-        fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+        fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
             method: 'POST',
             headers: { "Content-type": "application/x-www-form-urlencoded" },
             body: formEncode(requestObject)
@@ -205,12 +205,7 @@ logout = () => {
     let favorite = Storage.deleteSync("favorite")
     let userid = Storage.deleteSync("userid")
     let email = Storage.deleteSync("email")
-    if (avatar && rate && username && token && favorite && userid && email){
-        console.log("logout")
-        router.goto("login")
-    }else{
-        console.log("logout error")
-    }
+    router.goto("login")
 }
 
 module.exports = {

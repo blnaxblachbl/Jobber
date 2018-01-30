@@ -2,7 +2,6 @@
     <JavaScript File="CategoriesPage.js"/>
     <Router ux:Dependency="sideRouter" />
     <Router ux:Dependency="router" />
-    <Activated Handler="{getCategories}"/>
     <ScrollView>
         <StackPanel>
             <Each Items="{categories}" >

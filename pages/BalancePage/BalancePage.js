@@ -32,7 +32,7 @@ loadingData = () => {
         var status = 0;
         var response_ok = false;
         console.log(token.value)
-        fetch('http://jobber.creatif.team/api/v1/user/profile', {
+        fetch('http://192.168.1.11/api/v1/user/profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: content })
@@ -91,7 +91,7 @@ goWeb = () => {
     if (summ.value > 0) {
         var status = 0;
         var response_ok = false;
-        fetch('http://jobber.creatif.team/api/v1/user/up_balance', {
+        fetch('http://192.168.1.11/api/v1/user/up_balance', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: token.value, sum: summ.value })

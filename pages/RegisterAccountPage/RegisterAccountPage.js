@@ -29,14 +29,14 @@ saveData = (image) => {
     if (selectImage.value != '' && username.value != '' && mail.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://jobber.creatif.team/api/v1/user/edit_profile', {
+        fetch('http://192.168.1.11/api/v1/user/edit_profile', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
                 access_token: token.value,
                 email: mail.value,
                 username: username.value,
-                image: 'http://jobber.creatif.team/uploads/' + image,
+                image: 'http://192.168.1.11/uploads/' + image,
                 phone: phone.value
             })
         }).then(function (response) {
@@ -60,7 +60,7 @@ saveData = (image) => {
 checkData = () => {
     var status = 0;
     var response_ok = false;
-    fetch('http://jobber.creatif.team/api/v1/user/profile', {
+    fetch('http://192.168.1.11/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token.value })
@@ -101,7 +101,7 @@ uploadImage = () => {
 
         var requestObject = { file: 'data:image/jpeg;base64,' + base64Value.value, access_token: token.value };
 
-        fetch('http://jobber.creatif.team/api/v1/fileupload/base64_upload', {
+        fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
             method: 'POST',
             headers: { "Content-type": "application/x-www-form-urlencoded" },
             body: formEncode(requestObject)

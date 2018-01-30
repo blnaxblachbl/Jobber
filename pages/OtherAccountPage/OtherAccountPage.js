@@ -53,7 +53,7 @@ insertRaiting = (val) => {
             })
         }
     }
-    fetch('http://jobber.creatif.team/api/v1/raiting/insert', {
+    fetch('http://192.168.1.11/api/v1/raiting/insert', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

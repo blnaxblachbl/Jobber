@@ -6,7 +6,7 @@ let title = Observable();
 let token = Observable();
 
 getAds = () => {
-    fetch('http://jobber.creatif.team/api/v1/ads', {
+    fetch('http://192.168.1.11/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ requestData = () => {
     var status = 0;
     var response_ok = false;
     let array = []
-    fetch('http://jobber.creatif.team/api/v1/ads', {
+    fetch('http://192.168.1.11/api/v1/ads', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

@@ -7,7 +7,7 @@ goConfirm = () => {
     if (phoneNum.value != '') {
         var status = 0;
         var response_ok = false;
-        fetch('http://jobber.creatif.team/api/v1/auth/send_code', {
+        fetch('http://192.168.1.11/api/v1/auth/send_code', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ phone: phoneNum.value })
