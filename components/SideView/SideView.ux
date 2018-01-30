@@ -15,7 +15,7 @@
                 <Rectangle Height="150" Width="100%" Color="#F95252">
                     <Grid Columns="1*,2*">
                         <Circle  Height="50%">
-                            <ImageFill Url="{avatar}" />
+                            <ImageFill Url="{avatar}" StretchMode="UniformToFill"/>
                         </Circle>
                         <StackPanel Alignment="CenterLeft" >
                             <Text Margin="0,0,0,10" Color="#fff" Value="{username}" />
@@ -35,10 +35,6 @@
                     <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goBalance}">
                         <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf155;"/>
                         <Text TextAlignment="Left" Font="Bold" FontSize="17">Баланс</Text>
-                    </Grid>
-                    <Grid Columns="1*, 3*" Margin='0,0,0,30' Clicked="{goInfo}">
-                        <Text TextAlignment="Center" Margin="0,0,30,0" Font="FontAwesome" FontSize="25" Value="&#xf05a;"/>
-                        <Text TextAlignment="Left" Font="Bold" FontSize="17">О программе</Text>
                     </Grid>
                 </StackPanel>
             </StackPanel>

@@ -14,7 +14,7 @@
                     <Panel Alignment="CenterLeft" Clicked="{goBack}" Height="100%" HitTestMode="LocalBounds" Width="56">
                         <Text Alignment="CenterLeft" Margin="15,0,0,0" Font="FontAwesome" FontSize="20" TextAlignment="Center" Color="#fff" Value="&#xf053;"/>
                     </Panel>
-                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" Value="{title}" />
+                    <Text Alignment="Center" Font="Bold" FontSize="20" Color="#fff" TextAlignment="Center" />
                 </Panel>
             </StackPanel>
             <ScrollView SnapMinTransform="false">
@@ -46,7 +46,7 @@
                                 <Text FontSize="20" Value="{price}" Font="Bold" TextAlignment="Left" Alignment="Center" Color="#000"/>
                                 <Text FontSize="17" Value="&#xf158;" Font="FontAwesome" TextAlignment="Left" Alignment="Center" Margin="10,0,0,0" Color="#000"/>
                             </StackPanel>
-                            <Text Width="50%" Font="Bold" FontSize="20" Value="{title}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,0,5"/>
+                            <Text Width="100%" Font="Bold" FontSize="20" Value="{title}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,0,5"/>
                             <Rectangle Opacity="0.1" Alignment="Bottom" Height="1" Color="#5E5E5E"/>
                             <Text Font="Bold" FontSize="12" Value="Описание" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,15,0,5"/>
                             <Text FontSize="14" Value="{desc}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
@@ -54,14 +54,14 @@
                             <Text FontSize="14" Value="{address}" TextWrapping="Wrap" Color="#000" Alignment="TopLeft" Margin="15,5,15,0"/>
                             <WhileFalse Value="{myads}">
                                 <WhileFalse Value="{isFavorite}">
-                                    <Text Clicked="{addToFavorite}" FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
+                                    <Text Clicked="{addToFavorite}" FontSize="14" Value="ДОБАВИТЬ В ИЗБРАННОЕ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,30,0,20"/>
                                 </WhileFalse>
                                 <WhileTrue Value="{isFavorite}">
-                                    <Text Clicked="{removeFromFavorite}" FontSize="14" Value="УДАЛИТЬ ИЗ ИЗБРАННОГО" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40"/>
+                                    <Text Clicked="{removeFromFavorite}" FontSize="14" Value="УДАЛИТЬ ИЗ ИЗБРАННОГО" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,30,0,20"/>
                                 </WhileTrue>
                             </WhileFalse>
                             <WhileTrue Value="{myads}">
-                                <Text FontSize="14" Value="УДАЛИТЬ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,50,0,40">
+                                <Text FontSize="14" Value="УДАЛИТЬ" TextWrapping="Wrap" Color="#05988a" Alignment="Center" Margin="0,30,0,20">
                                     <Clicked>
                                         <Set ModalConfirm.IsEnabled="true"/>
                                     </Clicked>
