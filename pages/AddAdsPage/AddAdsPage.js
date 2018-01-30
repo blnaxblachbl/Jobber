@@ -47,7 +47,7 @@ Storage.read("email").then(function (data) {
 getCategories = () => {
     let token = Storage.readSync("token");
     if (token) {
-        fetch('http://192.168.1.11/api/v1/categories', {
+        fetch(server.ip + '/api/v1/categories', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({ access_token: token })
@@ -138,7 +138,7 @@ uploadImage = () => {
         for (i = 0; i < images.length; i++) {
             console.log("while")
             let requestObject = { file: 'data:image/jpeg;base64,' + images._values[i].base, access_token: token };
-            fetch('http://192.168.1.11/api/v1/fileupload/base64_upload', {
+            fetch(server.ip + '/api/v1/fileupload/base64_upload', {
                 method: 'POST',
                 headers: { "Content-type": "application/x-www-form-urlencoded" },
                 body: formEncode(requestObject)
@@ -178,7 +178,7 @@ createAds = () => {
     let token = Storage.readSync("token");
     if (token) {
         console.log("creating")
-        fetch('http://192.168.1.11/api/v1/ads/insert', {
+        fetch(server.ip + '/api/v1/ads/insert', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

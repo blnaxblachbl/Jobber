@@ -18,6 +18,8 @@ let base64Value = Observable('');
 let toastVisible = Observable(false);
 let toastText = Observable("");
 
+let server = require('serverPath');
+
 loadingData = () => {
     Storage.read("username").then(function (content) {
         username.value = content
@@ -84,7 +86,7 @@ Storage.read("token").then(function (token) {
     tokenValue.value = token
     var status = 0;
     var response_ok = false;
-    fetch('http://192.168.1.11/api/v1/user/profile', {
+    fetch(server.ip + '/api/v1/user/profile', {
         method: 'POST',
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ access_token: token })
