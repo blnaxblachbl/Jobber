@@ -1,7 +1,6 @@
 <Panel ux:Class="AddAdsPage">
     <JavaScript File="AddAdsPage.js"/>
     <Activated Handler="{getCategories}"/>
-    <Activated Handler="{isFavoriteAds}"/>
     <ScrollView ux:Name="scrollView" SnapMinTransform="false">
         <StackPanel>
             <WhileTrue Value="{imagesIsLoad}">
