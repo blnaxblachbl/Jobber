@@ -56,6 +56,8 @@ loadingData = () => {
     });
 }
 
+loadingData()
+
 module.exports = {
     goHome: goHome,
     goAccount: goAccount,
